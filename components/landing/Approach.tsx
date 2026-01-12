@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Check, Mic, Plane, Search, Speaker } from "lucide-react";
 import Image from "next/image";
+import { Pill } from "../Pill";
 
 const steps = [
   {
@@ -41,9 +42,9 @@ export const Approach = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="text-sm font-medium tracking-wide text-[#1F4FD8] uppercase"
             >
-              Our Approach
+              <Pill text="Our Approach" />
+              
             </motion.span>
 
             <motion.h2

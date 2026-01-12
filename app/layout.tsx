@@ -5,7 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
 const elms = localFont({
-  src: "../fonts/GeneralSans-Variable.ttf",
+  src: "../fonts/ZalandoSansExpanded.ttf",
   weight: "500",
   style: "normal",
 

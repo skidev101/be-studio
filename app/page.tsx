@@ -8,8 +8,8 @@ const page = () => {
   return (
     <>
       <Hero />
-      <Approach />
       <Services />
+      <Approach />
       <Clients />
     </>
   )
