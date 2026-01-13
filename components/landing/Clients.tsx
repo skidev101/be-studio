@@ -12,7 +12,7 @@ export const Clients = () => {
   ];
 
   return (
-    <section className="bg-white py-28">
+    <section className="bg-white py-10 lg:py-28">
       <div className="mx-auto max-w-6xl px-6 text-center">
         <p className="text-sm font-medium tracking-wide text-[#1F4FD8]">
           Trusted by growing teams and established brands
@@ -29,7 +29,7 @@ export const Clients = () => {
               key={logo}
               src={logo}
               alt="logo"
-              width={80}
+              width={60}
               height={40}
               className="object-contain grayscale opacity-70 transition hover:grayscale-0 hover:opacity-100"
               aria-hidden

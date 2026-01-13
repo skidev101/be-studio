@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -18,7 +19,7 @@ export default function Hero() {
                 initial={{ opacity: 0, x: -40 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
-                className="text-[2.5rem] leading-[1.1] md:text-[3.5rem] xl:text-[3.2rem] font-semibold tracking-tight text-[#0B1C2D]"
+                className="text-[2.5rem] leading-[1.1] md:text-[2.8rem] xl:text-[3.2rem] font-semibold tracking-tight text-[#0B1C2D]"
               >
                 We help growing businesses build clear, confident{" "}
                 <span className="block text-blue-accent">Brands that scale.</span>
@@ -42,20 +43,20 @@ export default function Hero() {
                 className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center"
               >
                 {/* PRIMARY */}
-                <a
+                <Link
                   href="#services"
-                  className="inline-flex items-center justify-center rounded-full bg-[#1F4FD8] px-8 py-3.5 text-base font-medium text-white transition-all hover:bg-[#1a42b8]"
+                  className="inline-flex items-center justify-center rounded-full bg-[#1F4FD8] px-8 py-3 text-base font-medium text-white transition-all hover:bg-[#1a42b8]"
                 >
                   View our services
-                </a>
+                </Link>
 
                 {/* SECONDARY */}
-                <a
+                <Link
                   href="#contact"
-                  className="inline-flex items-center justify-center rounded-full px-7 py-3.5 text-base font-medium text-[#0B1C2D] transition-colors hover:bg-[#0B1C2D]/5"
+                  className="inline-flex items-center justify-center rounded-full px-7 py-3 text-base font-medium text-[#0B1C2D] transition-colors hover:bg-[#0B1C2D]/5"
                 >
                   Start a strategy session
-                </a>
+                </Link>
               </motion.div>
 
               {/* Quiet trust signal */}

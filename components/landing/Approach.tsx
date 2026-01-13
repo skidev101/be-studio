@@ -28,8 +28,8 @@ const steps = [
 
 export const Approach = () => {
   return (
-    <section className="relative bg-white">
-      <div className="mx-auto flex justify-between gap-12 max-w-7xl px-6 py-32">
+    <section className="relative bg-white" id="approach">
+      <div className="mx-auto flex flex-col lg:flex-row justify-between gap-12 max-w-7xl px-4 lg:px-6 py-6 lg:py-32">
         {/* Soft background circle for depth */}
         {/* <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-[#1F4FD8]/10 blur-3xl pointer-events-none" /> */}
         {/* <div className="absolute -bottom-32 -right-32 w-96 h-96 rounded-full bg-[#1F4FD8]/10 blur-3xl pointer-events-none" /> */}
@@ -62,7 +62,7 @@ export const Approach = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="mt-6 text-lg leading-relaxed text-[#4B5C73]"
+              className="mt-6 text-base md:text-lg leading-relaxed text-[#4B5C73]"
             >
               We work with ambitious brands to uncover insights, define
               direction, and build foundations that enable long-term growth.
@@ -102,7 +102,7 @@ export const Approach = () => {
         </div>
 
         {/*Left column Image container */}
-        <div className="flex-1 sticky top-24 self-start w-full ">
+        <div className="flex-1 lg:sticky top-24 self-start w-full ">
           <div className="relative aspect-4/3 rounded-[2rem] border border-[#0B1C2D]/10 bg-[#F7F9FC] overflow-hidden shadow-sm">
             <Image
               src="/images/analysis.jpg"

@@ -1,138 +1,196 @@
 "use client"
 
-import { useRouter } from "next/navigation";
-import { Pill } from "../Pill";
-import { Button } from "../ui/button";
-import clsx from "clsx";
+import { useRouter } from "next/navigation"
+import { motion } from "framer-motion"
+import { ArrowRight } from "lucide-react"
+import { cn } from "@/lib/utils"
+import { Button } from "../ui/button"
+import { Pill } from "../Pill"
 
-const services = [
+type Service = {
+  title: string
+  description: string
+  items: string[]
+  featured?: boolean
+  slug: string
+}
+
+const services: Service[] = [
   {
     title: "Brand Analysis",
     description:
-      "We assess how your brand is perceived, where it stands in the market, and how it can be positioned for long-term growth.",
+      "Deep audit of your current brand perception, competitive landscape and strategic positioning opportunities.",
     items: [
-      "Brand audits and competitive analysis",
-      "Visual and verbal identity evaluation",
-      "Market positioning insights",
+      "Comprehensive brand & competitor audit",
+      "Visual & verbal identity diagnostics",
+      "Market perception & positioning map",
     ],
     featured: true,
-    slug: "brand-analysis"
+    slug: "brand-analysis",
   },
   {
     title: "Business Branding Packages",
     description:
-      "Strategic branding systems designed to support business goals and scale as your company grows.",
+      "Complete branding ecosystems built to scale — from startup launch to mature enterprise evolution.",
     items: [
-      "Startup and early-stage brand kits",
-      "Rebranding for growing businesses",
-      "Brand strategy and positioning",
+      "Foundation & startup brand systems",
+      "Growth-stage rebranding programs",
+      "Long-term brand strategy & governance",
     ],
-    slug: "business-branding-packages"
+    slug: "business-branding-packages",
   },
   {
     title: "Marketing & Digital Assets",
     description:
-      "Design systems and assets that help your brand communicate clearly and consistently across digital channels.",
+      "Consistent, high-performance design systems created for fast-moving digital environments.",
     items: [
-      "Social media and campaign templates",
-      "Website and UI design assets",
-      "Email and digital marketing visuals",
+      "Social media & advertising template suites",
+      "Website UI component library",
+      "Email & nurture sequence visuals",
     ],
-    slug: "marketing-digital-assets"
+    slug: "marketing-digital-assets",
   },
   {
-    title: "Print & Brand Collateral",
+    title: "Print & Physical Collateral",
     description:
-      "Tangible brand materials that reinforce credibility and recognition across physical touchpoints.",
+      "Premium tactile brand expressions that strengthen recognition in the physical world.",
     items: [
-      "Business cards and marketing collateral",
-      "Presentations and reports",
-      "Packaging and print design",
+      "Business cards, stationery & brand collateral",
+      "Pitch decks & investor presentations",
+      "Packaging, signage & large format",
     ],
-    slug: "print-brand-collateral"
+    slug: "print-brand-collateral",
   },
   {
-    title: "Custom Design Solutions",
+    title: "Custom & On-Demand Design",
     description:
-      "Flexible, on-demand design support tailored to unique business needs and evolving projects.",
+      "Flexible design capacity for campaigns, product launches, seasonal drops and special projects.",
     items: [
-      "Custom design engagements",
-      "Design support for launches and campaigns",
+      "Project-based custom design engagements",
+      "Rapid-response design retainer",
+      "Launch & event visual systems",
     ],
-    slug: "custom-design-solutions"
+    slug: "custom-design-solutions",
   },
-];
+]
 
-export const Services = () => {
-  const router = useRouter();
+const cardVariants = {
+  initial: { y: 20, opacity: 0 },
+  animate: (i: number) => ({
+    y: 0,
+    opacity: 1,
+    transition: {
+      delay: i * 0.08 + 0.2,
+      duration: 0.65,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  }),
+  hover: {
+    y: -8,
+    scale: 1.015,
+    transition: { duration: 0.4, ease: "easeOut" },
+  },
+}
+
+export function Services() {
+  const router = useRouter()
 
   return (
-    <section className="bg-white">
-      <div className="mx-auto max-w-7xl px-4 md:px-6 py-32">
-        <div className="mx-auto max-w-3xl text-center">
-          <div className="flex justify-center">
+    <section className="relative bg-white py-32 md:py-40 overflow-hidden" id="services">
+      {/* Very subtle background texture/gradient */}
+      <div className="absolute inset-0 bg-linear-to-b from-slate-50/40 to-transparent pointer-events-none" />
 
-          <Pill text="Services" />
-          </div>
-          <h2 className="mt-3 text-3xl md:text-4xl font-semibold tracking-tight text-[#0B1C2D]">
-            What We Do
-          </h2>
-          <p className="mt-6 text-lg leading-relaxed text-[#4B5C73]">
-            We help brands clarify their position, align with business goals,
-            and communicate with consistency and confidence.
-          </p>
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="mx-auto max-w-3xl text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.7 }}
+          >
+            <div className="w-full flex justify-center">
+
+            <Pill text="Core Services" />
+            </div>
+
+            <h2 className="mt-6 text-3xl md:text-4xl font-semibold tracking-tight text-slate-900">
+              Strategic Design Services
+            </h2>
+
+            <p className="mt-6 text-base lg:text-lg leading-relaxed text-slate-600 max-w-2xl mx-auto">
+              We create clarity, alignment and distinctive presence — from deep brand strategy to pixel-perfect execution.
+            </p>
+          </motion.div>
         </div>
 
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-12 max-w-6xl mx-auto">
-          {services.map((service) => (
-            <div
-              key={service.title}
-              className={clsx(
-                "group flex flex-col justify-between rounded-2xl bg-white hover:bg-blue-50 hover:border-gray-200 p-6 transition-all duration-300",
-                "hover:-translate-y-1 hover:shadow-lg",
+        {/* Cards grid */}
+        <div className="mt-16 md:mt-24 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
+          {services.map((service, i) => (
+            <motion.div
+              key={service.slug}
+              custom={i}
+              initial="initial"
+              whileInView="animate"
+              whileHover="hover"
+              viewport={{ once: true, margin: "-80px" }}
+              // variants={cardVariants}
+              className={cn(
+                "group relative flex flex-col rounded-2xl border p-7 md:p-8 transition-all duration-400",
                 service.featured
-                  ? "border border-blue-accent/30 shadow-md"
-                  : "border border-transparent shadow-sm"
+                  ? "border-blue-200 bg-linear-to-b from-blue-50/70 to-white shadow-blue-100/70"
+                  : "border-slate-100 bg-white/80 shadow-sm hover:shadow-md hover:border-slate-200",
+                "backdrop-blur-sm hover:-translate-y-2 focus-within:-translate-y-2"
               )}
             >
-              <div>
-                {service.featured && (
-                  <span className="mb-4 inline-block rounded-full bg-blue-accent/10 px-3 py-1 text-xs font-semibold text-blue-accent">
-                    Core Service
-                  </span>
-                )}
+              {service.featured && (
+                <div className="absolute -top-3 right-6 rounded-full bg-blue-600 px-4 py-1 text-xs font-bold tracking-wide text-white shadow-md">
+                  Flagship Service
+                </div>
+              )}
 
-                <h4 className="text-lg font-semibold tracking-tight text-[#0B1C2D]">
+              <div className="flex-1">
+                <h3 className="text-xl md:text-2xl font-semibold text-slate-900 tracking-tight">
                   {service.title}
-                </h4>
+                </h3>
 
-                <p className="mt-3 text-sm leading-relaxed text-[#4B5C73]">
+                <p className="mt-4 text-base leading-relaxed text-slate-600">
                   {service.description}
                 </p>
 
-                <ul className="mt-6 space-y-3">
-                  {service.items.map((item, i) => (
+                <ul className="mt-7 space-y-3">
+                  {service.items.map((item) => (
                     <li
-                      key={i}
-                      className="text-sm mt-4 text-[#4B5C73] leading-snug"
+                      key={item}
+                      className="flex items-start text-sm text-slate-600"
                     >
+                      <span className="mr-3 mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-500/70" />
                       {item}
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <Button
-                onClick={() => router.push(`/services/${service.slug}`)}
-                variant="ghost"
-                className="flex justify-self-end mt-6 -ml-2 w-fit px-3 font-semibold text-blue-accent hover:text-gray-900 rounded-full duration-300 hover:bg-blue-200"
-              >
-                Explore service →
-              </Button>
-            </div>
+              <div className="mt-8">
+                <Button
+                  onClick={() => router.push(`/services/${service.slug}`)}
+                  className={cn(
+                    "group/btn inline-flex items-center gap-2 px-4! text-sm font-medium",
+                    service.featured ? "text-blue-700" : "text-slate-700",
+                    "transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-full bg-gray-100 hover:bg-blue-accent hover:text-white"
+                  )}
+                >
+                  Explore service
+                  <ArrowRight
+                    size={16}
+                    className="transition-transform duration-300 group-hover/btn:translate-x-1"
+                  />
+                </Button>
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
