@@ -15,7 +15,7 @@ const zalando = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "BE_Graphics Studio",
+  title: "BE_Graphic Studio",
   description:
     " We are a full-service graphic design agency that help brands grow through strategy, design, and technology.",
 };
