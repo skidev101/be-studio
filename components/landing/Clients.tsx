@@ -24,14 +24,14 @@ export const Clients = () => {
         </p>
 
         <div className="mt-14 flex flex-wrap items-center justify-center gap-x-16 gap-y-10">
-          {clientLogos.map((logo, index) => (
+          {clientLogos.map((logo, i) => (
             <Image
-              key={logo}
+              key={i}
               src={logo}
               alt="logo"
               width={60}
               height={40}
-              className="object-contain grayscale opacity-70 transition hover:grayscale-0 hover:opacity-100"
+              className="w-auto h-auto object-contain grayscale opacity-70 transition hover:grayscale-0 hover:opacity-100"
               aria-hidden
             />
           ))}

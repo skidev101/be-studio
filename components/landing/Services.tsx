@@ -136,11 +136,11 @@ export function Services() {
               viewport={{ once: true, margin: "-80px" }}
               // variants={cardVariants}
               className={cn(
-                "group relative flex flex-col rounded-2xl border p-7 md:p-8 transition-all duration-400",
+                "group relative flex flex-col rounded-[2rem] border p-7 md:p-8 transition-all duration-400",
                 service.featured
                   ? "border-blue-200 bg-linear-to-b from-blue-50/70 to-white shadow-blue-100/70"
                   : "border-slate-100 bg-white/80 shadow-sm hover:shadow-md hover:border-slate-200",
-                "backdrop-blur-sm hover:-translate-y-2 focus-within:-translate-y-2"
+                "backdrop-blur-sm lg:hover:-translate-y-2 lg:focus-within:-translate-y-2"
               )}
             >
               {service.featured && (

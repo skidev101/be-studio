@@ -22,8 +22,8 @@ const navLinks = [
   { name: "Home", path: "/" },
   { name: "Services", path: "#services" },
   { name: "Approach", path: "#approach" },
-  { name: "Contact", path: "#contact" },
-  { name: "FAQ", path: "/faq" },
+  { name: "Contact", path: "/contact" },
+  { name: "FAQ", path: "#faq" },
 ];
 
 export function Header() {
@@ -55,6 +55,7 @@ export function Header() {
                 <Image
                   src="/logo.png"
                   alt="Brand Logo"
+                  sizes="10"
                   fill
                   className="object-contain"
                   priority
@@ -89,7 +90,7 @@ export function Header() {
 
           {/* Desktop CTA + Mobile Trigger */}
           <div className="flex items-center gap-4">
-            <BookCallButton />
+            <BookCallButton text="Let's Talk" className="hidden md:flex" />
             {/* <Button
               onClick={openCalendly}
               size="sm"
@@ -130,7 +131,7 @@ export function Header() {
                   <SheetClose asChild>
                     <button
                       aria-label="Close menu"
-                      className="p-2 -mr-2 rounded-full hover:bg-slate-100 transition-colors"
+                      className="p-2 -mr-2 rounded-full"
                     >
                       <X size={20} className="text-slate-700" />
                     </button>
@@ -168,21 +169,8 @@ export function Header() {
                           Ready to transform your brand?
                         </p>
 
-                        <SheetClose asChild>
-                          <Button
-                            onClick={openCalendly}
-                            size="lg"
-                            className={cn(
-                              "w-full h-10 text-base font-medium rounded-full",
-                              "bg-blue-600 hover:bg-blue-700",
-                              "shadow-md shadow-blue-200/30",
-                              "transition-all duration-300 hover:shadow-lg hover:shadow-blue-300/40",
-                              "active:scale-[0.98]"
-                            )}
-                            asChild
-                          >
-                            Let's talk <ArrowRight className="size-4" />
-                          </Button>
+                        <SheetClose asChild className="w-full">
+                          <BookCallButton text="Let's Talk" />
                         </SheetClose>
                       </div>
                     </div>

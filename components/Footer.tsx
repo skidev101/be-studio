@@ -14,6 +14,7 @@ export const Footer = () => {
                   <Image
                     src="/logo.png"
                     alt="Brand Logo"
+                    sizes="10"
                     fill
                     className="object-contain"
                     priority

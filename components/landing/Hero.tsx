@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { openCalendly } from "@/lib/calendly";
 import BlurText from "../BlurText";
+import { BookCallButton } from "../BookCallButton";
 
 export default function Hero() {
   return (
@@ -63,18 +64,13 @@ export default function Hero() {
                 {/* PRIMARY */}
                 <Link
                   href="#services"
-                  className="inline-flex items-center justify-center rounded-full bg-[#1F4FD8] px-8 py-3 text-base font-medium text-white transition-all hover:bg-[#1a42b8]"
+                  className="inline-flex items-center justify-center rounded-full bg-[#1F4FD8] px-8 py-3 hover:px-9 text-base font-medium text-white transition-all hover:bg-[#1a42b8]"
                 >
                   View our services
                 </Link>
 
                 {/* SECONDARY */}
-                <button
-                  onClick={openCalendly}
-                  className="inline-flex items-center justify-center rounded-full px-7 py-3 text-base font-medium text-[#0B1C2D] transition-colors hover:bg-[#0B1C2D]/5"
-                >
-                  Book a strategy session
-                </button>
+                <BookCallButton className="bg-gray-200! hover:bg-gray-300! py-3! px-6! text-slate-500! text-center font-semibold text-base" />
               </motion.div>
 
               {/* Quiet trust signal */}

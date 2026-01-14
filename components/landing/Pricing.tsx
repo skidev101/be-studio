@@ -66,7 +66,7 @@ const Pricing = () => {
               <button
                 key={goal.id}
                 onClick={() => setSelectedGoal(goal.id)}
-                className={`group relative rounded-2xl p-6 text-left transition-all hover:cursor-pointer ${
+                className={`group relative rounded-[2rem] p-6 text-left transition-all hover:cursor-pointer ${
                   selectedGoal === goal.id
                     ? 'bg-blue-600 text-white shadow-xl shadow-blue-200 ring-4 ring-blue-200'
                     : 'bg-white border-2 border-slate-200 hover:border-blue-400 hover:shadow-lg'
@@ -99,7 +99,7 @@ const Pricing = () => {
         </div>
 
         {/* Selected Goal Details */}
-        <div className="mt-12 rounded-3xl bg-white p-6 lg:p-8 md:p-12 shadow-md border-2 border-slate-200">
+        <div className="mt-12 rounded-[2rem] bg-white p-6 lg:p-8 md:p-12 shadow-md border-2 border-slate-200">
           <div className="grid gap-8 grid-cols-1 lg:grid-cols-2 items-center">
             {/* Left: Investment Details */}
             <div>
@@ -138,7 +138,7 @@ const Pricing = () => {
             </div>
 
             {/* Right: CTA */}
-            <div className="rounded-2xl bg-linear-to-br from-blue-600 to-cyan-600 p-6 lg:p-8 text-white">
+            <div className="rounded-[2rem] bg-linear-to-br from-blue-600 to-cyan-600 p-6 lg:p-8 text-white">
               <h3 className="text-2xl font-bold">Ready to get started?</h3>
               <p className="mt-4 text-blue-100">
                 Schedule a free 30-minute consultation. We'll discuss your specific needs and create a custom proposal.
@@ -180,7 +180,7 @@ const Pricing = () => {
             { stat: '3-5x', label: 'Average ROI in 12 months' },
             { stat: '50+', label: 'Brands transformed' },
           ].map((item) => (
-            <div key={item.label} className="rounded-2xl bg-white p-6 text-center border-2 border-slate-200">
+            <div key={item.label} className="rounded-[2rem] bg-white p-6 text-center border-2 border-slate-200">
               <div className="text-3xl lg:text-4xl font-bold text-blue-600">{item.stat}</div>
               <p className="mt-2 text-sm text-[#4B5C73]">{item.label}</p>
             </div>
@@ -188,7 +188,7 @@ const Pricing = () => {
         </div>
 
           {/* Uncertain */}
-        <div className="mt-12 rounded-2xl bg-blue-50 border-2 border-blue-200 p-6 text-center">
+        <div className="mt-12 rounded-[2rem] bg-blue-50 border-2 border-blue-200 p-6 text-center">
           <p className="text-[#4B5C73]">
             <span className="font-semibold text-[#0B1C2D]">Not sure which tier fits?</span> Schedule a free 30-minute consultation and we'll help you find the right starting point.
           </p>
