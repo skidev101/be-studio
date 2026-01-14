@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button'
 import { ArrowRight, CheckCircle2, Zap, Target, TrendingUp } from 'lucide-react'
 import { ServiceConfig } from '@/lib/services-config'
+import { openCalendly } from '@/lib/calendly'
 
 interface ServiceTemplateProps {
   config: ServiceConfig
@@ -218,6 +219,7 @@ const ServiceTemplate = ({ config }: ServiceTemplateProps) => {
           </p>
           
           <Button 
+            onClick={openCalendly}
             size="lg"
             className="mt-10 rounded-full bg-white text-slate-900 hover:bg-slate-100 px-10 py-6 text-base md:text-lg font-semibold shadow-xl"
           >

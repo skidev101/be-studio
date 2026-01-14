@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { openCalendly } from "@/lib/calendly";
+import BlurText from "../BlurText";
 
 export default function Hero() {
   return (
@@ -15,7 +17,7 @@ export default function Hero() {
           <div className="grid grid-cols-1 items-center gap-y-12 lg:grid-cols-12 lg:gap-x-16">
             {/* LEFT: COPY */}
             <div className="lg:col-span-6 space-y-6">
-              <motion.h1
+              {/* <motion.h1
                 initial={{ opacity: 0, x: -40 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
@@ -23,12 +25,28 @@ export default function Hero() {
               >
                 We help growing businesses build clear, confident{" "}
                 <span className="block text-blue-accent">Brands that scale.</span>
-              </motion.h1>
+              </motion.h1> */}
+              <div className="text-[2.5rem] leading-[1.1] md:text-[2.8rem] xl:text-[3.2rem] font-semibold tracking-tight text-[#0B1C2D]">
+                <BlurText
+                  text="We help growing businesses build clear, confident"
+                  delay={130}
+                  animateBy="words"
+                  direction="top"
+                  className=""
+                />
+                <BlurText
+                  text="Brands that scale."
+                  delay={160}
+                  animateBy="words"
+                  direction="bottom"
+                  className="block text-blue-accent"
+                />
+              </div>
 
               <motion.p
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.25 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
                 className="max-w-xl text-lg leading-relaxed text-[#4B5C73]"
               >
                 Strategic brand analysis, positioning, and design systems that
@@ -51,12 +69,12 @@ export default function Hero() {
                 </Link>
 
                 {/* SECONDARY */}
-                <Link
-                  href="#contact"
+                <button
+                  onClick={openCalendly}
                   className="inline-flex items-center justify-center rounded-full px-7 py-3 text-base font-medium text-[#0B1C2D] transition-colors hover:bg-[#0B1C2D]/5"
                 >
-                  Start a strategy session
-                </Link>
+                  Book a strategy session
+                </button>
               </motion.div>
 
               {/* Quiet trust signal */}

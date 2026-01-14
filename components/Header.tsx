@@ -15,6 +15,8 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { ArrowRight, Menu, X } from "lucide-react";
+import { openCalendly } from "@/lib/calendly";
+import { BookCallButton } from "./BookCallButton";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -87,7 +89,9 @@ export function Header() {
 
           {/* Desktop CTA + Mobile Trigger */}
           <div className="flex items-center gap-4">
-            <Button
+            <BookCallButton />
+            {/* <Button
+              onClick={openCalendly}
               size="sm"
               className="hidden md:flex bg-[#1F4FD8] text-white rounded-full hover:bg-[#1a42b8] px-4 py-3 hover:px-5 transition-all"
               asChild
@@ -95,7 +99,7 @@ export function Header() {
               <Link href="#contact">
                 Get in Touch <ArrowRight size={16} className="ml-1.5" />
               </Link>
-            </Button>
+            </Button> */}
 
             {/* Mobile Menu Trigger */}
             <Sheet>
@@ -166,6 +170,7 @@ export function Header() {
 
                         <SheetClose asChild>
                           <Button
+                            onClick={openCalendly}
                             size="lg"
                             className={cn(
                               "w-full h-10 text-base font-medium rounded-full",
@@ -176,7 +181,7 @@ export function Header() {
                             )}
                             asChild
                           >
-                            <Link href="#contact">Let's talk <ArrowRight className="size-4" /></Link>
+                            Let's talk <ArrowRight className="size-4" />
                           </Button>
                         </SheetClose>
                       </div>

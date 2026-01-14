@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import Script from "next/script";
 
 const zalando = localFont({
   src: "../fonts/ZalandoSansExpanded.ttf",
@@ -24,13 +25,25 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="en">
+      <head>
+        <link
+          href="https://assets.calendly.com/assets/external/widget.css"
+          rel="stylesheet"
+        />
+      </head>
       <body className={`${zalando.variable} antialiased`}>
         <Header />
         <main className="mt-18 md:mt-20">{children}</main>
 
         <Footer />
+
+        <Script
+          src="https://assets.calendly.com/assets/external/widget.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );

@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 export const About = () => {
   return (
     <section
-      className="relative bg-white py-28 md:py-40 overflow-hidden"
+      className="relative bg-white py-26 md:py-40 overflow-hidden"
       id="services"
     >
       {/* Very subtle background texture/gradient */}
@@ -14,7 +14,7 @@ export const About = () => {
 
       <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="mx-auto max-w-4xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -30,7 +30,7 @@ export const About = () => {
               About Us
             </h2>
 
-            <p className="mt-6 text-base lg:text-lg leading-relaxed text-slate-600 max-w-2xl mx-auto">
+            <p className="mt-6 text-base lg:text-lg leading-relaxed text-slate-600 max-w-3xl mx-auto">
               BE_Graphic Studio is a global design agency specializing in
               business branding. We help brands create clean intentional and
               well tailored design assets that position them for growth. <br />
