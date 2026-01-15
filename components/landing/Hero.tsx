@@ -33,7 +33,7 @@ export default function Hero() {
                   delay={130}
                   animateBy="words"
                   direction="top"
-                  className=""
+                  className="text-[#0a3d57]"
                 />
                 <BlurText
                   text="Brands that scale"
