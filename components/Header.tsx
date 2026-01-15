@@ -78,7 +78,7 @@ export function Header() {
                   className={cn(
                     "relative text-sm font-medium tracking-tight text-slate-700 hover:text-blue-accent",
                     "transition-colors after:absolute after:-bottom-1",
-                    "after:left-0 after:h-[2px] after:w-0 after:bg-blue-600",
+                    "after:left-0 after:h-[2px] after:w-0 after:bg-blue-accent/70",
                     "after:transition-all after:duration-300 hover:after:w-full"
                   )}
                 >

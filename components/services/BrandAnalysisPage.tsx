@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 import {
   ArrowRight,
   CheckCircle2,
@@ -11,6 +12,7 @@ import {
   TrendingUp,
   Shield,
 } from "lucide-react";
+import { BookCallButton } from "../BookCallButton";
 
 const BrandAnalysisPage = () => {
   const approachSteps = [
@@ -83,24 +85,39 @@ const BrandAnalysisPage = () => {
         {/* <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-40"></div> */}
 
         <div className="relative mx-auto max-w-6xl px-6 py-20 md:py-32">
-          <div className="inline-flex items-center gap-2 rounded-full bg-blue-500/10 px-4 py-2 text-sm font-medium text-blue-300 border border-blue-500/20 backdrop-blur-sm">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="inline-flex items-center gap-2 rounded-full bg-blue-500/10 px-4 py-2 text-sm font-medium text-blue-300 border border-blue-500/20 backdrop-blur-sm"
+          >
             <Zap className="h-4 w-4" />
             Brand Analysis & Strategy
-          </div>
+          </motion.div>
 
-          <h1 className="mt-6 text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-tight">
+          <motion.h1
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="font-heading mt-6 text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-tight"
+          >
             Stop Guessing.
             <br />
             <span className="bg-linear-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
               Start Knowing.
             </span>
-          </h1>
+          </motion.h1>
 
-          <p className="mt-8 max-w-2xl text-base md:text-lg leading-relaxed text-slate-300">
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="mt-8 max-w-2xl text-base md:text-lg leading-relaxed text-slate-300"
+          >
             Data-driven brand analysis that reveals how customers truly perceive
             you, where competitors are winning, and the exact positioning gaps
             costing you growth.
-          </p>
+          </motion.p>
 
           <div className="mt-12 flex flex-wrap gap-4">
             <Button
@@ -137,8 +154,9 @@ const BrandAnalysisPage = () => {
       <section className="py-20 md:py-32 bg-white">
         <div className="mx-auto max-w-4xl px-4 md:px-6">
           <div className="text-center">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900">
-              The <span className="text-blue-accent">$2.3M</span> Question Most Brands Can't Answer
+            <h2 className="font-heading text-4xl md:text-5xl font-bold text-slate-900">
+              The <span className="text-blue-accent">$2.3M</span> Question Most
+              Brands Can't Answer
             </h2>
             <p className="mt-8 text-base md:text-lg leading-relaxed text-slate-600">
               That's the average revenue impact of misaligned brand positioning.
@@ -166,7 +184,7 @@ const BrandAnalysisPage = () => {
                 key={item.desc}
                 className="rounded-2xl bg-slate-50 p-8 border border-slate-200"
               >
-                <div className="text-3xl font-bold text-blue-600">
+                <div className="text-3xl font-bold text-blue-accent">
                   {item.stat}
                 </div>
                 <p className="mt-3 text-slate-600">{item.desc}</p>
@@ -180,7 +198,7 @@ const BrandAnalysisPage = () => {
       <section className="py-20 md:py-32 bg-slate-50">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
           <div className="text-center max-w-3xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900">
+            <h2 className="font-heading text-4xl md:text-5xl font-bold text-slate-900">
               Our Proven Methodology
             </h2>
             <p className="mt-6 text-base md:text-lg text-slate-600">
@@ -226,7 +244,8 @@ const BrandAnalysisPage = () => {
       <section className="py-20 md:py-32 bg-white">
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="text-3xl md:text-5xl font-bold text-slate-900 text-center">
-            Your <span className="text-blue-accent">Complete</span> Brand Intelligence Package
+            Your <span className="text-blue-accent">Complete</span> Brand
+            Intelligence Package
           </h2>
 
           <div className="mt-16 grid gap-4 md:grid-cols-2">
@@ -235,9 +254,9 @@ const BrandAnalysisPage = () => {
               return (
                 <div
                   key={item.text}
-                  className="flex items-start gap-3 md:gap-4 rounded-2xl border-2 border-slate-200 bg-slate-50 p-6 transition-all hover:border-blue-400 hover:bg-blue-50/30"
+                  className="flex items-start gap-3 md:gap-4 rounded-2xl border-2 border-slate-200 bg-slate-50 p-6 transition-all hover:border-blue-accent hover:bg-blue-50/30"
                 >
-                  <Icon className="w-4 h-4 md:h-6 md:w-6 text-blue-600 shrink-0 mt-1" />
+                  <Icon className="w-4 h-4 md:h-6 md:w-6 text-blue-accent shrink-0 mt-1" />
                   <span className="text-slate-700 text-sm md:text-base font-medium">
                     {item.text}
                   </span>
@@ -248,7 +267,7 @@ const BrandAnalysisPage = () => {
 
           <div className="mt-12 rounded-3xl bg-linear-to-br from-blue-50 to-cyan-50 p-6 md:p-8 border-2 border-blue-200">
             <div className="flex flex-col md:flex-row items-start gap-4">
-              <Shield className="h-8 w-8 text-blue-600 shrink-0" />
+              <Shield className="h-8 w-8 text-blue-accent shrink-0" />
               <div>
                 <h3 className="text-lg font-bold text-slate-900">
                   100% Satisfaction Guarantee
@@ -307,13 +326,17 @@ const BrandAnalysisPage = () => {
           </p>
 
           <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
+            {/* <Button
               size="lg"
               className="rounded-full bg-white text-blue-700 hover:bg-slate-100 px-10 py-6 text-base md:text-lg font-semibold shadow-xl"
             >
               Schedule Discovery Call
               <ArrowRight className="ml-2 size-5" />
-            </Button>
+            </Button> */}
+            <BookCallButton
+              text="Schedule Discovery Call"
+              className="bg-white hover:bg-slate-100 text-blue-700! text-lg! font-semibold! px-8 hover:px-10"
+            />
             {/* <Button
               size="lg"
               variant="outline"

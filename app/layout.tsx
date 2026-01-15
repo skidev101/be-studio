@@ -24,7 +24,7 @@ const poppins = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "BE_Graphic Studio",
+  title: "BE Graphic Studio",
   description:
     " We are a full-service graphic design agency that help brands grow through strategy, design, and technology.",
 };
