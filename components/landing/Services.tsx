@@ -114,7 +114,7 @@ export function Services() {
             <Pill text="Core Services" />
             </div>
 
-            <h2 className="mt-6 text-3xl md:text-4xl font-semibold tracking-tight text-slate-900">
+            <h2 className="font-heading mt-6 text-3xl md:text-4xl font-semibold tracking-tight text-slate-900">
               Strategic Design Services
             </h2>
 
@@ -144,7 +144,7 @@ export function Services() {
               )}
             >
               {service.featured && (
-                <div className="absolute -top-3 right-6 rounded-full bg-blue-600 px-4 py-1 text-xs font-bold tracking-wide text-white shadow-md">
+                <div className="absolute -top-3 right-6 rounded-full bg-blue-accent px-4 py-1 text-xs font-bold tracking-wide text-white shadow-md">
                   Flagship Service
                 </div>
               )}
@@ -176,7 +176,7 @@ export function Services() {
                   onClick={() => router.push(`/services/${service.slug}`)}
                   className={cn(
                     "group/btn inline-flex items-center gap-2 px-4! text-sm font-medium",
-                    service.featured ? "text-blue-700" : "text-slate-700",
+                    service.featured ? "text-blue-accent" : "text-slate-700",
                     "transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-full bg-gray-100 hover:bg-blue-accent hover:text-white"
                   )}
                 >

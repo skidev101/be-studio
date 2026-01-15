@@ -14,6 +14,15 @@ const zalando = localFont({
   display: "swap",
 });
 
+const poppins = localFont({
+  src: "../fonts/Poppins-Regular.ttf",
+  weight: "500",
+  style: "normal",
+
+  variable: "--font-poppins",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "BE_Graphic Studio",
   description:
@@ -34,7 +43,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className={`${zalando.variable} antialiased`}>
+      <body className={`${zalando.variable} ${poppins.variable} antialiased`}>
         <Header />
         <main className="mt-18 md:mt-20">{children}</main>
 

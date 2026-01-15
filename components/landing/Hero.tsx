@@ -27,16 +27,16 @@ export default function Hero() {
                 We help growing businesses build clear, confident{" "}
                 <span className="block text-blue-accent">Brands that scale.</span>
               </motion.h1> */}
-              <div className="text-[2.5rem] leading-[1.1] md:text-[2.8rem] xl:text-[3.2rem] font-semibold tracking-tight text-[#0B1C2D]">
+              <div className="font-heading text-[2.5rem] leading-[1.1] md:text-[2.8rem] xl:text-[3.2rem] font-semibold tracking-tight text-[#0B1C2D]">
                 <BlurText
-                  text="We help growing businesses build clear, confident"
+                  text="We help results driven businesses build clear, confident"
                   delay={130}
                   animateBy="words"
                   direction="top"
                   className=""
                 />
                 <BlurText
-                  text="Brands that scale."
+                  text="Brands that scale"
                   delay={160}
                   animateBy="words"
                   direction="bottom"
@@ -50,8 +50,7 @@ export default function Hero() {
                 transition={{ duration: 0.6, delay: 0.5 }}
                 className="max-w-xl text-lg leading-relaxed text-[#4B5C73]"
               >
-                Strategic brand analysis, positioning, and design systems that
-                align your brand with business goals and long-term growth.
+                Strategy | Design | Branding | Optimization
               </motion.p>
 
               {/* CTA */}
@@ -64,7 +63,7 @@ export default function Hero() {
                 {/* PRIMARY */}
                 <Link
                   href="#services"
-                  className="inline-flex items-center justify-center rounded-full bg-[#1F4FD8] px-8 py-3 hover:px-9 text-base font-medium text-white transition-all hover:bg-[#1a42b8]"
+                  className="inline-flex items-center justify-center rounded-full bg-blue-accent px-8 py-3 hover:px-9 text-base font-medium text-white transition-all hover:bg-[#1a42b8]"
                 >
                   View our services
                 </Link>

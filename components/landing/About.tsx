@@ -26,7 +26,7 @@ export const About = () => {
             <Pill text="Core Services" />
             </div> */}
 
-            <h2 className="mt-6 text-3xl md:text-4xl font-semibold tracking-tight text-slate-900">
+            <h2 className="font-heading mt-6 text-3xl md:text-4xl font-semibold tracking-tight text-slate-900">
               About Us
             </h2>
 

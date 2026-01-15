@@ -52,7 +52,7 @@ export const Approach = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="mt-6 text-3xl md:text-4xl font-semibold tracking-tight text-[#0B1C2D] leading-tight"
+              className="font-heading mt-6 text-3xl md:text-4xl font-semibold tracking-tight text-[#0B1C2D] leading-tight"
             >
               Strategy before design. <br /> Clarity before growth.
             </motion.h2>
@@ -83,7 +83,7 @@ export const Approach = () => {
                 className="flex flex-col items-center md:items-start gap-4 p-6 rounded-[2rem] transition-transform bg-white border border-gray-100 shadow-sm hover:shadow-md"
               >
                 {/* Icon */}
-                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-[#1F4FD8]/10 text-[#1F4FD8]">
+                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-[#1F4FD8]/10 text-blue-accent">
                   {step.icon}
                 </div>
 
