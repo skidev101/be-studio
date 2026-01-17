@@ -33,7 +33,7 @@ export default function Hero() {
                   delay={130}
                   animateBy="words"
                   direction="top"
-                  className="text-[#0a3d57]"
+                  className="text-[#0f2a33]"
                 />
                 <BlurText
                   text="Brands that scale"
@@ -48,9 +48,10 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
-                className="max-w-xl text-lg leading-relaxed text-[#4B5C73]"
+                className="max-w-xl text-md leading-relaxed text-slate-700"
               >
-                Strategy | Design | Branding | Optimization
+                Strategic brand analysis, positioning, and design systems that
+                aligns your brand with it's business goals for long-term growth.
               </motion.p>
 
               {/* CTA */}
@@ -69,13 +70,18 @@ export default function Hero() {
                 </Link>
 
                 {/* SECONDARY */}
-                <BookCallButton className="bg-gray-200! hover:bg-gray-300! py-3! px-6! text-slate-500! text-center font-semibold text-base" />
+                <BookCallButton className="bg-gray-200! hover:bg-gray-300! py-4! px-6! text-slate-500! hover:text-slate-800! text-center font-semibold text-base" />
               </motion.div>
 
               {/* Quiet trust signal */}
-              <p className="hidden md:block pt-6 text-sm text-[#8A99AD]">
+              <motion.p
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.7 }}
+                className="hidden md:block pt-6 text-sm text-[#8A99AD]"
+              >
                 Trusted by growing teams across multiple industries
-              </p>
+              </motion.p>
             </div>
 
             {/* RIGHT: VISUAL */}

@@ -12,7 +12,7 @@ export const Footer = () => {
               <Link href="/" className="flex items-center">
                 <div className="relative w-12 h-12 md:w-14 md:h-14 ">
                   <Image
-                    src="/logo.png"
+                    src="/logo_temp.png"
                     alt="Brand Logo"
                     sizes="10"
                     fill
@@ -22,15 +22,15 @@ export const Footer = () => {
                 </div>
                 {/* <p className="text-blue-accent font-semibold">BE</p> */}
               </Link>
-              <h2 className="text-lg font-extrabold tracking-tight text-slate-900">
-                BE_Graphic Studio
+              <h2 className="font-heading text-lg font-extrabold tracking-tight text-slate-900">
+                BE Graphic Studio
               </h2>
             </div>
-            <p className="text-slate-500 text-sm leading-relaxed max-w-xs">
+            <p className="-mt-4 text-slate-500 text-sm leading-relaxed max-w-xs">
               We are a full-service creative agency helping brands grow through
               strategy, design, and technology.
             </p>
-            <div className="flex gap-4 mt-6 md:-mt-2">
+            <div className="flex gap-4 mt-6 md:mt-4">
               <Link href="https://facebook.com" target="_blank">
                 <Image
                   src="/images/social/facebook.svg"
@@ -134,12 +134,12 @@ export const Footer = () => {
           </div>
         </div>
         <div className="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
-          <p className="text-slate-400 text-sm">
-            &copy; {new Date().getFullYear()} BE_Graphic Studio. All rights
+          <p className="font-heading text-slate-400 text-sm">
+            &copy; {new Date().getFullYear()} BE Graphic Studio. All rights
             reserved.
           </p>
           <div className="flex gap-6">
-            <p className="text-slate-400 text-sm">Made with 💙 in Nigeria</p>
+            <p className="text-slate-400 text-sm">Made with 💙 by Monaski</p>
           </div>
         </div>
       </div>

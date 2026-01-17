@@ -128,7 +128,7 @@ const ServiceTemplate = ({ config }: ServiceTemplateProps) => {
                 key={point.desc}
                 className="rounded-2xl bg-slate-50 p-6 md:p-8 border border-slate-200"
               >
-                <div className={`text-3xl font-bold ${colors.accent}`}>
+                <div className={`font-heading text-3xl font-bold ${colors.accent}`}>
                   {point.stat}
                 </div>
                 <p className="mt-3 text-slate-600">{point.desc}</p>

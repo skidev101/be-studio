@@ -83,7 +83,7 @@ export const Approach = () => {
                 className="flex flex-col items-center md:items-start gap-4 p-6 rounded-[2rem] transition-transform bg-white border border-gray-100 shadow-sm hover:shadow-md"
               >
                 {/* Icon */}
-                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-[#1F4FD8]/10 text-blue-accent">
+                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-blue-50 text-blue-accent/70">
                   {step.icon}
                 </div>
 

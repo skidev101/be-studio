@@ -49,7 +49,8 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
+  /* --background: oklch(1 0 0); */
+  --background: #f7fafb;
   --foreground: oklch(0.129 0.042 264.695);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
@@ -80,7 +81,11 @@
   --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
-  --blue-accent: oklch(72.558% 0.12281 212.14);
+
+
+
+
+  --blue-accent: #272cd4;
 }
 
 .dark {
@@ -116,6 +121,7 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.551 0.027 264.364);
   --blue-accent: oklch(72.558% 0.12281 212.14);
+  --blue-accent2: oklch(0.623 0.214 259.815);
 }
 
 @layer base {

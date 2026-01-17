@@ -70,7 +70,7 @@ const Pricing = () => {
                 className={`group relative rounded-[2rem] p-6 text-left transition-all hover:cursor-pointer ${
                   selectedGoal === goal.id
                     ? 'bg-blue-accent text-white shadow-xl shadow-blue-200 ring-4 ring-blue-200'
-                    : 'bg-white border-2 border-slate-200 hover:border-blue-400 hover:shadow-lg'
+                    : 'bg-white hover:bg-white/40 border-2 border-slate-200 hover:border-blue-600 hover:shadow-lg transition-all'
                 }`}
               >
                 {goal.recommended && selectedGoal !== goal.id && (
@@ -105,8 +105,8 @@ const Pricing = () => {
             {/* Left: Investment Details */}
             <div>
               <div className="inline-flex items-center gap-3 rounded-full bg-blue-50 px-4 py-2">
-                <Icon className="h-4 w-4 text-blue-accent" />
-                <span className="text-xs lg:text-sm font-semibold text-blue-accent">{selected.title}</span>
+                <Icon className="h-4 w-4 text-blue-accent/80" />
+                <span className="text-xs lg:text-sm font-semibold text-blue-accent/80">{selected.title}</span>
               </div>
               
               <div className="mt-6">
@@ -155,7 +155,7 @@ const Pricing = () => {
                     <ArrowRight className="hidden md:block ml-2 h-5 w-5 font-semibold" />
                   </Button>
                 </Link> */}
-                <BookCallButton className='text-center'/>
+                <BookCallButton className='text-center bg-blue-50'/>
                 
                 <Link href="#services">
                   <Button 
@@ -176,14 +176,14 @@ const Pricing = () => {
         </div>
 
         {/* Social Proof */}
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <div className="mt-12 grid gap-4 md:grid-cols-3">
           {[
             { stat: '87%', label: 'Client satisfaction rate' },
             { stat: '3-5x', label: 'Average ROI in 12 months' },
             { stat: '50+', label: 'Brands transformed' },
           ].map((item) => (
             <div key={item.label} className="rounded-[2rem] bg-white p-6 text-center border-2 border-slate-200">
-              <div className="text-3xl lg:text-4xl font-bold text-blue-accent">{item.stat}</div>
+              <div className="font-heading text-3xl lg:text-4xl font-bold text-blue-accent">{item.stat}</div>
               <p className="mt-2 text-sm text-[#4B5C73]">{item.label}</p>
             </div>
           ))}

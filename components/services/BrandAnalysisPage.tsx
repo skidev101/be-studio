@@ -184,7 +184,7 @@ const BrandAnalysisPage = () => {
                 key={item.desc}
                 className="rounded-2xl bg-slate-50 p-8 border border-slate-200"
               >
-                <div className="text-3xl font-bold text-blue-accent">
+                <div className="font-heading text-3xl font-bold text-blue-accent">
                   {item.stat}
                 </div>
                 <p className="mt-3 text-slate-600">{item.desc}</p>
@@ -243,7 +243,7 @@ const BrandAnalysisPage = () => {
       {/* DELIVERABLES */}
       <section className="py-20 md:py-32 bg-white">
         <div className="mx-auto max-w-5xl px-6">
-          <h2 className="text-3xl md:text-5xl font-bold text-slate-900 text-center">
+          <h2 className="font-heading text-3xl md:text-5xl font-bold text-slate-900 text-center">
             Your <span className="text-blue-accent">Complete</span> Brand
             Intelligence Package
           </h2>
@@ -286,7 +286,7 @@ const BrandAnalysisPage = () => {
       {/* WHO IT'S FOR */}
       <section className="py-20 md:py-32 bg-slate-900">
         <div className="mx-auto max-w-6xl px-6">
-          <h2 className="text-3xl md:text-5xl font-bold text-white text-center">
+          <h2 className="font-heading text-3xl md:text-5xl font-bold text-white text-center">
             Perfect For Growth-Focused Leaders
           </h2>
 
@@ -317,7 +317,7 @@ const BrandAnalysisPage = () => {
       {/* FINAL CTA */}
       <section className="py-20 md:py-32 bg-linear-to-br from-blue-600 via-blue-700 to-cyan-600">
         <div className="mx-auto max-w-4xl px-6 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white">
+          <h2 className="font-heading text-4xl md:text-5xl font-bold text-white">
             Ready to Uncover What Your Competitors Already Know?
           </h2>
           <p className="mt-6 text-base md:text-lg text-blue-100">

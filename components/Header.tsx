@@ -53,7 +53,7 @@ export function Header() {
             <Link href="/" className="flex items-center">
               <div className="relative w-12 h-12 md:w-14 md:h-14 -ml-4">
                 <Image
-                  src="/logo.png"
+                  src="/logo_temp.png"
                   alt="Brand Logo"
                   sizes="10"
                   fill
