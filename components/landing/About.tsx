@@ -31,7 +31,7 @@ export const About = () => {
             </h2>
 
             <p className="mt-6 text-base lg:text-lg leading-relaxed text-slate-600 max-w-3xl mx-auto">
-              BE_Graphic Studio is a global design agency specializing in
+              BE Graphic Studio is a global design agency specializing in
               business branding. We help brands create clean intentional and
               well tailored design assets that position them for growth. <br />
               Our focus is simple- Helping your business grow, stand out and
