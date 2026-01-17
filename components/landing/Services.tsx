@@ -177,7 +177,7 @@ export function Services() {
                   className={cn(
                     "group/btn inline-flex items-center gap-2 px-4! text-sm font-medium",
                     service.featured ? "text-blue-accent" : "text-slate-700",
-                    "transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-full bg-gray-100 hover:bg-blue-accent hover:text-white"
+                    "transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-full bg-gray-100 hover:bg-purple-accent hover:text-white"
                   )}
                 >
                   Explore service

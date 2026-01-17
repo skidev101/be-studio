@@ -105,7 +105,7 @@ export const Approach = () => {
         <div className="flex-1 lg:sticky top-24 self-start w-full ">
           <div className="relative aspect-4/3 rounded-[2rem] border border-[#0B1C2D]/10 bg-[#F7F9FC] overflow-hidden shadow-sm">
             <Image
-              src="/images/analysis.jpg"
+              src="/images/analysis.png"
               alt="Brand strategy and analysis visual"
               fill
               className="object-cover"

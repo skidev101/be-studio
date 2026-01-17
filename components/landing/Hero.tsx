@@ -98,7 +98,7 @@ export default function Hero() {
                 {/* Image */}
                 <div className="relative aspect-4/3 w-full overflow-hidden rounded-[2rem] md:rounded-[4rem] border border-[#0B1C2D]/10 bg-[#F7F9FC] shadow-sm">
                   <Image
-                    src="/images/tree.jpg"
+                    src="/images/hero2.1.jpg"
                     alt="Brand strategy and positioning visual"
                     fill
                     className="object-cover opacity-90"
