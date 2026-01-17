@@ -40,7 +40,7 @@ export default function Hero() {
                   delay={160}
                   animateBy="words"
                   direction="bottom"
-                  className="block text-blue-accent"
+                  className="block text-blue-accent hover:text-purple-accent transition-all"
                 />
               </div>
 
