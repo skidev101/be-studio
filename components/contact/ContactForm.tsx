@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { BookCallButton } from "../BookCallButton";
+import { ArrowRight } from "lucide-react";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -50,22 +52,22 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="px-2 md:px-3 py-20">
-      <div className="relative overflow-hidden rounded-[2rem] lg:rounded-[4rem] bg-white">
+    <section id="contact" className="w-full py-4 md:py-8">
+      <div className="relative overflow-hidden rounded-[2rem] lg:rounded-[4rem] w-full h-full bg-white">
         {/* Enhanced Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#F4F7FD] via-[#F8FAFF] to-[#EEF3FC]" />
+        {/* <div className="absolute inset-0 bg-[#F4F7FD]" /> */}
         
         {/* Subtle texture overlay */}
-        <div className="absolute inset-0 opacity-[0.02]" style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, #0B1C2D 1px, transparent 0)`,
+        {/* <div className="absolute inset-0 opacity-[0.02]" style={{
+          backgroundImage: `radial-gradient(circle at 1px 1px, #606366 1px, transparent 0)`,
           backgroundSize: '48px 48px'
-        }} />
+        }} /> */}
 
         {/* Ambient gradient orbs */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-accent/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl" />
+        {/* <div className="absolute top-0 right-0 w-96 h-96 bg-blue-accent/5 rounded-full blur-3xl" /> */}
+        {/* <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl" /> */}
 
-        <div className="relative mx-auto max-w-7xl px-6 py-16 md:py-24">
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 py-16 md:py-24">
           <div className="grid grid-cols-1 gap-12 lg:gap-16 lg:grid-cols-12">
             {/* LEFT: ENHANCED COPY */}
             <motion.div
@@ -83,7 +85,7 @@ export default function Contact() {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="inline-block"
               >
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 backdrop-blur-sm border border-blue-accent/20 shadow-sm">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50/60 backdrop-blur-sm border border-blue-accent/20 shadow-sm">
                   <div className="relative flex h-2 w-2">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-accent opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-accent"></span>
@@ -105,19 +107,19 @@ export default function Contact() {
               {/* Info cards */}
               <div className="space-y-4 pt-4">
                 <div className="flex items-start gap-4 group">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-blue-accent/10 flex items-center justify-center group-hover:bg-blue-accent/15 transition-colors">
+                  <div className="shrink-0 w-10 h-10 rounded-xl bg-blue-accent/10 flex items-center justify-center group-hover:bg-blue-accent/15 transition-colors">
                     <svg className="w-5 h-5 text-blue-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
                   <div>
                     <h4 className="text-sm font-semibold text-[#0B1C2D] mb-1">Quick Response Time</h4>
-                    <p className="text-sm text-slate-600">Typically respond within 24–48 hours</p>
+                    <p className="text-sm text-slate-600">Typically respond within 24-48 hours</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4 group">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-blue-accent/10 flex items-center justify-center group-hover:bg-blue-accent/15 transition-colors">
+                  <div className="shrink-0 w-10 h-10 rounded-xl bg-blue-accent/10 flex items-center justify-center group-hover:bg-blue-accent/15 transition-colors">
                     <svg className="w-5 h-5 text-blue-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
@@ -129,7 +131,7 @@ export default function Contact() {
                 </div>
 
                 <div className="flex items-start gap-4 group">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-blue-accent/10 flex items-center justify-center group-hover:bg-blue-accent/15 transition-colors">
+                  <div className="shrink-0 w-10 h-10 rounded-xl bg-blue-accent/10 flex items-center justify-center group-hover:bg-blue-accent/15 transition-colors">
                     <svg className="w-5 h-5 text-blue-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                     </svg>
@@ -145,10 +147,10 @@ export default function Contact() {
               <div className="pt-6">
                 <div className="flex items-center gap-3">
                   <div className="flex -space-x-3">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 border-2 border-white shadow-md" />
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 border-2 border-white shadow-md" />
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-400 to-indigo-600 border-2 border-white shadow-md" />
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-pink-400 to-pink-600 border-2 border-white shadow-md flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-full bg-linear-to-br from-blue-400 to-blue-600 border-2 border-white shadow-md" />
+                    <div className="w-10 h-10 rounded-full bg-linear-to-br from-purple-400 to-purple-600 border-2 border-white shadow-md" />
+                    <div className="w-10 h-10 rounded-full bg-linear-to-br from-indigo-400 to-indigo-600 border-2 border-white shadow-md" />
+                    <div className="w-10 h-10 rounded-full bg-linear-to-br from-pink-400 to-pink-600 border-2 border-white shadow-md flex items-center justify-center">
                       <span className="text-xs font-bold text-white">+50</span>
                     </div>
                   </div>
@@ -166,7 +168,7 @@ export default function Contact() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
               onSubmit={handleSubmit}
-              className="lg:col-span-7 relative rounded-3xl bg-white/80 backdrop-blur-sm p-8 md:p-10 border border-[#0B1C2D]/10 shadow-xl shadow-blue-accent/5"
+              className="lg:col-span-7 relative rounded-3xl bg-white/80 backdrop-blur-sm px-4 py-6 md:p-8 border border-[#0B1C2D]/10 shadow-xl shadow-blue-accent/5"
             >
               {/* Form header */}
               <div className="mb-8 pb-6 border-b border-slate-100">
@@ -310,12 +312,11 @@ export default function Contact() {
                         }}
                       >
                         <option value="">Select a service</option>
-                        <option value="brand-strategy">Brand Strategy & Positioning</option>
-                        <option value="brand-identity">Brand Identity Design</option>
-                        <option value="rebranding">Complete Rebranding</option>
-                        <option value="design-system">Design System</option>
-                        <option value="web-design">Website Design</option>
-                        <option value="consultation">Consultation</option>
+                        <option value="brand-strategy">Brand Analysis</option>
+                        <option value="brand-identity">Business Branding</option>
+                        <option value="rebranding">Marketing & Digital Assets</option>
+                        <option value="design-system">Print & Physical collateral</option>
+                        <option value="web-design">Custom & On-Demand Design</option>
                         <option value="other">Other</option>
                       </select>
                       {focusedField === 'service' && (
@@ -354,13 +355,13 @@ export default function Contact() {
                         <option value="3-6-months">3-6 months</option>
                         <option value="flexible">Flexible / Just exploring</option>
                       </select>
-                      {focusedField === 'timeline' && (
+                      {/* {focusedField === 'timeline' && (
                         <motion.div
                           layoutId="focus-ring"
                           className="absolute -inset-[3px] rounded-xl bg-blue-accent/10 -z-10"
                           transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                         />
-                      )}
+                      )} */}
                     </div>
                   </div>
                 </div>
@@ -380,7 +381,7 @@ export default function Contact() {
                       onFocus={() => setFocusedField('message')}
                       onBlur={() => setFocusedField(null)}
                       placeholder="Tell us about your goals, challenges, and what success looks like for your brand..."
-                      className="w-full rounded-xl border-2 border-slate-200 bg-[#F7F9FC] px-4 py-3.5 text-sm text-slate-800 placeholder:text-slate-400 focus:border-blue-accent focus:outline-none focus:bg-white resize-none transition-all"
+                      className="w-full rounded-xl border-2 border-slate-200 bg-[#F7F9FC] px-4 py-3.5 text-sm text-slate-800 placeholder:text-slate-400 focus:border-blue-accent focus:outline-none focus:bg-white resize-none transition-all placeholder:text-xs md:placeholder:text-sm"
                     />
                     {focusedField === 'message' && (
                       <motion.div
@@ -398,7 +399,7 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={isSubmitting || submitStatus === "success"}
-                    className="group relative inline-flex items-center justify-center rounded-full bg-blue-accent px-8 py-3.5 text-base font-semibold text-white transition-all hover:bg-blue-accent/90 hover:shadow-lg hover:shadow-blue-accent/25 disabled:opacity-60 disabled:cursor-not-allowed overflow-hidden"
+                    className="group relative inline-flex items-center justify-center rounded-full bg-blue-accent px-4 md:px-8 py-2.5 md:py-3.5 text-sm md:text-base font-semibold text-white transition-all hover:bg-blue-accent/90 hover:cursor-pointer"
                   >
                     <span className="relative z-10 flex items-center gap-2">
                       {isSubmitting ? (
@@ -419,25 +420,19 @@ export default function Contact() {
                       ) : (
                         <>
                           Send Message
-                          <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                          </svg>
+                          <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                          
                         </>
                       )}
                     </span>
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                      <div className="absolute inset-0 bg-gradient-to-r from-blue-accent via-purple-500 to-blue-accent bg-[length:200%_100%] animate-gradient" />
-                    </div>
+                    {/* <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                      <div className="absolute inset-0 bg-linear-to-r from-blue-accent via-purple-500 to-blue-accent bg-[length:200%_100%] animate-gradient" />
+                    </div> */}
                   </button>
 
-                  <span className="text-sm text-slate-600">
+                  <span className="text-sm text-slate-500 mt-2">
                     Or{" "}
-                    <button
-                      type="button"
-                      className="font-semibold text-blue-accent hover:underline"
-                    >
-                      book a call
-                    </button>
+                    <BookCallButton text="book a call" className="bg-transparent! text-slate-500! px-0! hover:text-blue-accent! underline " />
                     {" "}if you prefer
                   </span>
                 </div>
@@ -447,10 +442,10 @@ export default function Contact() {
                   <motion.div
                     initial={{ opacity: 0, y: 10, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
-                    className="rounded-2xl bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200/50 p-5"
+                    className="rounded-2xl bg-linear-to-r from-green-50 to-emerald-50 border-2 border-green-200/50 p-5"
                   >
                     <div className="flex items-start gap-3">
-                      <div className="flex-shrink-0 w-8 h-8 rounded-full bg-green-500 flex items-center justify-center">
+                      <div className="shrink-0 w-8 h-8 rounded-full bg-green-500 flex items-center justify-center">
                         <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                         </svg>

@@ -9,7 +9,7 @@ import { BookCallButton } from "../BookCallButton";
 
 export default function Hero() {
   return (
-    <section className="px-2 md:px-3">
+    <section className="px-2 md:px-3 bg-white">
       <div className="relative overflow-hidden rounded-[2rem] lg:rounded-[4rem] bg-white">
         {/* Background */}
         <div className="absolute inset-0 bg-[#F4F7FD]" />
@@ -33,7 +33,7 @@ export default function Hero() {
                   delay={130}
                   animateBy="words"
                   direction="top"
-                  className="text-[#0f2a33]"
+                  className="text-blue-accent"
                 />
                 <BlurText
                   text="Brands that scale"

@@ -5,7 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import {
   Sheet,
@@ -15,8 +14,8 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { ArrowRight, Menu, X } from "lucide-react";
-import { openCalendly } from "@/lib/calendly";
 import { BookCallButton } from "./BookCallButton";
+import { useScrollToSection } from "@/hooks/scroll-to-section";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -27,6 +26,7 @@ const navLinks = [
 ];
 
 export function Header() {
+  const scrollToSection = useScrollToSection();
   const [isScrolled, setIsScrolled] = useState(false);
   const { scrollY } = useScroll();
 
@@ -42,8 +42,8 @@ export function Header() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-400",
         isScrolled
-          ? "bg-white/75 backdrop-blur-lg border-b border-slate-200/70 shadow-sm"
-          : "bg-transparent"
+          ? "bg-white/50 backdrop-blur-lg border-b border-slate-200/70 shadow-sm"
+          : "bg-white"
       )}
     >
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
@@ -71,20 +71,41 @@ export function Header() {
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-8 lg:gap-10">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  href={link.path}
-                  className={cn(
-                    "relative text-sm font-medium tracking-tight text-slate-700 hover:text-blue-accent",
-                    "transition-colors after:absolute after:-bottom-1",
-                    "after:left-0 after:h-[2px] after:w-0 after:bg-blue-accent/70",
-                    "after:transition-all after:duration-300 hover:after:w-full"
-                  )}
-                >
-                  {link.name}
-                </Link>
-              ))}
+              {navLinks.map((link) => {
+                const isHash = link.path.startsWith("#");
+
+                if (isHash) {
+                  return (
+                    <button
+                      key={link.path}
+                      onClick={() => scrollToSection(link.path.slice(1))} // remove #
+                      className={cn(
+                        "relative text-sm font-medium tracking-tight text-slate-700 hover:text-blue-accent",
+                        "transition-colors after:absolute after:-bottom-1",
+                        "after:left-0 after:h-[2px] after:w-0 after:bg-blue-accent/70",
+                        "after:transition-all after:duration-300 hover:after:w-full"
+                      )}
+                    >
+                      {link.name}
+                    </button>
+                  );
+                } else {
+                  return (
+                    <Link
+                      key={link.path}
+                      href={link.path}
+                      className={cn(
+                        "relative text-sm font-medium tracking-tight text-slate-700 hover:text-blue-accent",
+                        "transition-colors after:absolute after:-bottom-1",
+                        "after:left-0 after:h-[2px] after:w-0 after:bg-blue-accent/70",
+                        "after:transition-all after:duration-300 hover:after:w-full"
+                      )}
+                    >
+                      {link.name}
+                    </Link>
+                  );
+                }
+              })}
             </nav>
           </div>
 
@@ -141,24 +162,43 @@ export function Header() {
                 <div className="h-[calc(100dvh-68px)] overflow-y-auto scrollbar-thin">
                   <div className="px-6 sm:px-10 pt-12 pb-20">
                     <nav className="flex flex-col gap-8 mb-16">
-                      {navLinks.map((link) => (
-                        <SheetClose asChild key={link.path}>
-                          <Link
-                            href={link.path}
-                            className={cn(
-                              "group flex items-center justify-between",
-                              "text-3xl sm:text-4xl font-medium tracking-tight text-slate-900",
-                              "transition-all duration-300 hover:text-blue-700"
-                            )}
-                          >
-                            <span>{link.name}</span>
-                            <ArrowRight
-                              size={20}
-                              className="opacity-0 -translate-x-3 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
-                            />
-                          </Link>
-                        </SheetClose>
-                      ))}
+                      {navLinks.map((link) => {
+                        const isHash = link.path.startsWith("#");
+
+                        if (isHash) {
+                          return (
+                            <SheetClose asChild key={link.path}>
+                              <button
+                                onClick={() =>
+                                  scrollToSection(link.path.slice(1))
+                                }
+                                className="group flex items-center justify-between text-3xl sm:text-4xl font-medium tracking-tight text-slate-900 transition-all duration-300 hover:text-blue-700"
+                              >
+                                <span>{link.name}</span>
+                                <ArrowRight
+                                  size={20}
+                                  className="opacity-0 -translate-x-3 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
+                                />
+                              </button>
+                            </SheetClose>
+                          );
+                        } else {
+                          return (
+                            <SheetClose asChild key={link.path}>
+                              <Link
+                                href={link.path}
+                                className="group flex items-center justify-between text-3xl sm:text-4xl font-medium tracking-tight text-slate-900 transition-all duration-300 hover:text-blue-700"
+                              >
+                                <span>{link.name}</span>
+                                <ArrowRight
+                                  size={20}
+                                  className="opacity-0 -translate-x-3 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
+                                />
+                              </Link>
+                            </SheetClose>
+                          );
+                        }
+                      })}
                     </nav>
 
                     <div className="space-y-10">

@@ -14,9 +14,9 @@ export const Clients = () => {
   return (
     <section className="bg-white py-10 lg:py-28">
       <div className="mx-auto max-w-6xl px-6 text-center">
-        <p className="text-sm font-medium tracking-wide text-[#1F4FD8]">
+        <h1 className="font-heading text-center mt-6 text-3xl md:text-4xl font-semibold tracking-tight text-slate-900">
           Trusted by growing teams and established brands
-        </p>
+        </h1>
 
         <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-[#4B5C73]">
           We've partnered with teams across industries to build brands that are
