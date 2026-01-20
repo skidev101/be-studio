@@ -64,7 +64,7 @@ export default function Hero() {
                 {/* PRIMARY */}
                 <Link
                   href="#services"
-                  className="inline-flex items-center justify-center rounded-full bg-blue-accent px-8 py-3 hover:px-9 text-base font-medium text-white transition-all hover:bg-[#1a42b8]"
+                  className="inline-flex items-center justify-center rounded-full bg-blue-accent px-8 py-3 hover:px-9 text-base font-medium text-white transition-all hover:bg-blue-accent/80"
                 >
                   View our services
                 </Link>
@@ -103,6 +103,7 @@ export default function Hero() {
                     fill
                     className="object-cover opacity-90"
                     priority
+
                   />
                 </div>
               </motion.div>

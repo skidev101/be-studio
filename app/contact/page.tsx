@@ -1,5 +1,6 @@
 "use client";
 
+import ContactForm from "@/components/contact/ContactForm";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -9,7 +10,7 @@ const page = () => {
 
   return (
     <div className="flex flex-col min-h-screen justify-center items-center px-4">
-      <p>Page under development</p>
+      <ContactForm />
       <Button
         onClick={() => router.back()}
         className="rounded-full bg-blue-accent text-white mt-2"
