@@ -6,8 +6,11 @@ import Link from "next/link";
 import { openCalendly } from "@/lib/calendly";
 import BlurText from "../BlurText";
 import { BookCallButton } from "../BookCallButton";
+import { useScrollToSection } from "@/hooks/scroll-to-section";
 
 export default function Hero() {
+  const scrollToSection = useScrollToSection();
+
   return (
     <section className="px-2 md:px-3 bg-white">
       <div className="relative overflow-hidden rounded-[2rem] lg:rounded-[4rem] bg-white">
@@ -62,12 +65,12 @@ export default function Hero() {
                 className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center"
               >
                 {/* PRIMARY */}
-                <Link
-                  href="#services"
+                <button
+                  onClick={() => scrollToSection("services")}
                   className="inline-flex items-center justify-center rounded-full bg-blue-accent px-8 py-3 hover:px-9 text-base font-medium text-white transition-all hover:bg-blue-accent/80"
                 >
                   View our services
-                </Link>
+                </button>
 
                 {/* SECONDARY */}
                 <BookCallButton className="bg-gray-200! hover:bg-gray-300! py-4! px-6! text-slate-500! hover:text-slate-800! text-center font-semibold text-base" />
@@ -103,7 +106,6 @@ export default function Hero() {
                     fill
                     className="object-cover opacity-90"
                     priority
-
                   />
                 </div>
               </motion.div>
