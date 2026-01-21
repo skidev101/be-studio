@@ -1,13 +1,12 @@
-"use client"
+"use client";
 
 import { motion } from "framer-motion";
 
-
-export const About = () => {
+          export const About = () => {
   return (
     <section
       className="relative bg-white py-26 md:py-40 overflow-hidden"
-      id="services"
+      id="about"
     >
       {/* Very subtle background texture/gradient */}
       <div className="absolute inset-0 bg-linear-to-b from-slate-50/40 to-transparent pointer-events-none" />
@@ -35,8 +34,9 @@ export const About = () => {
               business branding. We help brands create clean intentional and
               well tailored design assets that position them for growth. <br />
               Our focus is simple- Helping your business grow, stand out and
-              communicate with clarity. We design excellence and strategy to
-              design real results and make meaningful impact.
+              communicate with clarity. We design for excellence and back with
+              clear strategies that drives real Businesses results and make
+              meaningful impact.
             </p>
           </motion.div>
         </div>

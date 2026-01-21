@@ -46,6 +46,7 @@
   --radius-4xl: calc(var(--radius) + 16px);
   --color-blue-accent: var(--blue-accent);
   --color-purple-accent: var(--purple-accent);
+  --color-dark-accent: var(--dark-accent);
 }
 
 :root {
@@ -84,6 +85,7 @@
   --sidebar-ring: oklch(0.704 0.04 256.788);
   --blue-accent: #23bbd3;
   --purple-accent: #7b79f4;
+  --dark-accent: #122933;
 }
 
 .dark {

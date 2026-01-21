@@ -26,10 +26,10 @@ const ServiceTemplate = ({ config }: ServiceTemplateProps) => {
   // Tier-based styling
   const tierColors = {
     premium: {
-      gradient: "from-blue-600 via-blue-700 to-cyan-600",
+      gradient: "from-blue-accent to-blue-accent/80",
       badge: "bg-blue-100/10 text-blue-200 border-blue-200/20",
-      accent: "text-blue-600",
-      buttonPrimary: "bg-blue-600 hover:bg-blue-700",
+      accent: "text-blue-accent",
+      buttonPrimary: "bg-blue-accent hover:bg-blue-accent/80",
     },
     standard: {
       gradient: "from-indigo-600 via-purple-700 to-purple-400",

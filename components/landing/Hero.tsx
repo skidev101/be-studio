@@ -2,8 +2,6 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import Link from "next/link";
-import { openCalendly } from "@/lib/calendly";
 import BlurText from "../BlurText";
 import { BookCallButton } from "../BookCallButton";
 import { useScrollToSection } from "@/hooks/scroll-to-section";
@@ -43,7 +41,7 @@ export default function Hero() {
                   delay={160}
                   animateBy="words"
                   direction="bottom"
-                  className="block text-blue-accent hover:text-purple-accent transition-all"
+                  className="block text-blue-accent hover:text-[#122933] transition-all"
                 />
               </div>
 
