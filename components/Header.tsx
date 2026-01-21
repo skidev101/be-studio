@@ -73,14 +73,15 @@ export function Header() {
             <nav className="hidden md:flex items-center gap-8 lg:gap-10">
               {navLinks.map((link) => {
                 const isHash = link.path.startsWith("#");
+                const isHome = link.path === "/";
 
-                if (isHash) {
+                if (isHash || isHome) {
                   return (
                     <button
                       key={link.path}
-                      onClick={() => scrollToSection(link.path.slice(1))} // remove #
+                      onClick={() => scrollToSection(isHash ? link.path.slice(1) : undefined)} // remove #
                       className={cn(
-                        "relative text-sm font-medium tracking-tight text-slate-700 hover:text-blue-accent",
+                        "relative text-sm font-medium tracking-tight text-slate-700 hover:text-blue-accent hover:cursor-pointer",
                         "transition-colors after:absolute after:-bottom-1",
                         "after:left-0 after:h-[2px] after:w-0 after:bg-blue-accent/70",
                         "after:transition-all after:duration-300 hover:after:w-full"
@@ -164,13 +165,14 @@ export function Header() {
                     <nav className="flex flex-col gap-8 mb-16">
                       {navLinks.map((link) => {
                         const isHash = link.path.startsWith("#");
+                        const isHome = link.path === "/";
 
-                        if (isHash) {
+                        if (isHash || isHome) {
                           return (
                             <SheetClose asChild key={link.path}>
                               <button
                                 onClick={() =>
-                                  scrollToSection(link.path.slice(1))
+                                  scrollToSection(isHash ? link.path.slice(1) : undefined)
                                 }
                                 className="group flex items-center justify-between text-3xl sm:text-4xl font-medium tracking-tight text-slate-900 transition-all duration-300 hover:text-blue-700"
                               >

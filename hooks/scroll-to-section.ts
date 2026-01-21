@@ -6,17 +6,25 @@ export function useScrollToSection() {
   const router = useRouter();
   const pathname = usePathname();
 
-  return (id: string) => {
+  return (id?: string) => {
     if (pathname !== "/") {
-      // Navigate to home first
+      // Navigate home first
       router.push("/");
 
-      // Wait for page to render, then scroll
       setTimeout(() => {
-        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+        if (id) {
+          document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
       }, 100);
     } else {
-      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      // Already on home page
+      if (id) {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
     }
   };
 }
