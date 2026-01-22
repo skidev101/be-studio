@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
 
     await resend.emails.send({
       from: "BE Potential customer <onboarding@resend.dev>",
-      to: ["skidev101@gmail.com", "begraphicstudioofficial@gmail.com"],
+      to: ["skidev101@gmail.com"],
       subject: "New Contact Form Submission",
       react: ContactEmailTemplate(data),
     });
