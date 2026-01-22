@@ -9,7 +9,7 @@ export async function POST(req: NextRequest) {
     const data = await req.json();
 
     await resend.emails.send({
-      from: "Contact Form <onboarding@resend.dev>",
+      from: "BE Potential customer <onboarding@resend.dev>",
       to: ["skidev101@gmail.com"],
       subject: "New Contact Form Submission",
       react: ContactEmailTemplate(data),
