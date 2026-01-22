@@ -84,7 +84,7 @@ const BrandAnalysisPage = () => {
   return (
     <main className="min-h-screen">
       {/* HERO */}
-      <section className="relative overflow-hidden bg-linear-to-br from-dark-accent to-dark-accent/80">
+      <section className="relative overflow-hidden bg-linear-to-br from-dark-accent via-cyan-900 to-dark-accent">
         {/* <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-40"></div> */}
 
         <div className="relative mx-auto max-w-6xl px-6 py-20 md:py-32">
@@ -106,9 +106,7 @@ const BrandAnalysisPage = () => {
           >
             Stop Guessing.
             <br />
-            <span className="text-blue-accent">
-              Start Knowing.
-            </span>
+            <span className="text-blue-accent">Start Knowing.</span>
           </motion.h1>
 
           <motion.p
@@ -126,10 +124,10 @@ const BrandAnalysisPage = () => {
             <Button
               onClick={() => router.push("/contact")}
               size="lg"
-              className="rounded-full bg-blue-accent/80 hover:bg-blue-accent/90 text-white px-6 py-4 md:px-8 md:py-6 text-base md:text-lg font-black"
+              className="group rounded-full bg-blue-accent/80 hover:bg-blue-accent/90 text-white px-6! md:px-8 md:py-6 hover:px-8! text-base md:text-lg font-black transition-all duration-200"
             >
               Get Brand Assessment
-              {/* <ArrowRight className="ml-2 h-5 w-5" /> */}
+              <ArrowRight className="group-hover:translate-x-2 ml-2 size-5 duration-200" />
             </Button>
             {/* <Button
               size="lg"
@@ -305,9 +303,7 @@ const BrandAnalysisPage = () => {
                   <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 text-blue-accent">
                     <Icon className="h-7 w-7" />
                   </div>
-                  <h3 className="mt-6 text-xl font-bold">
-                    {client.title}
-                  </h3>
+                  <h3 className="mt-6 text-xl font-bold">{client.title}</h3>
                   <p className="mt-3 text-slate-400 leading-relaxed">
                     {client.desc}
                   </p>
@@ -320,31 +316,32 @@ const BrandAnalysisPage = () => {
 
       {/* FINAL CTA */}
       <section className="px-4 md:px-6 pb-8 bg-white">
+        <div className="relative bg-[url('/images/blue-abstract.jpg')] bg-center bg-contain  rounded-[2rem] md:rounded-[8rem]">
+          <div className="py-20 md:py-32 backdrop-blur-xl rounded-[2rem] md:rounded-[8rem]">
+            <div className="mx-auto max-w-4xl px-6 text-center">
+              <h2 className="font-heading text-3xl md:text-5xl font-bold text-white">
+                Ready to Uncover What Your Competitors Already Know?
+              </h2>
+              <p className="mt-6 text-md md:text-lg text-gray-300">
+                Book a 30-minute discovery call to see if brand analysis is
+                right for your business. No obligation, just honest insights.
+              </p>
 
-      <div className="py-20 md:py-32 bg-linear-to-br from-dark-accent via-dark-accent/80 to-dark-accent rounded-[2rem] md:rounded-[8rem]">
-        <div className="mx-auto max-w-4xl px-6 text-center">
-          <h2 className="font-heading text-3xl md:text-5xl font-bold text-white">
-            Ready to Uncover What Your Competitors Already Know?
-          </h2>
-          <p className="mt-6 text-md md:text-lg text-gray-300">
-            Book a 30-minute discovery call to see if brand analysis is right
-            for your business. No obligation, just honest insights.
-          </p>
+              <div className="flex justify-center mt-8">
+                <BookCallButton
+                  text="Schedule Discovery Call"
+                  className="group flex items-center gap-2 bg-purple-accent/80 hover:bg-purple-accent/70! text-white! text-md md:text-lg! font-semibold! px-6! md:px-8! hover:px-10!"
+                >
+                  <ArrowRight className="size-5 group-hover:translate-x-3 transition-all duration-200" />
+                </BookCallButton>
+              </div>
 
-          <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
-            
-            <BookCallButton
-              text="Schedule Discovery Call"
-              className="bg-blue-accent/60 text-md! md:text-lg! font-semibold! px-6! md:px-8 hover:px-10"
-            />
-            
+              <p className="mt-8 text-xs text-gray-300">
+                Typical investment: $15,000-$25,000 • Timeline: 4 weeks
+              </p>
+            </div>
           </div>
-
-          <p className="mt-8 text-xs text-gray-300">
-            Typical investment: $15,000-$25,000 • Timeline: 4 weeks
-          </p>
         </div>
-      </div>
       </section>
     </main>
   );

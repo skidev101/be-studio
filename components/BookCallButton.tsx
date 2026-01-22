@@ -1,8 +1,8 @@
 'use client'
 
-export function BookCallButton({className, text}: {className?: string, text?: string}) {
+export function BookCallButton({className, text, children}: {className?: string, text?: string, children?: React.ReactNode}) {
   const CALENDLY_URL = 'https://calendly.com/skidev101/30min'
-  // [#1F4FD8]
+  
 
   return (
     <a
@@ -12,6 +12,7 @@ export function BookCallButton({className, text}: {className?: string, text?: st
       className={`bg-blue-accent  ${className} text-sm text-white rounded-full hover:bg-blue-accent/80 px-4 py-2 hover:px-5 hover:cursor-pointer transition-all`}
     >
       {text ? text : "Book an appointment"}
+      {children && children}
     </a>
   )
 }

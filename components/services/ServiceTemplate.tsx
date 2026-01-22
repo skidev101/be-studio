@@ -1,13 +1,6 @@
 import { Button } from "@/components/ui/button";
-import {
-  ArrowRight,
-  CheckCircle2,
-  Zap,
-  Target,
-  TrendingUp,
-} from "lucide-react";
+import { ArrowRight, CheckCircle2, Zap } from "lucide-react";
 import { ServiceConfig } from "@/lib/services-config";
-import { openCalendly } from "@/lib/calendly";
 import { BookCallButton } from "../BookCallButton";
 import { motion } from "framer-motion";
 
@@ -26,29 +19,29 @@ const ServiceTemplate = ({ config }: ServiceTemplateProps) => {
   // Tier-based styling
   const tierColors = {
     premium: {
-      gradient: "from-blue-accent to-blue-accent/80",
-      badge: "bg-blue-100/10 text-blue-200 border-blue-200/20",
+      gradient: "from-blue-accent via-blue-accent/60 to-blue-accent",
+      badge: "bg-blue-50/20 text-blue-100 border-blue-50/20",
+      accent: "text-blue-accent",
+      buttonPrimary: "bg-white hover:bg-gray-100 text-blue-accent!",
+    },
+    standard: {
+      gradient: "from-dark-accent via-cyan-900 to-dark-accent",
+      badge: "bg-blue-300/10 text-blue-200 border-blue-100/20",
       accent: "text-blue-accent",
       buttonPrimary: "bg-blue-accent hover:bg-blue-accent/80",
     },
-    standard: {
-      gradient: "from-indigo-600 via-purple-700 to-purple-400",
-      badge: "bg-purple-300/10 text-purple-200 border-purple-100/20",
-      accent: "text-purple-600",
-      buttonPrimary: "bg-purple-600 hover:bg-purple-700",
-    },
     flexible: {
-      gradient: "from-emerald-600 via-teal-700 to-cyan-600",
-      badge: "bg-emerald-500/10 text-emerald-300 border-emerald-400/20",
-      accent: "text-emerald-600",
-      buttonPrimary: "bg-emerald-600 hover:bg-emerald-700",
+      gradient: "from-dark-accent via-cyan-900 to-dark-accent",
+      badge: "bg-blue-300/10 text-blue-200 border-blue-100/20",
+      accent: "text-blue-accent",
+      buttonPrimary: "bg-blue-accent hover:bg-blue-accent/80",
     },
   };
 
   const colors = tierColors[config.tier];
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-white">
       {/* HERO */}
       <section
         className={`relative overflow-hidden bg-linear-to-br ${colors.gradient}`}
@@ -79,7 +72,7 @@ const ServiceTemplate = ({ config }: ServiceTemplateProps) => {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="mt-6 max-w-2xl text-base md:text-lg leading-relaxed text-slate-300"
+            className="mt-6 max-w-2xl text-base md:text-lg leading-relaxed text-slate-100"
           >
             {hero.subheadline}
           </motion.p>
@@ -92,10 +85,10 @@ const ServiceTemplate = ({ config }: ServiceTemplateProps) => {
           >
             <Button
               size="lg"
-              className={`rounded-full ${colors.buttonPrimary} text-white px-8 py-6 text-base font-semibold shadow-sm`}
+              className={`group rounded-full ${colors.buttonPrimary} text-white px-6! py-4! hover:px-8! origin-left text-base font-semibold shadow-sm`}
             >
               {hero.ctaPrimary}
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <ArrowRight className="group-hover:translate-x-2 size-5 transition-all duration-200" />
             </Button>
             {/* {hero.ctaSecondary && (
               <Button 
@@ -126,9 +119,11 @@ const ServiceTemplate = ({ config }: ServiceTemplateProps) => {
             {problem.painPoints.map((point) => (
               <div
                 key={point.desc}
-                className="rounded-2xl bg-slate-50 p-6 md:p-8 border border-slate-200"
+                className="group rounded-2xl bg-slate-50 hover:bg-purple-50 p-6 md:p-8 border border-slate-200 hover:border-purple-accent/80 transition-all duration-200"
               >
-                <div className={`font-heading text-3xl font-bold ${colors.accent}`}>
+                <div
+                  className={`group-hover:text-purple-accent font-heading text-3xl font-bold ${colors.accent} transition-all duration-200`}
+                >
                   {point.stat}
                 </div>
                 <p className="mt-3 text-slate-600">{point.desc}</p>
@@ -151,7 +146,7 @@ const ServiceTemplate = ({ config }: ServiceTemplateProps) => {
             {process.steps.map((step, idx) => (
               <div
                 key={step.title}
-                className="group relative rounded-3xl bg-white p-4 md:p-8 shadow-lg shadow-slate-200/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+                className="group relative rounded-3xl bg-white p-4 md:p-8 shadow-lg shadow-slate-200/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
               >
                 <div
                   className={`absolute -top-4 left-6 md:left-8 inline-flex h-12 w-12 items-center justify-center rounded-full ${colors.buttonPrimary} text-white font-bold text-lg shadow-lg`}
@@ -189,16 +184,16 @@ const ServiceTemplate = ({ config }: ServiceTemplateProps) => {
             {deliverables.items.map((item) => (
               <div
                 key={item}
-                className={`flex items-center md:items-start gap-2 md:gap-4 rounded-2xl border-2 border-slate-200 bg-slate-50 p-4 md:p-6 transition-all hover:border-${
+                className={`group flex items-center md:items-start gap-2 md:gap-4 rounded-2xl border border-slate-200 bg-slate-50 p-4 md:p-6 transition-all hover:bg-purple-50 hover:border-${
                   config.tier === "premium"
                     ? "blue"
                     : config.tier === "standard"
                     ? "purple"
                     : "emerald"
-                }-400`}
+                }-accent/80`}
               >
                 <CheckCircle2
-                  className={`size-4 md:size-6 ${colors.accent} shrink-0 mt-1`}
+                  className={`size-4 md:size-6 ${colors.accent} group-hover:text-purple-accent shrink-0 mt-1`}
                 />
                 <span className="text-slate-700 text-sm md:text-base font-medium">
                   {item}
@@ -274,19 +269,27 @@ const ServiceTemplate = ({ config }: ServiceTemplateProps) => {
       )}
 
       {/* CTA */}
-      <section className={`py-20 md:py-28 bg-linear-to-br ${colors.gradient}`}>
-        <div className="mx-auto max-w-4xl px-6 text-center">
-          <h2 className="font-heading text-4xl md:text-5xl font-bold text-white">
-            {cta.title}
-          </h2>
-          <p className="mt-6 pb-10 text-base md:text-lg text-blue-100">
-            {cta.description}
-          </p>
+      <section className="px-16 pb-14">
+        <div
+          className={`py-20 md:py-28 bg-linear-to-br ${colors.gradient} rounded-[2rem] md:rounded-[7rem]`}
+        >
+          <div className="mx-auto max-w-4xl px-6 text-center">
+            <h2 className="font-heading text-4xl md:text-5xl font-bold text-white">
+              {cta.title}
+            </h2>
+            <p className="mt-6 pb-10 text-base md:text-lg text-gray-200">
+              {cta.description}
+            </p>
 
-          <BookCallButton
-            text="Schedule Strategy Call"
-            className="bg-white hover:bg-slate-100 text-gray-800! text-lg! font-semibold! px-8 hover:px-10!"
-          />
+            <div className="flex justify-center">
+              <BookCallButton
+                text="Schedule Strategy Call"
+                className="group flex items-center gap-2 bg-blue-accent/80 hover:bg-blue-accent/70! text-white! text-lg! font-semibold! px-8! hover:px-10!"
+              >
+                <ArrowRight className="size-5 group-hover:translate-x-3 transition-all duration-200" />
+              </BookCallButton>
+            </div>
+          </div>
         </div>
       </section>
     </main>
