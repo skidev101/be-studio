@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { BookCallButton } from "../BookCallButton";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Check, X } from "lucide-react";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -27,28 +27,48 @@ export default function Contact() {
     });
   };
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitStatus(null);
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1800));
-
-    setSubmitStatus("success");
-    setIsSubmitting(false);
-
-    setTimeout(() => {
-      setFormData({
-        name: "",
-        email: "",
-        company: "",
-        website: "",
-        service: "",
-        timeline: "",
-        message: "",
+    try {
+      console.log("sending form data:", formData);
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
       });
-      setSubmitStatus(null);
-    }, 4000);
+      console.log("response from form submit:", res)
+
+      if (!res.ok) {
+        setSubmitStatus("error");
+        return;
+      }
+
+      setSubmitStatus("success");
+
+      // Reset form after success
+      setTimeout(() => {
+        setFormData({
+          name: "",
+          email: "",
+          company: "",
+          website: "",
+          service: "",
+          timeline: "",
+          message: "",
+        });
+        setSubmitStatus(null);
+      }, 4000);
+    } catch (error) {
+      console.error(error);
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -56,7 +76,7 @@ export default function Contact() {
       <div className="relative overflow-hidden rounded-[2rem] lg:rounded-[4rem] w-full h-full bg-white">
         {/* Enhanced Background */}
         {/* <div className="absolute inset-0 bg-[#F4F7FD]" /> */}
-        
+
         {/* Subtle texture overlay */}
         {/* <div className="absolute inset-0 opacity-[0.02]" style={{
           backgroundImage: `radial-gradient(circle at 1px 1px, #606366 1px, transparent 0)`,
@@ -90,55 +110,102 @@ export default function Contact() {
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-accent opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-accent"></span>
                   </div>
-                  <span className="text-xs font-semibold text-blue-accent">Available for new projects</span>
+                  <span className="text-xs font-semibold text-blue-accent">
+                    Available for new projects
+                  </span>
                 </div>
               </motion.div>
 
               <h2 className="font-heading text-[2.2rem] leading-[1.1] md:text-[2.6rem] xl:text-[3rem] font-semibold tracking-tight text-[#0B1C2D]">
                 Let's build something
-                <span className="block text-blue-accent mt-1">worth scaling.</span>
+                <span className="block text-blue-accent mt-1">
+                  worth scaling.
+                </span>
               </h2>
 
               <p className="max-w-md text-base md:text-lg leading-relaxed text-slate-700">
-                Tell us about your business, your goals, and where you're feeling
-                stuck. We'll review your message and suggest the best next step.
+                Tell us about your business, your goals, and where you're
+                feeling stuck. We'll review your message and suggest the best
+                next step.
               </p>
 
               {/* Info cards */}
               <div className="space-y-4 pt-4">
                 <div className="flex items-start gap-4 group">
                   <div className="shrink-0 w-10 h-10 rounded-xl bg-blue-accent/10 flex items-center justify-center group-hover:bg-blue-accent/15 transition-colors">
-                    <svg className="w-5 h-5 text-blue-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <svg
+                      className="w-5 h-5 text-blue-accent"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
                     </svg>
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-[#0B1C2D] mb-1">Quick Response Time</h4>
-                    <p className="text-sm text-slate-600">Typically respond within 24-48 hours</p>
+                    <h4 className="text-sm font-semibold text-[#0B1C2D] mb-1">
+                      Quick Response Time
+                    </h4>
+                    <p className="text-sm text-slate-600">
+                      Typically respond within 24-48 hours
+                    </p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4 group">
                   <div className="shrink-0 w-10 h-10 rounded-xl bg-blue-accent/10 flex items-center justify-center group-hover:bg-blue-accent/15 transition-colors">
-                    <svg className="w-5 h-5 text-blue-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <svg
+                      className="w-5 h-5 text-blue-accent"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
                     </svg>
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-[#0B1C2D] mb-1">No Obligation</h4>
-                    <p className="text-sm text-slate-600">Free consultation with zero commitment</p>
+                    <h4 className="text-sm font-semibold text-[#0B1C2D] mb-1">
+                      No Obligation
+                    </h4>
+                    <p className="text-sm text-slate-600">
+                      Free consultation with zero commitment
+                    </p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4 group">
                   <div className="shrink-0 w-10 h-10 rounded-xl bg-blue-accent/10 flex items-center justify-center group-hover:bg-blue-accent/15 transition-colors">
-                    <svg className="w-5 h-5 text-blue-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                    <svg
+                      className="w-5 h-5 text-blue-accent"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                      />
                     </svg>
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-[#0B1C2D] mb-1">Privacy Protected</h4>
-                    <p className="text-sm text-slate-600">Your information stays confidential</p>
+                    <h4 className="text-sm font-semibold text-[#0B1C2D] mb-1">
+                      Privacy Protected
+                    </h4>
+                    <p className="text-sm text-slate-600">
+                      Your information stays confidential
+                    </p>
                   </div>
                 </div>
               </div>
@@ -172,8 +239,12 @@ export default function Contact() {
             >
               {/* Form header */}
               <div className="mb-8 pb-6 border-b border-slate-100">
-                <h3 className="text-xl font-semibold text-[#0B1C2D] mb-2">Start Your Project</h3>
-                <p className="text-sm text-slate-600">Fill out the form below and we'll get back to you shortly</p>
+                <h3 className="text-xl font-semibold text-[#0B1C2D] mb-2">
+                  Start Your Project
+                </h3>
+                <p className="text-sm text-slate-600">
+                  Fill out the form below and we'll get back to you shortly
+                </p>
               </div>
 
               <div className="space-y-6">
@@ -191,16 +262,20 @@ export default function Contact() {
                         required
                         value={formData.name}
                         onChange={handleChange}
-                        onFocus={() => setFocusedField('name')}
+                        onFocus={() => setFocusedField("name")}
                         onBlur={() => setFocusedField(null)}
                         placeholder="Jane Smith"
                         className="w-full rounded-xl border-2 border-slate-200 bg-[#F7F9FC] px-4 py-3.5 text-sm text-slate-800 placeholder:text-slate-400 focus:border-blue-accent focus:outline-none focus:bg-white transition-all"
                       />
-                      {focusedField === 'name' && (
+                      {focusedField === "name" && (
                         <motion.div
                           layoutId="focus-ring"
                           className="absolute -inset-[3px] rounded-xl bg-blue-accent/10 -z-10"
-                          transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                          transition={{
+                            type: "spring",
+                            bounce: 0.2,
+                            duration: 0.6,
+                          }}
                         />
                       )}
                     </div>
@@ -218,16 +293,20 @@ export default function Contact() {
                         required
                         value={formData.email}
                         onChange={handleChange}
-                        onFocus={() => setFocusedField('email')}
+                        onFocus={() => setFocusedField("email")}
                         onBlur={() => setFocusedField(null)}
                         placeholder="jane@company.com"
                         className="w-full rounded-xl border-2 border-slate-200 bg-[#F7F9FC] px-4 py-3.5 text-sm text-slate-800 placeholder:text-slate-400 focus:border-blue-accent focus:outline-none focus:bg-white transition-all"
                       />
-                      {focusedField === 'email' && (
+                      {focusedField === "email" && (
                         <motion.div
                           layoutId="focus-ring"
                           className="absolute -inset-[3px] rounded-xl bg-blue-accent/10 -z-10"
-                          transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                          transition={{
+                            type: "spring",
+                            bounce: 0.2,
+                            duration: 0.6,
+                          }}
                         />
                       )}
                     </div>
@@ -247,16 +326,20 @@ export default function Contact() {
                         name="company"
                         value={formData.company}
                         onChange={handleChange}
-                        onFocus={() => setFocusedField('company')}
+                        onFocus={() => setFocusedField("company")}
                         onBlur={() => setFocusedField(null)}
                         placeholder="Your Company Inc."
                         className="w-full rounded-xl border-2 border-slate-200 bg-[#F7F9FC] px-4 py-3.5 text-sm text-slate-800 placeholder:text-slate-400 focus:border-blue-accent focus:outline-none focus:bg-white transition-all"
                       />
-                      {focusedField === 'company' && (
+                      {focusedField === "company" && (
                         <motion.div
                           layoutId="focus-ring"
                           className="absolute -inset-[3px] rounded-xl bg-blue-accent/10 -z-10"
-                          transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                          transition={{
+                            type: "spring",
+                            bounce: 0.2,
+                            duration: 0.6,
+                          }}
                         />
                       )}
                     </div>
@@ -273,16 +356,20 @@ export default function Contact() {
                         name="website"
                         value={formData.website}
                         onChange={handleChange}
-                        onFocus={() => setFocusedField('website')}
+                        onFocus={() => setFocusedField("website")}
                         onBlur={() => setFocusedField(null)}
                         placeholder="www.yourcompany.com"
                         className="w-full rounded-xl border-2 border-slate-200 bg-[#F7F9FC] px-4 py-3.5 text-sm text-slate-800 placeholder:text-slate-400 focus:border-blue-accent focus:outline-none focus:bg-white transition-all"
                       />
-                      {focusedField === 'website' && (
+                      {focusedField === "website" && (
                         <motion.div
                           layoutId="focus-ring"
                           className="absolute -inset-[3px] rounded-xl bg-blue-accent/10 -z-10"
-                          transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                          transition={{
+                            type: "spring",
+                            bounce: 0.2,
+                            duration: 0.6,
+                          }}
                         />
                       )}
                     </div>
@@ -302,28 +389,40 @@ export default function Contact() {
                         required
                         value={formData.service}
                         onChange={handleChange}
-                        onFocus={() => setFocusedField('service')}
+                        onFocus={() => setFocusedField("service")}
                         onBlur={() => setFocusedField(null)}
                         className="w-full rounded-xl border-2 border-slate-200 bg-[#F7F9FC] px-4 py-3.5 text-sm text-slate-800 focus:border-blue-accent focus:outline-none focus:bg-white transition-all appearance-none cursor-pointer"
                         style={{
                           backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%230B1C2D' d='M6 9L1 4h10z'/%3E%3C/svg%3E")`,
-                          backgroundRepeat: 'no-repeat',
-                          backgroundPosition: 'right 1rem center',
+                          backgroundRepeat: "no-repeat",
+                          backgroundPosition: "right 1rem center",
                         }}
                       >
                         <option value="">Select a service</option>
                         <option value="brand-strategy">Brand Analysis</option>
-                        <option value="brand-identity">Business Branding</option>
-                        <option value="rebranding">Marketing & Digital Assets</option>
-                        <option value="design-system">Print & Physical collateral</option>
-                        <option value="web-design">Custom & On-Demand Design</option>
+                        <option value="brand-identity">
+                          Business Branding
+                        </option>
+                        <option value="rebranding">
+                          Marketing & Digital Assets
+                        </option>
+                        <option value="design-system">
+                          Print & Physical collateral
+                        </option>
+                        <option value="web-design">
+                          Custom & On-Demand Design
+                        </option>
                         <option value="other">Other</option>
                       </select>
-                      {focusedField === 'service' && (
+                      {focusedField === "service" && (
                         <motion.div
                           layoutId="focus-ring"
                           className="absolute -inset-[3px] rounded-xl bg-blue-accent/10 -z-10"
-                          transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                          transition={{
+                            type: "spring",
+                            bounce: 0.2,
+                            duration: 0.6,
+                          }}
                         />
                       )}
                     </div>
@@ -339,13 +438,13 @@ export default function Contact() {
                         name="timeline"
                         value={formData.timeline}
                         onChange={handleChange}
-                        onFocus={() => setFocusedField('timeline')}
+                        onFocus={() => setFocusedField("timeline")}
                         onBlur={() => setFocusedField(null)}
                         className="w-full rounded-xl border-2 border-slate-200 bg-[#F7F9FC] px-4 py-3.5 text-sm text-slate-800 focus:border-blue-accent focus:outline-none focus:bg-white transition-all appearance-none cursor-pointer"
                         style={{
                           backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%230B1C2D' d='M6 9L1 4h10z'/%3E%3C/svg%3E")`,
-                          backgroundRepeat: 'no-repeat',
-                          backgroundPosition: 'right 1rem center',
+                          backgroundRepeat: "no-repeat",
+                          backgroundPosition: "right 1rem center",
                         }}
                       >
                         <option value="">Select timeline</option>
@@ -353,7 +452,9 @@ export default function Contact() {
                         <option value="1-month">Within 1 month</option>
                         <option value="1-3-months">1-3 months</option>
                         <option value="3-6-months">3-6 months</option>
-                        <option value="flexible">Flexible / Just exploring</option>
+                        <option value="flexible">
+                          Flexible / Just exploring
+                        </option>
                       </select>
                       {/* {focusedField === 'timeline' && (
                         <motion.div
@@ -378,20 +479,26 @@ export default function Contact() {
                       rows={5}
                       value={formData.message}
                       onChange={handleChange}
-                      onFocus={() => setFocusedField('message')}
+                      onFocus={() => setFocusedField("message")}
                       onBlur={() => setFocusedField(null)}
                       placeholder="Tell us about your goals, challenges, and what success looks like for your brand..."
                       className="w-full rounded-xl border-2 border-slate-200 bg-[#F7F9FC] px-4 py-3.5 text-sm text-slate-800 placeholder:text-slate-400 focus:border-blue-accent focus:outline-none focus:bg-white resize-none transition-all placeholder:text-xs md:placeholder:text-sm"
                     />
-                    {focusedField === 'message' && (
+                    {focusedField === "message" && (
                       <motion.div
                         layoutId="focus-ring"
                         className="absolute -inset-[3px] rounded-xl bg-blue-accent/10 -z-10"
-                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                        transition={{
+                          type: "spring",
+                          bounce: 0.2,
+                          duration: 0.6,
+                        }}
                       />
                     )}
                   </div>
-                  <p className="text-xs text-slate-500 mt-1.5">The more details you share, the better we can help</p>
+                  <p className="text-xs text-slate-500 mt-1.5">
+                    The more details you share, the better we can help
+                  </p>
                 </div>
 
                 {/* CTA Section */}
@@ -404,16 +511,42 @@ export default function Contact() {
                     <span className="relative z-10 flex items-center gap-2">
                       {isSubmitting ? (
                         <>
-                          <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                          <svg
+                            className="animate-spin h-5 w-5"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                          >
+                            <circle
+                              className="opacity-25"
+                              cx="12"
+                              cy="12"
+                              r="10"
+                              stroke="currentColor"
+                              strokeWidth="4"
+                            ></circle>
+                            <path
+                              className="opacity-75"
+                              fill="currentColor"
+                              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                            ></path>
                           </svg>
                           Sending...
                         </>
                       ) : submitStatus === "success" ? (
                         <>
-                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                          <svg
+                            className="w-5 h-5"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M5 13l4 4L19 7"
+                            />
                           </svg>
                           Message Sent!
                         </>
@@ -421,7 +554,6 @@ export default function Contact() {
                         <>
                           Send Message
                           <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                          
                         </>
                       )}
                     </span>
@@ -432,12 +564,15 @@ export default function Contact() {
 
                   <span className="text-sm text-slate-500 mt-2">
                     Or{" "}
-                    <BookCallButton text="book a call" className="bg-transparent! text-slate-500! px-0! hover:text-blue-accent! underline " />
-                    {" "}if you prefer
+                    <BookCallButton
+                      text="book a call"
+                      className="bg-transparent! text-slate-500! px-0! hover:text-blue-accent! underline "
+                    />{" "}
+                    if you prefer
                   </span>
                 </div>
 
-                {/* Success Message */}
+                {/* SUCCESS */}
                 {submitStatus === "success" && (
                   <motion.div
                     initial={{ opacity: 0, y: 10, scale: 0.95 }}
@@ -446,16 +581,42 @@ export default function Contact() {
                   >
                     <div className="flex items-start gap-3">
                       <div className="shrink-0 w-8 h-8 rounded-full bg-green-500 flex items-center justify-center">
-                        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                        </svg>
+                        <Check
+                          className="w-5 h-5 text-white"
+                          strokeWidth={2.5}
+                        />
                       </div>
                       <div>
                         <h4 className="text-sm font-semibold text-green-900 mb-1">
                           Thanks for reaching out!
                         </h4>
                         <p className="text-sm text-green-700">
-                          We've received your message and will get back to you within 24 hours.
+                          We've received your message and will get back to you
+                          within 24 hours.
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+
+                {/* ERROR */}
+                {submitStatus === "error" && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    className="rounded-2xl bg-linear-to-r from-red-50 to-rose-50 border-2 border-red-200/50 p-5"
+                  >
+                    <div className="flex items-start gap-3">
+                      <div className="shrink-0 w-8 h-8 rounded-full bg-red-500 flex items-center justify-center">
+                        <X className="w-5 h-5 text-white" strokeWidth={2.5} />
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-semibold text-red-900 mb-1">
+                          Something went wrong
+                        </h4>
+                        <p className="text-sm text-red-700">
+                          Your message couldn’t be sent. Please try again in a
+                          moment.
                         </p>
                       </div>
                     </div>
@@ -469,8 +630,13 @@ export default function Contact() {
 
       <style jsx>{`
         @keyframes gradient {
-          0%, 100% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
+          0%,
+          100% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
         }
         .animate-gradient {
           animation: gradient 3s ease infinite;
