@@ -70,7 +70,7 @@ const Pricing = () => {
                 className={`group relative rounded-[2rem] p-6 text-left transition-all hover:cursor-pointer ${
                   selectedGoal === goal.id
                     ? 'bg-blue-accent text-white shadow-xl shadow-blue-200 ring-4 ring-blue-200'
-                    : 'bg-white hover:bg-white/40 border-2 border-slate-200 hover:border-blue-600 hover:shadow-lg transition-all'
+                    : 'bg-white hover:bg-white/40 border-2 border-slate-200 hover:border-blue-accent hover:shadow-lg transition-all'
                 }`}
               >
                 {goal.recommended && selectedGoal !== goal.id && (

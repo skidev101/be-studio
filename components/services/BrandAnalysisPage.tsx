@@ -317,6 +317,8 @@ const BrandAnalysisPage = () => {
       {/* FINAL CTA */}
       <section className="px-4 md:px-6 pb-8 bg-white">
         <div className="relative bg-[url('/images/blue-abstract.png')] bg-center bg-contain  rounded-[2rem] md:rounded-[8rem]">
+        {/* Dark overlay */}
+    <div className="absolute inset-0 bg-[#122933]/60 rounded-[2rem] md:rounded-[8rem]" />
           <div className="py-20 md:py-32 backdrop-blur-xl rounded-[2rem] md:rounded-[8rem]">
             <div className="mx-auto max-w-4xl px-6 text-center">
               <h2 className="font-heading text-3xl md:text-5xl font-bold text-white">
@@ -330,7 +332,7 @@ const BrandAnalysisPage = () => {
               <div className="flex justify-center mt-8">
                 <BookCallButton
                   text="Schedule Discovery Call"
-                  className="group flex items-center gap-2 bg-purple-accent/80 hover:bg-purple-accent/70! text-white! text-md md:text-lg! font-semibold! px-6! md:px-8! hover:px-10!"
+                  className="group flex items-center gap-2 bg-blue-accent/80 hover:bg-blue-accent/70! text-white! text-md md:text-lg! font-semibold! px-6! md:px-8! hover:px-10!"
                 >
                   <ArrowRight className="size-5 group-hover:translate-x-3 transition-all duration-200" />
                 </BookCallButton>

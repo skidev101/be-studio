@@ -1,8 +1,11 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle2, Zap } from "lucide-react";
 import { ServiceConfig } from "@/lib/services-config";
 import { BookCallButton } from "../BookCallButton";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 interface ServiceTemplateProps {
   config: ServiceConfig;
@@ -12,6 +15,8 @@ const ServiceTemplate = ({ config }: ServiceTemplateProps) => {
   if (!config.templateContent) {
     return <div>Template content not configured</div>;
   }
+
+  const router = useRouter();
 
   const { hero, templateContent } = config;
   const { problem, process, deliverables, pricing, cta } = templateContent;
@@ -84,6 +89,7 @@ const ServiceTemplate = ({ config }: ServiceTemplateProps) => {
             className="mt-10 flex flex-wrap gap-4"
           >
             <Button
+              onClick={() => router.push("/contact")}
               size="lg"
               className={`group rounded-full ${colors.buttonPrimary} text-white px-6! py-4! hover:px-8! origin-left text-base font-semibold shadow-sm`}
             >

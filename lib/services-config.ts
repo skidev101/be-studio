@@ -95,7 +95,7 @@ export const servicesConfig: Record<string, ServiceConfig> = {
       badge: 'Business Branding',
       headline: 'Build a Brand That Grows With You',
       subheadline: 'Complete branding systems that establish credibility, attract customers, and scale alongside your business ambitions.',
-      ctaPrimary: 'Explore Packages',
+      ctaPrimary: 'Start Brand analysis',
       ctaSecondary: 'View Portfolio',
     },
     hasCustomPage: true, // Could have custom page later
