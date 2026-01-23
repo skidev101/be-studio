@@ -316,7 +316,7 @@ const BrandAnalysisPage = () => {
 
       {/* FINAL CTA */}
       <section className="px-4 md:px-6 pb-8 bg-white">
-        <div className="relative bg-[url('/images/blue-abstract.jpg')] bg-center bg-contain  rounded-[2rem] md:rounded-[8rem]">
+        <div className="relative bg-[url('/images/blue-abstract.png')] bg-center bg-contain  rounded-[2rem] md:rounded-[8rem]">
           <div className="py-20 md:py-32 backdrop-blur-xl rounded-[2rem] md:rounded-[8rem]">
             <div className="mx-auto max-w-4xl px-6 text-center">
               <h2 className="font-heading text-3xl md:text-5xl font-bold text-white">

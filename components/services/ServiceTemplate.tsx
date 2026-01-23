@@ -269,7 +269,7 @@ const ServiceTemplate = ({ config }: ServiceTemplateProps) => {
       )}
 
       {/* CTA */}
-      <section className="px-16 pb-14">
+      <section className="px-4 md:px-16 pb-14">
         <div
           className={`py-20 md:py-28 bg-linear-to-br ${colors.gradient} rounded-[2rem] md:rounded-[7rem]`}
         >
