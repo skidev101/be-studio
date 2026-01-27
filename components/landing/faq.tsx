@@ -35,53 +35,57 @@ export default function Faq() {
           >
             <AccordionItem value="item-1">
               <AccordionTrigger className="hover:text-blue-accent text-lg text-gray-700 font-semibold hover:cursor-pointer">
-                Product Information
+                What does BE Graphic Studios specialize in?
               </AccordionTrigger>
               <AccordionContent className="flex flex-col gap-4 text-balance">
                 <p>
-                  Our flagship product combines cutting-edge technology with
-                  sleek design. Built with premium materials, it offers
-                  unparalleled performance and reliability.
+                  BE Graphic Studios is a full-service brand agency specializing in brand identity, visual design, and strategic creative direction. We help businesses define who they are, how they look, and how they communicate—building brands that are clear, consistent, and designed to scale.
                 </p>
-                <p>
-                  Key features include advanced processing capabilities, and an
-                  intuitive user interface designed for both beginners and
-                  experts.
-                </p>
+                
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-2">
               <AccordionTrigger className="hover:text-blue-accent text-lg text-gray-700 font-semibold hover:cursor-pointer">
-                Shipping Details
+                Who do you typically work with?
               </AccordionTrigger>
               <AccordionContent className="flex flex-col gap-4 text-balance">
                 <p className="text-gray-800">
-                  We offer worldwide shipping through trusted courier partners.
-                  Standard delivery takes 3-5 business days, while express
-                  shipping ensures delivery within 1-2 business days.
+                  We work with startups, growing businesses, and established brands that value thoughtful design and strategic clarity. Whether you're launching something new or repositioning an existing brand, BE Graphic Studios adapts its process to your stage of growth and industry.
                 </p>
-                <p className="text-gray-800">
-                  All orders are carefully packaged and fully insured. Track
-                  your shipment in real-time through our dedicated tracking
-                  portal.
-                </p>
+                
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-3">
               <AccordionTrigger className="hover:text-blue-accent text-lg text-gray-700 font-semibold hover:cursor-pointer">
-                Return Policy
+                What is your branding process like?
               </AccordionTrigger>
               <AccordionContent className="flex flex-col gap-4 text-balance">
                 <p className="text-gray-800">
-                  We stand behind our products with a comprehensive 30-day
-                  return policy. If you&apos;re not completely satisfied, simply
-                  return the item in its original condition.
+                  Our process is structured and collaborative. It typically includes discovery and research, brand strategy development, visual identity design, and final asset delivery. Every decision is intentional—grounded in your goals, audience, and long-term vision, not trends alone.
                 </p>
+               
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-3">
+              <AccordionTrigger className="hover:text-blue-accent text-lg text-gray-700 font-semibold hover:cursor-pointer">
+                How long does a branding project take?
+              </AccordionTrigger>
+              <AccordionContent className="flex flex-col gap-4 text-balance">
                 <p className="text-gray-800">
-                  Our hassle-free return process includes free return shipping
-                  and full refunds processed within 48 hours of receiving the
-                  returned item.
+                  Timelines vary depending on scope, but most branding projects with BE Graphic Studios take between 4-8 weeks. We establish clear milestones upfront so you always know what to expect and when.
                 </p>
+               
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-3">
+              <AccordionTrigger className="hover:text-blue-accent text-lg text-gray-700 font-semibold hover:cursor-pointer">
+                Why choose BE Graphic Studios over other agencies?
+              </AccordionTrigger>
+              <AccordionContent className="flex flex-col gap-4 text-balance">
+                <p className="text-gray-800">
+                  We combine strategic thinking with refined visual execution. BE Graphic Studios is intentionally selective, allowing us to give each client focused attention, senior-level design thinking, and brand systems that are built to last—not just look good on launch day.
+                </p>
+               
               </AccordionContent>
             </AccordionItem>
           </Accordion>

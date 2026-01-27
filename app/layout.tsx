@@ -27,6 +27,29 @@ export const metadata: Metadata = {
   title: "BE Graphic Studio",
   description:
     " We are a full-service graphic design agency that help brands grow through strategy, design, and technology.",
+  openGraph: {
+    title: "BE Graphic studio",
+    description:
+      " We are a full-service graphic design agency that help brands grow through strategy, design, and technology.",
+    url: "https://be-studio.vercel.app",
+    siteName: "BE Graphic Studio",
+    images: [
+      {
+        url: "https://be-studio.vercel.app/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "BE Graphic Studio",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "BE Graphic Studio",
+    description:
+      " We are a full-service graphic design agency that help brands grow through strategy, design, and technology.",
+    images: ["https://be-studio.vercel.app/og-image.png"],
+  },
 };
 
 export default function RootLayout({
@@ -34,7 +57,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   return (
     <html lang="en">
       <head>
@@ -45,7 +67,7 @@ export default function RootLayout({
       </head>
       <body className={`${zalando.variable} ${poppins.variable} antialiased`}>
         <Header />
-        <main className="mt-18 md:mt-20">{children}</main>
+        <main className="mt-16 md:mt-20">{children}</main>
 
         <Footer />
 
