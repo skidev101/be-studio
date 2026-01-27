@@ -66,7 +66,7 @@ export default function Faq() {
                
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-3">
+            <AccordionItem value="item-4">
               <AccordionTrigger className="hover:text-blue-accent text-lg text-gray-700 font-semibold hover:cursor-pointer">
                 How long does a branding project take?
               </AccordionTrigger>
@@ -77,7 +77,7 @@ export default function Faq() {
                
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-3">
+            <AccordionItem value="item-5">
               <AccordionTrigger className="hover:text-blue-accent text-lg text-gray-700 font-semibold hover:cursor-pointer">
                 Why choose BE Graphic Studios over other agencies?
               </AccordionTrigger>
