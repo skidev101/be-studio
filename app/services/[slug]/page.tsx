@@ -3,18 +3,16 @@ import { getServiceConfig, servicesConfig } from '@/lib/services-config';
 
 // Custom pages
 import BrandAnalysisPage from '@/components/services/BrandAnalysisPage';
-// import BusinessBrandingPage from '@/components/services/BusinessBrandingPage';
+// import BusinessBrandingPage from '@/components/services/BusinessBrandingPage'
 
 // Template for regular services
 import ServiceTemplate from '@/components/services/ServiceTemplate';
 
 import type { Metadata } from 'next';
 
-type Props = {
-  params: { slug: string };
-};
+type Props = { params: { slug: string } };
 
-// 1️⃣ Dynamic metadata
+// Dynamic metadata (uses sync getServiceConfig)
 export function generateMetadata({ params }: Props): Metadata {
   const config = getServiceConfig(params.slug);
 
@@ -40,19 +38,18 @@ export function generateMetadata({ params }: Props): Metadata {
   };
 }
 
-// 2️⃣ Build-time static params
+// Generate all valid slugs for SSG
 export function generateStaticParams() {
-  return Object.values(servicesConfig)
-    .map(service => ({ slug: service.slug }));
+  return Object.values(servicesConfig).map(service => ({ slug: service.slug }));
 }
 
-// 3️⃣ Page component
+// Page component
 const ServicePage = ({ params }: Props) => {
   const config = getServiceConfig(params.slug);
 
   if (!config) return notFound();
 
-  // Route to custom pages
+  // Custom pages
   if (config.hasCustomPage && config.slug === 'brand-analysis') {
     return <BrandAnalysisPage />;
   }

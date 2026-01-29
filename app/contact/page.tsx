@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import ContactForm from "@/components/contact/ContactForm";
 
 export const metadata: Metadata = {
-  title: "Contact",
+  title: "BE | Contact",
   description:
     "Get in touch with our branding experts to discuss your project, request a proposal, or book a discovery call.",
   openGraph: {
