@@ -13,8 +13,9 @@ import type { Metadata } from 'next';
 type Props = { params: { slug: string } };
 
 // Dynamic metadata (uses sync getServiceConfig)
-export function generateMetadata({ params }: Props): Metadata {
-  const config = getServiceConfig(params.slug);
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const slug = (await params).slug
+  const config = getServiceConfig(slug);
 
   if (!config) {
     return {
