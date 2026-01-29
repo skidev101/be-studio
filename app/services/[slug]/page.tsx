@@ -1,5 +1,3 @@
-"use client"
-
 import { useParams } from 'next/navigation'
 import { notFound } from 'next/navigation'
 import { getServiceConfig } from '@/lib/services-config'
