@@ -37,7 +37,7 @@ export default function Hero() {
                   className="text-blue-accent"
                 />
                 <BlurText
-                  text="Brands that scale"
+                  text="Brands that scale anytime"
                   delay={160}
                   animateBy="words"
                   direction="bottom"
