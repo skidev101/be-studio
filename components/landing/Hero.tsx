@@ -30,14 +30,14 @@ export default function Hero() {
               </motion.h1> */}
               <div className="font-heading text-[2.5rem] leading-[1.1] md:text-[2.8rem] xl:text-[3.2rem] font-semibold tracking-tight text-[#0B1C2D]">
                 <BlurText
-                  text="We help results driven businesses build clear, confident josuhwhcowi"
+                  text="We help results driven businesses build clear, confident"
                   delay={130}
                   animateBy="words"
                   direction="top"
                   className="text-blue-accent"
                 />
                 <BlurText
-                  text="Brands that scale anytime"
+                  text="Brands that scale"
                   delay={160}
                   animateBy="words"
                   direction="bottom"
