@@ -83,7 +83,7 @@ export default function Faq() {
               </AccordionTrigger>
               <AccordionContent className="flex flex-col gap-4 text-sm text-balance">
                 <p className="text-gray-800">
-                  We combine strategic thinking with refined visual execution. BE Graphic Studios is intentionally selective, allowing us to give each client focused attention, senior-level design thinking, and brand systems that are built to last—not just look good on launch day.
+                  We combine strategic thinking with refined visual execution. BE Graphic Studios is intentionally selective, allowing us to give each client focused attention, senior-level design thinking, and brand systems that are built to last and visually appealing.
                 </p>
                
               </AccordionContent>
