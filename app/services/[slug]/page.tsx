@@ -14,7 +14,7 @@ type Props = {
   params: { slug: string };
 };
 
-// Generate dynamic metadata per service
+// 1️⃣ Dynamic metadata
 export function generateMetadata({ params }: Props): Metadata {
   const config = getServiceConfig(params.slug);
 
@@ -40,30 +40,22 @@ export function generateMetadata({ params }: Props): Metadata {
   };
 }
 
-// Generate static paths at build time (good for SSG)
+// 2️⃣ Build-time static params
 export function generateStaticParams() {
   return Object.values(servicesConfig)
-    .filter(service => service.hasCustomPage || service.slug)
     .map(service => ({ slug: service.slug }));
 }
 
-// Render page
+// 3️⃣ Page component
 const ServicePage = ({ params }: Props) => {
   const config = getServiceConfig(params.slug);
 
-  if (!config) {
-    notFound();
-  }
+  if (!config) return notFound();
 
-  // Custom pages
+  // Route to custom pages
   if (config.hasCustomPage && config.slug === 'brand-analysis') {
     return <BrandAnalysisPage />;
   }
-
-  // Future custom pages
-  // if (config.hasCustomPage && config.slug === 'business-branding-packages') {
-  //   return <BusinessBrandingPage />;
-  // }
 
   // Default template
   return <ServiceTemplate config={config} />;
