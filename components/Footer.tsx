@@ -1,8 +1,21 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
-import { Button } from "./ui/button";
+import { scrollToSection } from "@/utils/scroll-to-section";
+import { cn } from "@/lib/utils";
 
 export const Footer = () => {
+  const BASE_URL = "https://be-studio.vercel.app";
+
+  const navLinks = [
+    { name: "Home", path: "/" },
+    { name: "Services", path: "#services" },
+    { name: "Approach", path: "#approach" },
+    { name: "Contact", path: "/contact" },
+    { name: "FAQ", path: "#faq" },
+  ];
+
   return (
     <footer className="w-full border-t border-gray-200 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
@@ -59,77 +72,78 @@ export const Footer = () => {
           </div>
           <div className="flex flex-col gap-4">
             <h4 className="font-bold text-slate-900">Services</h4>
-            <a
-              className="text-sm text-slate-500 hover:text-primary transition-colors"
-              href="#"
+            <Link
+              className="text-sm text-slate-500 hover:text-primary transition-colors max-w-max"
+              href={`${BASE_URL}/brand-analysis`}
             >
-              Brand Strategy
-            </a>
-            <a
-              className="text-sm text-slate-500 hover:text-primary transition-colors"
-              href="#"
+              Brand Analysis
+            </Link>
+            <Link
+              className="text-sm text-slate-500 hover:text-primary transition-colors max-w-max"
+              href={`${BASE_URL}/business-branding-packages`}
             >
-              Web Design
-            </a>
-            <a
-              className="text-sm text-slate-500 hover:text-primary transition-colors"
-              href="#"
+              Business Branding
+            </Link>
+            <Link
+              className="text-sm text-slate-500 hover:text-primary transition-colors max-w-max"
+              href={`${BASE_URL}/marketing-digital-assets`}
             >
-              Content
-            </a>
-            <a
-              className="text-sm text-slate-500 hover:text-primary transition-colors"
-              href="#"
+              Marketing Assets
+            </Link>
+            <Link
+              className="text-sm text-slate-500 hover:text-primary transition-colors max-w-max"
+              href={`${BASE_URL}/print-brand-collateral`}
             >
-              Marketing
-            </a>
+              Print & Physical Collateral
+            </Link>
+            <Link
+              className="text-sm text-slate-500 hover:text-primary transition-colors max-w-max"
+              href={`${BASE_URL}/custom-design-solutions`}
+            >
+              Custom Design
+            </Link>
           </div>
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 text-left">
             <h4 className="font-bold text-slate-900">Company</h4>
-            <a
-              className="text-sm text-slate-500 hover:text-primary transition-colors"
-              href="#"
-            >
-              About Us
-            </a>
-            <a
-              className="text-sm text-slate-500 hover:text-primary transition-colors"
-              href="#"
-            >
-              Careers
-            </a>
-            <a
-              className="text-sm text-slate-500 hover:text-primary transition-colors"
-              href="#"
-            >
-              Contact
-            </a>
-            <a
-              className="text-sm text-slate-500 hover:text-primary transition-colors"
-              href="#"
-            >
-              Blog
-            </a>
+            {navLinks.map((link: any) => {
+              const isHash = link.path.startsWith("#");
+              const isHome = link.path === "/";
+
+              if (isHash || isHome) {
+                return (
+                  <button
+                    key={link.path}
+                    onClick={() =>
+                      scrollToSection(isHash ? link.path.slice(1) : undefined)
+                    } // remove #
+                    className="relative text-sm text-left max-w-max font-medium tracking-tight text-slate-700 hover:text-primary hover:cursor-pointer"
+                    
+                  >
+                    {link.name}
+                  </button>
+                );
+              } else {
+                return (
+                  <Link
+                    key={link.path}
+                    href={link.path}
+                    className="relative text-sm text-left max-w-max font-medium tracking-tight text-slate-700 hover:text-primary"
+                    
+                  >
+                    {link.name}
+                  </Link>
+                );
+              }
+            })}
           </div>
           <div className="flex flex-col gap-4">
             <h4 className="font-bold text-slate-900">Legal</h4>
-            <a
-              className="text-sm text-slate-500 hover:text-primary transition-colors"
-              href="#"
-            >
-              Privacy Policy
-            </a>
+
             <a
               className="text-sm text-slate-500 hover:text-primary transition-colors"
               href="#"
             >
               Terms of Service
-            </a>
-            <a
-              className="text-sm text-slate-500 hover:text-primary transition-colors"
-              href="#"
-            >
-              Cookie Policy
             </a>
           </div>
         </div>
@@ -139,7 +153,8 @@ export const Footer = () => {
             reserved.
           </p>
           <div className="flex gap-6">
-            <p className="text-slate-400 text-sm">Made with 💙 by Monaski</p>
+            <p className="text-slate-400 text-sm">Made with 💙 by</p>
+            <a href="https://github.com/skidev101" target="_blank" rel="noopener noreferrer" className="hover:text-blue-accent">Monaski</a>
           </div>
         </div>
       </div>

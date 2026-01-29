@@ -22,9 +22,9 @@ export default function Faq() {
         >
           <Pill text="FAQ'S" />
         </motion.div>
-        <h1 className="font-heading text-center mt-6 text-3xl md:text-4xl font-semibold tracking-tight text-slate-900">
+        {/* <h1 className="font-heading text-center mt-6 text-3xl md:text-4xl font-semibold tracking-tight text-slate-900">
           Frequently asked Questions
-        </h1>
+        </h1> */}
 
         <div className="mt-8">
           <Accordion
@@ -37,7 +37,7 @@ export default function Faq() {
               <AccordionTrigger className="hover:text-blue-accent text-lg text-gray-700 font-semibold hover:cursor-pointer">
                 What does BE Graphic Studios specialize in?
               </AccordionTrigger>
-              <AccordionContent className="flex flex-col gap-4 text-balance">
+              <AccordionContent className="flex flex-col gap-4 text-sm text-balance">
                 <p>
                   BE Graphic Studios is a full-service brand agency specializing in brand identity, visual design, and strategic creative direction. We help businesses define who they are, how they look, and how they communicate—building brands that are clear, consistent, and designed to scale.
                 </p>
@@ -48,7 +48,7 @@ export default function Faq() {
               <AccordionTrigger className="hover:text-blue-accent text-lg text-gray-700 font-semibold hover:cursor-pointer">
                 Who do you typically work with?
               </AccordionTrigger>
-              <AccordionContent className="flex flex-col gap-4 text-balance">
+              <AccordionContent className="flex flex-col gap-4 text-sm text-balance">
                 <p className="text-gray-800">
                   We work with startups, growing businesses, and established brands that value thoughtful design and strategic clarity. Whether you're launching something new or repositioning an existing brand, BE Graphic Studios adapts its process to your stage of growth and industry.
                 </p>
@@ -59,7 +59,7 @@ export default function Faq() {
               <AccordionTrigger className="hover:text-blue-accent text-lg text-gray-700 font-semibold hover:cursor-pointer">
                 What is your branding process like?
               </AccordionTrigger>
-              <AccordionContent className="flex flex-col gap-4 text-balance">
+              <AccordionContent className="flex flex-col gap-4 text-sm text-balance">
                 <p className="text-gray-800">
                   Our process is structured and collaborative. It typically includes discovery and research, brand strategy development, visual identity design, and final asset delivery. Every decision is intentional—grounded in your goals, audience, and long-term vision, not trends alone.
                 </p>
@@ -70,7 +70,7 @@ export default function Faq() {
               <AccordionTrigger className="hover:text-blue-accent text-lg text-gray-700 font-semibold hover:cursor-pointer">
                 How long does a branding project take?
               </AccordionTrigger>
-              <AccordionContent className="flex flex-col gap-4 text-balance">
+              <AccordionContent className="flex flex-col gap-4 text-sm text-balance">
                 <p className="text-gray-800">
                   Timelines vary depending on scope, but most branding projects with BE Graphic Studios take between 4-8 weeks. We establish clear milestones upfront so you always know what to expect and when.
                 </p>
@@ -81,7 +81,7 @@ export default function Faq() {
               <AccordionTrigger className="hover:text-blue-accent text-lg text-gray-700 font-semibold hover:cursor-pointer">
                 Why choose BE Graphic Studios over other agencies?
               </AccordionTrigger>
-              <AccordionContent className="flex flex-col gap-4 text-balance">
+              <AccordionContent className="flex flex-col gap-4 text-sm text-balance">
                 <p className="text-gray-800">
                   We combine strategic thinking with refined visual execution. BE Graphic Studios is intentionally selective, allowing us to give each client focused attention, senior-level design thinking, and brand systems that are built to last—not just look good on launch day.
                 </p>

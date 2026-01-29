@@ -1,37 +1,72 @@
-"use client"
+import { notFound } from 'next/navigation';
+import { getServiceConfig, servicesConfig } from '@/lib/services-config';
 
-import { useParams } from 'next/navigation'
-import { notFound } from 'next/navigation'
-import { getServiceConfig } from '@/lib/services-config'
+// Custom pages
+import BrandAnalysisPage from '@/components/services/BrandAnalysisPage';
+// import BusinessBrandingPage from '@/components/services/BusinessBrandingPage';
 
-// Import custom service pages
-import BrandAnalysisPage from '@/components/services/BrandAnalysisPage'
-// import BusinessBrandingPage from '@/components/services/BusinessBrandingPage' // When you create it
+// Template for regular services
+import ServiceTemplate from '@/components/services/ServiceTemplate';
 
-// Import the template
-import ServiceTemplate from '@/components/services/ServiceTemplate'
+import type { Metadata } from 'next';
 
-const ServicePage = () => {
-  const { slug } = useParams()
-  const config = getServiceConfig(slug as string)
+type Props = {
+  params: { slug: string };
+};
 
-  // 404 if service doesn't exist
+// Generate dynamic metadata per service
+export function generateMetadata({ params }: Props): Metadata {
+  const config = getServiceConfig(params.slug);
+
   if (!config) {
-    notFound()
+    return {
+      title: 'Service Not Found',
+      robots: { index: false },
+    };
   }
 
-  // Route to custom page if it has one
-  if (config.hasCustomPage && config.slug === 'brand-analysis') {
-    return <BrandAnalysisPage />
-  }
-
-  // For future custom pages:
-  // if (config.hasCustomPage && config.slug === 'business-branding-packages') {
-  //   return <BusinessBrandingPage />
-  // }
-
-  // Otherwise use template
-  return <ServiceTemplate config={config} />
+  return {
+    title: config.title,
+    description: config.description,
+    openGraph: {
+      title: config.title,
+      description: config.description,
+      url: `https://be-studio.vercel.app/services/${config.slug}`,
+      images: ['/og-image.png'],
+    },
+    alternates: {
+      canonical: `https://be-studio.vercel.app/services/${config.slug}`,
+    },
+  };
 }
 
-export default ServicePage
+// Generate static paths at build time (good for SSG)
+export function generateStaticParams() {
+  return Object.values(servicesConfig)
+    .filter(service => service.hasCustomPage || service.slug)
+    .map(service => ({ slug: service.slug }));
+}
+
+// Render page
+const ServicePage = ({ params }: Props) => {
+  const config = getServiceConfig(params.slug);
+
+  if (!config) {
+    notFound();
+  }
+
+  // Custom pages
+  if (config.hasCustomPage && config.slug === 'brand-analysis') {
+    return <BrandAnalysisPage />;
+  }
+
+  // Future custom pages
+  // if (config.hasCustomPage && config.slug === 'business-branding-packages') {
+  //   return <BusinessBrandingPage />;
+  // }
+
+  // Default template
+  return <ServiceTemplate config={config} />;
+};
+
+export default ServicePage;
