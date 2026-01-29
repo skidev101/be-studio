@@ -154,7 +154,7 @@ export const Footer = () => {
           </p>
           <div className="flex gap-1">
             <p className="text-slate-400 text-sm">Made with 💙 by</p>
-            <a href="https://github.com/skidev101" target="_blank" rel="noopener noreferrer" className="hover:text-blue-accent text-sm">Monaski</a>
+            <a href="https://github.com/skidev101" target="_blank" rel="noopener noreferrer" className="hover:text-blue-accent text-slate-600 text-sm">Monaski</a>
           </div>
         </div>
       </div>
