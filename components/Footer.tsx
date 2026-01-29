@@ -152,9 +152,9 @@ export const Footer = () => {
             &copy; {new Date().getFullYear()} BE Graphic Studio. All rights
             reserved.
           </p>
-          <div className="flex gap-6">
+          <div className="flex gap-1">
             <p className="text-slate-400 text-sm">Made with 💙 by</p>
-            <a href="https://github.com/skidev101" target="_blank" rel="noopener noreferrer" className="hover:text-blue-accent">Monaski</a>
+            <a href="https://github.com/skidev101" target="_blank" rel="noopener noreferrer" className="hover:text-blue-accent text-sm">Monaski</a>
           </div>
         </div>
       </div>
