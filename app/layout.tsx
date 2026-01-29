@@ -60,6 +60,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <meta name="google-site-verification" content="WECliyj1I3fHhWuPogo0pEQ6lsYzKqFEnwe2XGFs_SU" />
         <link
           href="https://assets.calendly.com/assets/external/widget.css"
           rel="stylesheet"
