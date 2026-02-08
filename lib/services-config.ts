@@ -382,7 +382,6 @@ export const servicesConfig: Record<string, ServiceConfig> = {
   },
 }
 
-// Helper function
 export const getServiceConfig = (slug: string): ServiceConfig | null => {
-  return servicesConfig.find((s: any) => s.slug == slug)
+  return servicesConfig[slug] || null;
 }
