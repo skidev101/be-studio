@@ -144,7 +144,7 @@ export const Footer = () => {
         </div>
         <div className="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
           <p className="font-heading text-slate-400 text-sm">
-            &copy; {new Date().getFullYear()} BE Graphic Studio.j All rights
+            &copy; {new Date().getFullYear()} BE Graphic Studio. All rights
             reserved.
           </p>
           <div className="flex gap-1">
