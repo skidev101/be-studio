@@ -69,31 +69,31 @@ export const Footer = () => {
             <h4 className="font-bold text-slate-900">Services</h4>
             <Link
               className="text-sm text-slate-500 hover:text-primary transition-colors max-w-max"
-              href={`${BASE_URL}/brand-analysis`}
+              href={`${BASE_URL}/services/brand-analysis`}
             >
               Brand Analysis
             </Link>
             <Link
               className="text-sm text-slate-500 hover:text-primary transition-colors max-w-max"
-              href={`${BASE_URL}/business-branding-packages`}
+              href={`${BASE_URL}/services/business-branding-packages`}
             >
               Business Branding
             </Link>
             <Link
               className="text-sm text-slate-500 hover:text-primary transition-colors max-w-max"
-              href={`${BASE_URL}/marketing-digital-assets`}
+              href={`${BASE_URL}/services/marketing-digital-assets`}
             >
               Marketing Assets
             </Link>
             <Link
               className="text-sm text-slate-500 hover:text-primary transition-colors max-w-max"
-              href={`${BASE_URL}/print-brand-collateral`}
+              href={`${BASE_URL}/services/print-brand-collateral`}
             >
               Print & Physical Collateral
             </Link>
             <Link
               className="text-sm text-slate-500 hover:text-primary transition-colors max-w-max"
-              href={`${BASE_URL}/custom-design-solutions`}
+              href={`${BASE_URL}/services/custom-design-solutions`}
             >
               Custom Design
             </Link>
