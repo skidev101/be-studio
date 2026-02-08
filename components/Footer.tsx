@@ -111,7 +111,7 @@ export const Footer = () => {
                     onClick={() =>
                       scrollToSection(isHash ? link.path.slice(1) : undefined)
                     } // remove #
-                    className="relative text-sm text-left max-w-max font-medium tracking-tight text-slate-700 hover:text-primary hover:cursor-pointer"
+                    className="relative text-sm text-left max-w-max font-medium tracking-tight text-slate-500 hover:text-primary hover:cursor-pointer"
                     
                   >
                     {link.name}
@@ -122,7 +122,7 @@ export const Footer = () => {
                   <Link
                     key={link.path}
                     href={link.path}
-                    className="relative text-sm text-left max-w-max font-medium tracking-tight text-slate-700 hover:text-primary"
+                    className="relative text-sm text-left max-w-max font-medium tracking-tight text-slate-500 hover:text-primary"
                     
                   >
                     {link.name}
