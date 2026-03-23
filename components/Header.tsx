@@ -20,6 +20,7 @@ import { useScrollToSection } from "@/hooks/scroll-to-section";
 const navLinks = [
   { name: "Home", path: "/" },
   { name: "Services", path: "#services" },
+  { name: "Portfolio", path: "/portfolio" },
   { name: "Approach", path: "#approach" },
   { name: "Contact", path: "/contact" },
   { name: "FAQ", path: "#faq" },

@@ -11,6 +11,7 @@ export const Footer = () => {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Services", path: "#services" },
+    { name: "Portfolio", path: "/portfolio" },
     { name: "Approach", path: "#approach" },
     { name: "Contact", path: "/contact" },
     { name: "FAQ", path: "#faq" },
