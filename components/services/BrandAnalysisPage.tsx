@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -13,10 +14,8 @@ import {
   Shield,
 } from "lucide-react";
 import { BookCallButton } from "../BookCallButton";
-import { useRouter } from "next/navigation";
 
 const BrandAnalysisPage = () => {
-  const router = useRouter();
 
   const approachSteps = [
     {
@@ -339,7 +338,7 @@ const BrandAnalysisPage = () => {
               </div>
 
               <p className="mt-8 text-xs text-gray-300">
-                Typical investment: $15,000-$25,000 • Timeline: 4 weeks
+                Typical investment: $1,200-$2,500 • Timeline: 2-3 weeks
               </p>
             </div>
           </div>

@@ -1,37 +1,35 @@
-"use client"
-
-import { useParams } from 'next/navigation'
 import { notFound } from 'next/navigation'
 import { getServiceConfig } from '@/lib/services-config'
+import dynamic from 'next/dynamic'
 
-// Import custom service pages
-import BrandAnalysisPage from '@/components/services/BrandAnalysisPage'
-// import BusinessBrandingPage from '@/components/services/BusinessBrandingPage' // When you create it
+// Use dynamic imports for the page components to improve build/compile times
+// and reduce the initial client bundle for the services route.
+const BrandAnalysisPage = dynamic(() => import('@/components/services/BrandAnalysisPage'))
+const FullBrandBuildPage = dynamic(() => import('@/components/services/FullBrandBuildPage'))
+const ServiceTemplate = dynamic(() => import('@/components/services/ServiceTemplate'))
 
-// Import the template
-import ServiceTemplate from '@/components/services/ServiceTemplate'
+interface PageProps {
+  params: Promise<{ slug: string }>
+}
 
-const ServicePage = () => {
-  const { slug } = useParams()
-  const config = getServiceConfig(slug as string)
+export default async function ServicePage({ params }: PageProps) {
+  const { slug } = await params
+  const config = getServiceConfig(slug)
 
   // 404 if service doesn't exist
   if (!config) {
     notFound()
   }
+  
+  // Route to custom pages
+  if (config.slug === 'full-brand-build') {
+    return <FullBrandBuildPage />
+  }
 
-  // Route to custom page if it has one
-  if (config.hasCustomPage && config.slug === 'brand-analysis') {
+  if (config.slug === 'brand-analysis') {
     return <BrandAnalysisPage />
   }
 
-  // For future custom pages:
-  // if (config.hasCustomPage && config.slug === 'business-branding-packages') {
-  //   return <BusinessBrandingPage />
-  // }
-
-  // Otherwise use template
+  // Otherwise use the standard service template
   return <ServiceTemplate config={config} />
 }
-
-export default ServicePage

@@ -68,36 +68,22 @@ export const Footer = () => {
           </div>
           <div className="flex flex-col gap-4">
             <h4 className="font-bold text-slate-900">Services</h4>
-            <Link
-              className="text-sm text-slate-500 hover:text-primary transition-colors max-w-max"
-              href={`${BASE_URL}/services/brand-analysis`}
-            >
-              Brand Analysis
-            </Link>
-            <Link
-              className="text-sm text-slate-500 hover:text-primary transition-colors max-w-max"
-              href={`${BASE_URL}/services/business-branding-packages`}
-            >
-              Business Branding
-            </Link>
-            <Link
-              className="text-sm text-slate-500 hover:text-primary transition-colors max-w-max"
-              href={`${BASE_URL}/services/marketing-digital-assets`}
-            >
-              Marketing Assets
-            </Link>
-            <Link
-              className="text-sm text-slate-500 hover:text-primary transition-colors max-w-max"
-              href={`${BASE_URL}/services/print-brand-collateral`}
-            >
-              Print & Physical Collateral
-            </Link>
-            <Link
-              className="text-sm text-slate-500 hover:text-primary transition-colors max-w-max"
-              href={`${BASE_URL}/services/custom-design-solutions`}
-            >
-              Custom Design
-            </Link>
+            {[
+              { name: "Full Brand Build", slug: "full-brand-build" },
+              { name: "Brand Analysis", slug: "brand-analysis" },
+              { name: "Brand Strategy", slug: "brand-strategy" },
+              { name: "Brand Identity System", slug: "brand-identity-system" },
+              { name: "Brand Repositioning", slug: "brand-repositioning" },
+              { name: "Brand Growth Assets", slug: "brand-growth-assets" },
+            ].map((service) => (
+              <Link
+                key={service.slug}
+                className="text-sm text-slate-500 hover:text-blue-accent transition-colors max-w-max"
+                href={`/services/${service.slug}`}
+              >
+                {service.name}
+              </Link>
+            ))}
           </div>
           <div className="flex flex-col gap-4 text-left">
             <h4 className="font-bold text-slate-900">Company</h4>

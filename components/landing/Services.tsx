@@ -1,6 +1,6 @@
 "use client"
 
-import { useRouter } from "next/navigation"
+import Link from "next/link"
 import { motion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
 import { cn } from "@/lib/utils"
@@ -17,84 +17,75 @@ type Service = {
 
 const services: Service[] = [
   {
-    title: "Brand Analysis",
+    title: "Full Brand Build",
     description:
-      "Deep audit of your current brand perception, competitive landscape and strategic positioning opportunities.",
+      "Our flagship end-to-end service for startups and companies undergoing complete transformation.",
     items: [
-      "Comprehensive brand & competitor audit",
-      "Visual & verbal identity diagnostics",
-      "Market perception & positioning map",
+      "Includes Analysis, Strategy & Identity",
+      "Full Application & Growth Assets",
+      "Comprehensive Brand Guidelines",
     ],
     featured: true,
+    slug: "full-brand-build",
+  },
+  {
+    title: "Brand Analysis",
+    description:
+      "Evaluate the current state of your brand and identify opportunities for improvement and growth.",
+    items: [
+      "Brand audit & market analysis",
+      "Competitor & audience insight",
+      "Brand strengths & weaknesses report",
+    ],
     slug: "brand-analysis",
   },
   {
-    title: "Business Branding Packages",
+    title: "Brand Strategy",
     description:
-      "Complete branding ecosystems built to scale — from startup launch to mature enterprise evolution.",
+      "Define how your brand should position itself in the market and communicate with its audience.",
     items: [
-      "Foundation & startup brand systems",
-      "Growth-stage rebranding programs",
-      "Long-term brand strategy & governance",
+      "Brand positioning & purpose",
+      "Mission, vision & values",
+      "Messaging pillars & tone of voice",
     ],
-    slug: "business-branding-packages",
+    slug: "brand-strategy",
   },
   {
-    title: "Marketing & Digital Assets",
+    title: "Brand Identity System",
     description:
-      "Consistent, high-performance design systems created for fast-moving digital environments.",
+      "Translate strategy into a strong visual identity system that builds recognition and trust.",
     items: [
-      "Social media & advertising template suites",
-      "Website UI component library",
-      "Email & nurture sequence visuals",
+      "Logo system (Primary, Secondary, Icon)",
+      "Color palette & typography system",
+      "Brand patterns & visual identity assets",
     ],
-    slug: "marketing-digital-assets",
+    slug: "brand-identity-system",
   },
   {
-    title: "Print & Physical Collateral",
+    title: "Brand Repositioning / Rebrand",
     description:
-      "Premium tactile brand expressions that strengthen recognition in the physical world.",
+      "Help established brands evolve and reposition themselves in their market to stay relevant.",
     items: [
-      "Business cards, stationery & brand collateral",
-      "Pitch decks & investor presentations",
-      "Packaging, signage & large format",
+      "Strategic repositioning audit",
+      "Messaging refinement",
+      "Full identity redesign & rollout",
     ],
-    slug: "print-brand-collateral",
+    slug: "brand-repositioning",
   },
   {
-    title: "Custom & On-Demand Design",
+    title: "Brand Growth Assets",
     description:
-      "Flexible design capacity for campaigns, product launches, seasonal drops and special projects.",
+      "Create assets that help businesses consistently apply their brand in high-impact marketing.",
     items: [
-      "Project-based custom design engagements",
-      "Rapid-response design retainer",
-      "Launch & event visual systems",
+      "Social media design systems",
+      "Marketing & campaign templates",
+      "Pitch decks & presentation templates",
     ],
-    slug: "custom-design-solutions",
+    slug: "brand-growth-assets",
   },
 ]
 
-const cardVariants = {
-  initial: { y: 20, opacity: 0 },
-  animate: (i: number) => ({
-    y: 0,
-    opacity: 1,
-    transition: {
-      delay: i * 0.08 + 0.2,
-      duration: 0.65,
-      ease: [0.22, 1, 0.36, 1],
-    },
-  }),
-  hover: {
-    y: -8,
-    scale: 1.015,
-    transition: { duration: 0.4, ease: "easeOut" },
-  },
-}
-
 export function Services() {
-  const router = useRouter()
-
   return (
     <section className="relative bg-white py-32 md:py-40 overflow-hidden" id="services">
       {/* Very subtle background texture/gradient */}
@@ -130,11 +121,10 @@ export function Services() {
             <motion.div
               key={service.slug}
               custom={i}
-              initial="initial"
-              whileInView="animate"
-              whileHover="hover"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
-              // variants={cardVariants}
+              transition={{ delay: i * 0.1 }}
               className={cn(
                 "group relative flex flex-col rounded-[2rem] border p-7 md:p-8 transition-all duration-400",
                 service.featured
@@ -173,18 +163,20 @@ export function Services() {
 
               <div className="mt-8">
                 <Button
-                  onClick={() => router.push(`/services/${service.slug}`)}
+                  asChild
                   className={cn(
                     "group/btn inline-flex items-center gap-2 px-4! text-sm font-medium",
                     service.featured ? "text-blue-accent" : "text-slate-700",
                     "transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-full bg-gray-100 hover:bg-purple-accent hover:text-white"
                   )}
                 >
-                  Explore service
-                  <ArrowRight
-                    size={16}
-                    className="transition-transform duration-300 group-hover/btn:translate-x-1"
-                  />
+                  <Link href={`/services/${service.slug}`}>
+                    Explore service
+                    <ArrowRight
+                      size={16}
+                      className="transition-transform duration-300 group-hover/btn:translate-x-1"
+                    />
+                  </Link>
                 </Button>
               </div>
             </motion.div>

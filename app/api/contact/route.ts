@@ -2,9 +2,13 @@ import { Resend } from "resend";
 import ContactEmailTemplate from "@/components/emails/ContactEmailTemplate";
 import { NextRequest, NextResponse } from "next/server";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(req: NextRequest) {
+  if (!process.env.RESEND_API_KEY) {
+    throw new Error("Missing RESEND_API_KEY");
+  }
+
+  const resend = new Resend(process.env.RESEND_API_KEY);
+
   try {
     const data = await req.json();
 
@@ -22,7 +26,7 @@ export async function POST(req: NextRequest) {
     console.error(error);
     return NextResponse.json(
       { success: false, error: "Failed to send email" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

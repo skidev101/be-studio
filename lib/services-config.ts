@@ -1,4 +1,3 @@
-// 1. Service Configuration with Content Strategy
 // lib/services-config.ts
 
 export type ServiceTier = 'premium' | 'standard' | 'flexible'
@@ -59,324 +58,292 @@ export interface ServiceConfig {
 }
 
 export const servicesConfig: Record<string, ServiceConfig> = {
+  'full-brand-build': {
+    slug: 'full-brand-build',
+    tier: 'premium',
+    title: 'Full Brand Build',
+    tagline: 'The Flagship Service',
+    description: 'Our most comprehensive service for startups and businesses needing an end-to-end transformation.',
+    items: [
+      'Analysis + Strategy + Identity',
+      'Brand guidelines & rollout',
+      'Marketing & growth asset suite',
+    ],
+    hero: {
+      badge: 'Flagship Service',
+      headline: 'The Ultimate Brand Foundation',
+      subheadline: 'Go from zero to a market-leading brand with our comprehensive end-to-end partnership.',
+      ctaPrimary: 'Launch Your Brand',
+    },
+    hasCustomPage: false,
+    templateContent: {
+      problem: {
+        title: 'Don\'t Launch Without a Soul',
+        description: 'A fragmented brand is a weak brand. We build everything you need for a powerful, cohesive, and successful launch.',
+        painPoints: [
+          { stat: '90%', desc: 'of purchasing decisions are made subconsciously based on branding' },
+          { stat: 'All-in', desc: 'approach saves months of back-and-forth between agencies' },
+          { stat: 'Bespoke', desc: 'solutions for high-growth startups and established firms' },
+        ],
+      },
+      process: {
+        title: 'The Complete Roadmap',
+        steps: [
+          { title: 'Foundation', desc: 'Analysis and Strategy phase to find your "Why".' },
+          { title: 'Creation', desc: 'Visual Identity and Asset phase to build your "How".' },
+          { title: 'Launch', desc: 'Final rollout and implementation support.' },
+        ],
+      },
+      deliverables: {
+        title: 'Full Brand Ecosystem',
+        items: [
+          'Comprehensive brand strategy',
+          'Full visual identity system',
+          'Complete marketing asset suite',
+          'Extensive brand guidelines',
+          'Website design assets',
+          '6 months of brand support',
+        ],
+      },
+      cta: {
+        title: 'Build Your Legacy Today',
+        description: 'Starting at $10,000. The definitive brand partnership.',
+      },
+    },
+  },
+
   'brand-analysis': {
     slug: 'brand-analysis',
     tier: 'premium',
     title: 'Brand Analysis',
     tagline: 'Data-Driven Brand Intelligence',
-    description: 'We assess how your brand is perceived, where it stands in the market, and how it can be positioned for long-term growth.',
+    description: 'Evaluate the current state of a brand and identify opportunities for improvement.',
     items: [
-      'Brand audits and competitive analysis',
-      'Visual and verbal identity evaluation',
-      'Market positioning insights',
+      'Brand audit & market analysis',
+      'Competitor & audience insight',
+      'Strategic recommendations',
     ],
     hero: {
-      badge: 'Brand Analysis & Strategy',
+      badge: 'Brand Analysis',
       headline: 'Stop Guessing. Start Knowing.',
-      subheadline: 'Data-driven brand analysis that reveals how customers truly perceive you, where competitors are winning, and the exact positioning gaps costing you growth.',
-      ctaPrimary: 'Get Your Brand Assessment',
-      ctaSecondary: 'View Sample Report',
+      subheadline: 'Data-driven brand analysis that reveals how customers truly perceive you and where the exact positioning gaps are costing you growth.',
+      ctaPrimary: 'Get Brand Assessment',
     },
-    hasCustomPage: true, // Uses custom component
+    hasCustomPage: true,
   },
   
-  'business-branding-packages': {
-    slug: 'business-branding-packages',
+  'brand-strategy': {
+    slug: 'brand-strategy',
     tier: 'premium',
-    title: 'Business Branding Packages',
-    tagline: 'Complete Brand Systems',
-    description: 'Strategic branding systems designed to support business goals and scale as your company grows.',
+    title: 'Brand Strategy',
+    tagline: 'Define Your Market Position',
+    description: 'Define how the brand should position itself in the market and communicate with its audience.',
     items: [
-      'Startup and early-stage brand kits',
-      'Rebranding for growing businesses',
-      'Brand strategy and positioning',
+      'Brand positioning & purpose',
+      'Mission, vision & values',
+      'Messaging pillars & tone of voice',
     ],
     hero: {
-      badge: 'Business Branding',
-      headline: 'Build a Brand That Grows With You',
-      subheadline: 'Complete branding systems that establish credibility, attract customers, and scale alongside your business ambitions.',
-      ctaPrimary: 'Start Brand analysis',
-      ctaSecondary: 'View Portfolio',
+      badge: 'Brand Strategy',
+      headline: 'A Strategy That Commands Attention',
+      subheadline: 'Align your business goals with a powerful brand narrative that resonates with your ideal audience.',
+      ctaPrimary: 'Start Strategy Session',
     },
-    hasCustomPage: true, // Could have custom page later
+    hasCustomPage: false,
     templateContent: {
       problem: {
-        title: 'Why Most Startups Struggle With Brand Identity',
-        description: 'Without a cohesive brand system, businesses waste resources on inconsistent materials, confuse potential customers, and struggle to compete with established players.',
+        title: 'Why Strategy Comes First',
+        description: 'Without a clear strategy, even the best design fails to connect. We define your "Why" before we design your "How".',
         painPoints: [
-          { stat: '64%', desc: 'of startups rebrand within 2 years due to poor initial foundation' },
-          { stat: '$45K', desc: 'average cost of inconsistent branding in first year' },
-          { stat: '2.8x', desc: 'longer sales cycles without professional brand presence' },
+          { stat: '80%', desc: 'of customers buy based on brand values, not just price' },
+          { stat: '2.3x', desc: 'faster growth for companies with documented brand strategies' },
+          { stat: '50%', desc: 'lower marketing costs when messaging is precisely targeted' },
         ],
       },
       process: {
-        title: 'Our Comprehensive Branding Process',
+        title: 'Our Strategic Framework',
         steps: [
-          {
-            title: 'Brand Strategy Workshop',
-            desc: 'Deep-dive sessions to define your positioning, audience, values, and competitive differentiation.',
-            timeline: 'Week 1',
-          },
-          {
-            title: 'Visual Identity Development',
-            desc: 'Logo design, color systems, typography, and visual language that embodies your brand strategy.',
-            timeline: 'Week 2-4',
-          },
-          {
-            title: 'Brand Guidelines & Assets',
-            desc: 'Complete brand book, templates, and asset library for consistent implementation.',
-            timeline: 'Week 5-6',
-          },
+          { title: 'Discovery Workshop', desc: 'Deep-dive into your business model, goals, and audience.' },
+          { title: 'Positioning & Voice', desc: 'Crafting your unique space in the market and how you speak.' },
+          { title: 'Strategic Document', desc: 'Final comprehensive brand strategy guide.' },
         ],
       },
       deliverables: {
-        title: 'Everything You Need to Launch Strong',
+        title: 'Strategic Deliverables',
         items: [
-          'Complete brand strategy documentation',
-          'Primary and secondary logo variations',
-          'Comprehensive brand guidelines (40+ pages)',
-          'Color palette and typography system',
-          'Business card and stationery designs',
-          'Social media templates and assets',
-          'Email signature and presentation templates',
-          'Brand asset library (100+ files)',
+          'Brand positioning statement',
+          'Core values & brand purpose',
+          'Mission & Vision statements',
+          'Target audience personas',
+          'Tone of voice framework',
+          'Key messaging pillars',
         ],
       },
-      // pricing: {
-      //   startingAt: '$8,500',
-      //   packages: [
-      //     {
-      //       name: 'Starter Brand',
-      //       price: '$8,500',
-      //       features: [
-      //         'Brand strategy session',
-      //         'Logo + 2 variations',
-      //         'Basic brand guidelines',
-      //         'Business card design',
-      //         '3 revision rounds',
-      //       ],
-      //     },
-      //     {
-      //       name: 'Growth Brand',
-      //       price: '$15,000',
-      //       recommended: true,
-      //       features: [
-      //         'Everything in Starter',
-      //         'Complete visual identity system',
-      //         'Full brand guidelines book',
-      //         'Social media templates',
-      //         'Website design system',
-      //         'Unlimited revisions',
-      //       ],
-      //     },
-      //     {
-      //       name: 'Enterprise Brand',
-      //       price: 'Custom',
-      //       features: [
-      //         'Everything in Growth',
-      //         'Multi-brand architecture',
-      //         'Motion design system',
-      //         'Internal brand training',
-      //         'Dedicated brand manager',
-      //         'Ongoing support (6 months)',
-      //       ],
-      //     },
-      //   ],
-      // },
       cta: {
-        title: 'Ready to Build Your Brand?',
-        description: 'Schedule a free 30-minute strategy call to discuss your goals and find the right package for your business.',
+        title: 'Ready for a Strategic Foundation?',
+        description: 'Starting at $2,500. Let\'s define your brand\'s future today.',
       },
     },
   },
   
-  'marketing-digital-assets': {
-    slug: 'marketing-digital-assets',
+  'brand-identity-system': {
+    slug: 'brand-identity-system',
+    tier: 'premium',
+    title: 'Brand Identity System',
+    tagline: 'Strong Visual Presence',
+    description: 'Translate strategy into a strong visual identity system including logos, typography, and color.',
+    items: [
+      'Primary, secondary & icon logos',
+      'Typography & color palette',
+      'Graphic elements & patterns',
+    ],
+    hero: {
+      badge: 'Identity System',
+      headline: 'Visual Identity That Builds Trust',
+      subheadline: 'Premium visual systems designed to make your brand instantly recognizable across all platforms.',
+      ctaPrimary: 'Design Your Identity',
+    },
+    hasCustomPage: false,
+    templateContent: {
+      problem: {
+        title: 'Consistency is Credibility',
+        description: 'An inconsistent visual identity makes your business look amateur. We build systems that ensure you look professional everywhere.',
+        painPoints: [
+          { stat: '33%', desc: 'increase in revenue with consistent brand presentation' },
+          { stat: '1/10s', desc: 'for a customer to form a first impression of your brand' },
+          { stat: '7x', desc: 'more brand recall with professional visual systems' },
+        ],
+      },
+      process: {
+        title: 'The Design Journey',
+        steps: [
+          { title: 'Concept Development', desc: 'Exploring visual directions that align with your strategy.' },
+          { title: 'Refinement', desc: 'Iterating on selected concepts to reach pixel-perfection.' },
+          { title: 'System Rollout', desc: 'Building out the full toolkit of brand assets.' },
+        ],
+      },
+      deliverables: {
+        title: 'Visual Identity Assets',
+        items: [
+          'Primary & secondary logos',
+          'Brand mark/iconography',
+          'Typography system',
+          'Complete color palette',
+          'Brand patterns & textures',
+          'Usage guidelines (Brand Book)',
+        ],
+      },
+      cta: {
+        title: 'Elevate Your Visual Identity',
+        description: 'Starting at $3,500. Build a brand that looks as good as it performs.',
+      },
+    },
+  },
+
+  'brand-repositioning': {
+    slug: 'brand-repositioning',
+    tier: 'premium',
+    title: 'Brand Repositioning / Rebrand',
+    tagline: 'Evolve Your Brand',
+    description: 'Help established brands evolve and reposition in their market to reach new heights.',
+    items: [
+      'Strategic repositioning audit',
+      'Identity evolution & redesign',
+      'Brand rollout strategy',
+    ],
+    hero: {
+      badge: 'Repositioning',
+      headline: 'Evolve Without Losing Your Soul',
+      subheadline: 'We help established brands modernize their look and message to stay relevant in a changing market.',
+      ctaPrimary: 'Discuss Rebrand',
+    },
+    hasCustomPage: false,
+    templateContent: {
+      problem: {
+        title: 'Is Your Brand Holding You Back?',
+        description: 'As your business grows, your brand needs to keep up. We ensure your identity reflects who you are today, not who you were years ago.',
+        painPoints: [
+          { stat: '5-7yr', desc: 'average lifespan of a brand identity before needing an update' },
+          { stat: '64%', desc: 'of customers feel more connected to brands that evolve with them' },
+          { stat: '25%+', desc: 'average growth post-successful rebranding' },
+        ],
+      },
+      process: {
+        title: 'The Evolution Process',
+        steps: [
+          { title: 'Heritage Audit', desc: 'Identifying what to keep and what to evolve.' },
+          { title: 'Strategic Pivot', desc: 'Aligning the brand with new goals or audiences.' },
+          { title: 'Identity Refresh', desc: 'Modernizing the visual system for today\'s standards.' },
+        ],
+      },
+      deliverables: {
+        title: 'Rebrand Deliverables',
+        items: [
+          'Full visual identity refresh',
+          'Updated messaging framework',
+          'Brand rollout plan',
+          'Updated collateral system',
+          'New brand guidelines',
+          'Asset migration support',
+        ],
+      },
+      cta: {
+        title: 'Ready for Your Brand\'s Next Chapter?',
+        description: 'Starting at $6,000. Let\'s evolve your brand together.',
+      },
+    },
+  },
+
+  'brand-growth-assets': {
+    slug: 'brand-growth-assets',
     tier: 'standard',
-    title: 'Marketing & Digital Assets',
-    tagline: 'Design Systems for Digital Growth',
-    description: 'Design systems and assets that help your brand communicate clearly and consistently across digital channels.',
+    title: 'Brand Growth Assets',
+    tagline: 'Scale Your Marketing',
+    description: 'Create assets that help businesses consistently apply their brand across marketing channels.',
     items: [
-      'Social media and campaign templates',
-      'Website and UI design assets',
-      'Email and digital marketing visuals',
+      'Social media design systems',
+      'Marketing & campaign templates',
+      'Pitch decks & sales collateral',
     ],
     hero: {
-      badge: 'Digital Assets',
-      headline: 'Scale Your Marketing Without Sacrificing Quality',
-      subheadline: 'Professional design systems and templates that empower your team to create on-brand content consistently.',
-      ctaPrimary: 'Get Started',
+      badge: 'Growth Assets',
+      headline: 'Fuel Your Marketing Engine',
+      subheadline: 'Professional templates and assets that empower your team to create content that converts.',
+      ctaPrimary: 'Get Your Assets',
     },
     hasCustomPage: false,
     templateContent: {
       problem: {
-        title: 'The Digital Content Bottleneck',
-        description: 'Marketing teams need to move fast, but without proper design systems, quality suffers and brand consistency breaks down.',
+        title: 'The Content Creation Struggle',
+        description: 'Stop wasting time designing from scratch. We build systems that allow you to produce high-quality content in minutes.',
         painPoints: [
-          { stat: '12hrs', desc: 'average weekly time lost on ad-hoc design requests' },
-          { stat: '58%', desc: 'of digital content fails to meet brand standards' },
-          { stat: '3.4x', desc: 'higher engagement with professionally designed assets' },
+          { stat: '10hr+', desc: 'saved weekly with professional design templates' },
+          { stat: '3.4x', desc: 'higher engagement on professionally designed social posts' },
+          { stat: '100%', desc: 'brand consistency across all marketing channels' },
         ],
       },
       process: {
-        title: 'How We Build Your Design System',
+        title: 'Asset Development',
         steps: [
-          {
-            title: 'Audit & Requirements',
-            desc: 'Review existing assets, identify gaps, and define your content needs across channels.',
-          },
-          {
-            title: 'System Design',
-            desc: 'Create flexible templates and components that maintain brand integrity while enabling speed.',
-          },
-          {
-            title: 'Team Training',
-            desc: 'Workshop sessions to ensure your team can confidently use and customize the system.',
-          },
+          { title: 'Needs Audit', desc: 'Identifying the most impactful assets for your marketing.' },
+          { title: 'System Design', desc: 'Creating flexible, easy-to-use templates.' },
+          { title: 'Final Handover', desc: 'Providing source files and training if needed.' },
         ],
       },
       deliverables: {
-        title: 'Your Complete Digital Asset Library',
+        title: 'Marketing Toolkit',
         items: [
-          '50+ social media post templates (all platforms)',
-          'Email marketing template suite',
-          'Ad creative templates (Meta, Google, LinkedIn)',
-          'Website graphics and UI components',
-          'Presentation deck templates',
-          'Digital brand guidelines',
-          'Editable source files (Figma/Canva)',
+          'Social media post templates',
+          'Email marketing visuals',
+          'Ad creative templates',
+          'Pitch deck & presentation suite',
+          'Sales sheets & brochures',
+          'Marketing icons & graphics',
         ],
       },
       cta: {
-        title: 'Empower Your Marketing Team',
-        description: 'Let\'s build a design system that accelerates your content creation. Starting at $4,500.',
-      },
-    },
-  },
-  
-  'print-brand-collateral': {
-    slug: 'print-brand-collateral',
-    tier: 'standard',
-    title: 'Print & Brand Collateral',
-    tagline: 'Make Every Touchpoint Count',
-    description: 'Tangible brand materials that reinforce credibility and recognition across physical touchpoints.',
-    items: [
-      'Business cards and marketing collateral',
-      'Presentations and reports',
-      'Packaging and print design',
-    ],
-    hero: {
-      badge: 'Print Design',
-      headline: 'Physical Touchpoints That Leave Lasting Impressions',
-      subheadline: 'Professional print materials that command attention and reinforce your brand\'s credibility in every interaction.',
-      ctaPrimary: 'Start a Project',
-    },
-    hasCustomPage: false,
-    templateContent: {
-      problem: {
-        title: 'Why Print Still Matters',
-        description: 'In a digital world, premium print materials signal professionalism, permanence, and attention to detail that digital alone can\'t achieve.',
-        painPoints: [
-          { stat: '82%', desc: 'of customers judge credibility by business card quality' },
-          { stat: '4x', desc: 'better recall with physical marketing materials' },
-          { stat: '67%', desc: 'of B2B buyers prefer printed proposals for major decisions' },
-        ],
-      },
-      process: {
-        title: 'From Concept to Print-Ready',
-        steps: [
-          {
-            title: 'Requirements & Strategy',
-            desc: 'Understand your goals, audience, and how these materials fit into your brand ecosystem.',
-          },
-          {
-            title: 'Design & Refinement',
-            desc: 'Create designs optimized for print production with proper bleeds, color modes, and specifications.',
-          },
-          {
-            title: 'Production Support',
-            desc: 'Print-ready files with vendor coordination and quality assurance if needed.',
-          },
-        ],
-      },
-      deliverables: {
-        title: 'Print-Perfect Deliverables',
-        items: [
-          'Print-ready PDF files (CMYK, proper bleeds)',
-          'Multiple size variations',
-          'Spot color specifications',
-          'Paper and finish recommendations',
-          'Vendor coordination (optional)',
-          'Digital preview mockups',
-        ],
-      },
-      cta: {
-        title: 'Ready for Premium Print Materials?',
-        description: 'Let\'s create print collateral that elevates your brand. Project pricing starts at $1,200.',
-      },
-    },
-  },
-  
-  'custom-design-solutions': {
-    slug: 'custom-design-solutions',
-    tier: 'flexible',
-    title: 'Custom Design Solutions',
-    tagline: 'Flexible Design Partnership',
-    description: 'Flexible, on-demand design support tailored to unique business needs and evolving projects.',
-    items: [
-      'Custom design engagements',
-      'Design support for launches and campaigns',
-    ],
-    hero: {
-      badge: 'Custom Solutions',
-      headline: 'Your Vision, Our Expertise',
-      subheadline: 'Flexible design partnership for unique projects that don\'t fit into standard packages.',
-      ctaPrimary: 'Discuss Your Project',
-    },
-    hasCustomPage: false,
-    templateContent: {
-      problem: {
-        title: 'When Standard Packages Don\'t Fit',
-        description: 'Some projects require a custom approach. Whether it\'s a product launch, special campaign, or unique business need, we adapt to your requirements.',
-        painPoints: [
-          { stat: '100%', desc: 'of projects are tailored to specific business goals' },
-          { stat: 'Flexible', desc: 'pricing models: hourly, project, or retainer' },
-          { stat: '48hr', desc: 'typical response time for urgent requests' },
-        ],
-      },
-      process: {
-        title: 'How Custom Engagements Work',
-        steps: [
-          {
-            title: 'Discovery Call',
-            desc: 'Free 30-minute consultation to understand your needs and determine if we\'re a good fit.',
-          },
-          {
-            title: 'Custom Proposal',
-            desc: 'Detailed scope, timeline, and pricing tailored to your specific project requirements.',
-          },
-          {
-            title: 'Flexible Execution',
-            desc: 'Work together in the way that suits your project best - sprint, iterative, or ongoing support.',
-          },
-        ],
-      },
-      deliverables: {
-        title: 'Past Custom Projects',
-        items: [
-          'Event branding and signage systems',
-          'Product launch campaigns (360° design)',
-          'Interactive pitch decks and presentations',
-          'Trade show booth designs',
-          'Internal communications materials',
-          'Book and editorial design',
-          'Motion graphics and video assets',
-          'Environmental and retail design',
-        ],
-      },
-      cta: {
-        title: 'Let\'s Explore Your Project',
-        description: 'Every custom project starts with a conversation. Share your vision and we\'ll create a plan to bring it to life.',
+        title: 'Supercharge Your Marketing',
+        description: 'Starting at $1,200. Get the tools you need to grow.',
       },
     },
   },
