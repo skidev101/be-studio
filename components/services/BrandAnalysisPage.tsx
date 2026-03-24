@@ -14,8 +14,10 @@ import {
   Shield,
 } from "lucide-react";
 import { BookCallButton } from "../BookCallButton";
+import { useRouter } from "next/navigation";
 
 const BrandAnalysisPage = () => {
+  const router = useRouter();
 
   const approachSteps = [
     {
