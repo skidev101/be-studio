@@ -107,7 +107,7 @@ export const servicesConfig: Record<string, ServiceConfig> = {
       },
       cta: {
         title: 'Build Your Legacy Today',
-        description: 'Starting at $10,000. The definitive brand partnership.',
+        description: 'Starting at ₦500,000. A complete brand build scoped to your business.',
       },
     },
   },
@@ -181,7 +181,7 @@ export const servicesConfig: Record<string, ServiceConfig> = {
       },
       cta: {
         title: 'Ready for a Strategic Foundation?',
-        description: 'Starting at $2,500. Let\'s define your brand\'s future today.',
+        description: 'Starting at ₦250,000. Let\'s define your brand\'s future today.',
       },
     },
   },
@@ -235,7 +235,7 @@ export const servicesConfig: Record<string, ServiceConfig> = {
       },
       cta: {
         title: 'Elevate Your Visual Identity',
-        description: 'Starting at $3,500. Build a brand that looks as good as it performs.',
+        description: 'Starting at ₦300,000. Build a brand that looks as good as it performs.',
       },
     },
   },
@@ -289,7 +289,7 @@ export const servicesConfig: Record<string, ServiceConfig> = {
       },
       cta: {
         title: 'Ready for Your Brand\'s Next Chapter?',
-        description: 'Starting at $6,000. Let\'s evolve your brand together.',
+        description: 'Starting at ₦450,000. Let\'s evolve your brand together.',
       },
     },
   },
@@ -343,7 +343,7 @@ export const servicesConfig: Record<string, ServiceConfig> = {
       },
       cta: {
         title: 'Supercharge Your Marketing',
-        description: 'Starting at $1,200. Get the tools you need to grow.',
+        description: 'Starting at ₦150,000. Get the tools you need to grow.',
       },
     },
   },

@@ -208,7 +208,7 @@ export default function FullBrandBuildPage() {
                   Typical Investment
                 </p>
                 <p className="text-4xl md:text-6xl font-black text-white tracking-tighter">
-                  $10K - $15K+
+                  ₦500K+
                 </p>
               </div>
               <div className="h-px w-20 md:w-px md:h-12 bg-white/10" />

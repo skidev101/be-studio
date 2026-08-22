@@ -340,7 +340,7 @@ const BrandAnalysisPage = () => {
               </div>
 
               <p className="mt-8 text-xs text-gray-300">
-                Typical investment: $1,200-$2,500 • Timeline: 2-3 weeks
+                Typical investment: ₦150,000+ • Timeline: Scoped to your needs
               </p>
             </div>
           </div>

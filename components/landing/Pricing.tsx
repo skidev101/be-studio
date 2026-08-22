@@ -7,39 +7,39 @@ import Link from 'next/link'
 import { BookCallButton } from '../BookCallButton'
 
 const Pricing = () => {
-  const [selectedGoal, setSelectedGoal] = useState<string>('establish')
+  const [selectedGoal, setSelectedGoal] = useState<string>('discover')
 
   const goals = [
     {
-      id: 'establish',
-      title: 'Establish Brand Presence',
+      id: 'discover',
+      title: 'Discover What Your Brand Needs',
       icon: Zap,
-      description: 'You\'re launching or need basic brand materials',
-      investment: '$1,200 - $4,000',
-      services: ['Print collateral', 'Digital templates', 'Basic guidelines'],
-      roi: '3-5x ROI in customer trust',
-      timeline: '2-3 weeks',
+      description: 'Something is not working, but you need clarity before investing in a larger engagement',
+      investment: 'From ₦150,000',
+      services: ['Brand audit', 'Market and competitor review', 'Recommended next steps'],
+      roi: 'Clarity for your next move',
+      timeline: 'Scoped to your needs',
     },
     {
-      id: 'grow',
-      title: 'Scale Your Business',
+      id: 'build',
+      title: 'Build Your Brand Properly',
       icon: TrendingUp,
-      description: 'You\'re growing and need a complete brand system',
-      investment: '$3,500 - $12,000',
-      services: ['Complete branding', 'Marketing systems', 'Strategic positioning'],
-      roi: '5-10x ROI in market differentiation',
-      timeline: '4-6 weeks',
+      description: 'You need a strategic brand foundation that can support the next stage of growth',
+      investment: 'From ₦500,000',
+      services: ['Strategy and positioning', 'Communication and identity', 'Brand systems and launch guidance'],
+      roi: 'A foundation built for growth',
+      timeline: 'Scoped to your needs',
       recommended: true,
     },
     {
-      id: 'transform',
-      title: 'Transform Market Position',
+      id: 'evolve',
+      title: 'Evolve Your Existing Brand',
       icon: Target,
-      description: 'You need strategic intelligence and comprehensive branding',
-      investment: '$10,000+',
-      services: ['Brand analysis', 'Multi-channel systems', 'Ongoing partnership'],
-      roi: '10-20x ROI in competitive advantage',
-      timeline: '4-12 weeks',
+      description: 'Your business has changed and your brand needs to catch up',
+      investment: 'From ₦450,000',
+      services: ['Existing brand audit', 'Strategic and visual evolution', 'Rollout support'],
+      roi: 'A brand aligned with where you are going',
+      timeline: 'Scoped to your needs',
     },
   ]
 
@@ -169,7 +169,7 @@ const Pricing = () => {
               </div>
 
               <p className="mt-6 text-xs text-blue-200 text-center">
-                100% satisfaction guarantee • Flexible payment plans available
+                Scope flexibility • Flexible payment plans available
               </p>
             </div>
           </div>
