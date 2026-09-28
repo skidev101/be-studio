@@ -1,3 +1,5 @@
+"use client";
+
 import { motion, Transition, Easing, useReducedMotion } from "framer-motion";
 import { useEffect, useState, useMemo } from "react";
 
@@ -128,8 +130,8 @@ const BlurText: React.FC<BlurTextProps> = ({
               willChange: inView ? "auto" : "transform, filter, opacity",
             }}
           >
-            {segment === " " ? " " : segment}
-            {animateBy === "words" && index < elements.length - 1 && " "}
+            {segment === " " ? "\u00A0" : segment}
+            {animateBy === "words" && index < elements.length - 1 && "\u00A0"}
           </motion.span>
         );
       })}
