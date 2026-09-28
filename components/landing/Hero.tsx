@@ -6,53 +6,53 @@ import BlurText from "../BlurText";
 import { BookCallButton } from "../BookCallButton";
 import { useScrollToSection } from "@/hooks/scroll-to-section";
 
+// Source: docs/BE GRAPHIC STUDIO — BRAND RESTRUCTURE FOUNDATION.pdf §04 (audience)
+// and §05 (core belief); docs/BE Graphic Studio service system.pdf §19 (no
+// discount or affordability framing).
+
+const primaryCta =
+  "inline-flex items-center justify-center rounded-full bg-brand-ink px-8 py-3 text-base font-medium text-white transition-colors hover:bg-brand-deep focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring";
+
 export default function Hero() {
   const scrollToSection = useScrollToSection();
 
   return (
-    <section className="px-2 md:px-3 bg-white">
-      <div className="relative overflow-hidden rounded-[2rem] lg:rounded-[4rem] bg-white">
-        {/* Background */}
-        <div className="absolute inset-0 bg-[#F4F7FD]" />
+    <section className="bg-white px-2 md:px-3">
+      <div className="relative overflow-hidden rounded-[2rem] bg-white lg:rounded-[4rem]">
+        <div className="absolute inset-0 bg-surface-tint" />
 
-        <div className="relative mx-auto max-w-7xl px-6 pt-20 md:pt-24 pb-6 md:pb-28">
+        <div className="relative mx-auto max-w-7xl px-6 pt-20 pb-6 md:pt-24 md:pb-28">
           <div className="grid grid-cols-1 items-center gap-y-12 lg:grid-cols-12 lg:gap-x-16">
             {/* LEFT: COPY */}
-            <div className="lg:col-span-6 space-y-6">
-              {/* <motion.h1
-                initial={{ opacity: 0, x: -40 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-                className="text-[2.5rem] leading-[1.1] md:text-[2.8rem] xl:text-[3.2rem] font-semibold tracking-tight text-[#0B1C2D]"
-              >
-                We help growing businesses build clear, confident{" "}
-                <span className="block text-blue-accent">Brands that scale.</span>
-              </motion.h1> */}
-              <div className="font-heading text-[2.5rem] leading-[1.1] md:text-[2.8rem] xl:text-[3.2rem] font-semibold tracking-tight text-[#0B1C2D]">
+            <div className="space-y-6 lg:col-span-6">
+              <h1 className="font-display text-[2.5rem] font-semibold leading-[1.1] tracking-tight text-ink text-balance md:text-[2.8rem] xl:text-[3.2rem]">
                 <BlurText
-                  text="We help results driven businesses build clear, confident"
+                  as="span"
+                  text="We help growing businesses build brands"
                   delay={130}
                   animateBy="words"
                   direction="top"
-                  className="text-blue-accent"
                 />
                 <BlurText
-                  text="Brands that scale"
+                  as="span"
+                  text="that are understood, trusted and built to grow"
                   delay={160}
                   animateBy="words"
                   direction="bottom"
-                  className="block text-blue-accent hover:text-[#122933] transition-all"
+                  className="text-brand-ink"
                 />
-              </div>
+              </h1>
 
               <motion.p
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
-                className="max-w-xl text-md leading-relaxed text-slate-700"
+                className="max-w-xl text-base leading-relaxed text-slate-700"
               >
-                Strategic brand analysis, positioning, and design systems that
-                aligns your brand with it's business goals for long-term growth.
+                Branding is the deliberate combination of strategy,
+                positioning, communication, experience, visuals and systems. We
+                build brands for how a business is understood &mdash; not just
+                for how it looks.
               </motion.p>
 
               {/* CTA */}
@@ -62,46 +62,46 @@ export default function Hero() {
                 transition={{ duration: 0.6, delay: 0.45 }}
                 className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center"
               >
-                {/* PRIMARY */}
                 <button
+                  type="button"
                   onClick={() => scrollToSection("services")}
-                  className="inline-flex items-center justify-center rounded-full bg-blue-accent px-8 py-3 hover:px-9 text-base font-medium text-white transition-all hover:bg-blue-accent/80"
+                  className={primaryCta}
                 >
                   View our services
                 </button>
 
-                {/* SECONDARY */}
-                <BookCallButton className="bg-gray-200! hover:bg-gray-300! py-4! px-6! text-slate-500! hover:text-slate-800! text-center font-semibold text-base" />
+                <BookCallButton
+                  className="bg-gray-200 px-8 py-3 text-base font-semibold text-slate-600 hover:bg-gray-300 hover:text-slate-900"
+                  text="Book a call"
+                />
               </motion.div>
 
-              {/* Quiet trust signal */}
               <motion.p
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.7 }}
-                className="hidden md:block pt-6 text-sm text-[#8A99AD]"
+                className="hidden pt-6 text-sm text-muted-foreground md:block"
               >
-                Trusted by growing teams across multiple industries
+                Quality branding, accessible to growing businesses.
               </motion.p>
             </div>
 
             {/* RIGHT: VISUAL */}
-            <div className="lg:col-span-6 flex justify-center lg:justify-end">
+            <div className="flex justify-center lg:col-span-6 lg:justify-end">
               <motion.div
                 initial={{ opacity: 0, scale: 0.96 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
                 className="relative w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-full"
               >
-                {/* Soft glow */}
-                <div className="absolute -inset-6 rounded-3xl bg-[#1F4FD8]/5 blur-2xl" />
+                <div className="absolute -inset-6 rounded-3xl bg-brand/10 blur-2xl" />
 
-                {/* Image */}
-                <div className="relative aspect-4/3 w-full overflow-hidden rounded-[2rem] md:rounded-[4rem] border border-[#0B1C2D]/10 bg-[#F7F9FC] shadow-sm">
+                <div className="relative aspect-4/3 w-full overflow-hidden rounded-[2rem] border border-ink/10 bg-surface-tint shadow-sm md:rounded-[4rem]">
                   <Image
                     src="/images/hero123.png"
                     alt="Brand strategy and positioning visual"
                     fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover opacity-90"
                     priority
                   />

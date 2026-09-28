@@ -1,40 +1,53 @@
 import type { MetadataRoute } from 'next';
 import { servicesConfig } from '@/lib/services-config';
+import { portfolioProjects } from '@/lib/portfolio-config';
+
+const baseUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://be-studio.vercel.app';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://be-studio.vercel.app';
   const lastModified = new Date();
 
-  // Static marketing pages
+  // Every route listed here must actually resolve. There is no /services index
+  // page — the engagements live at /services/[slug].
   const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
       lastModified,
+      changeFrequency: 'monthly',
       priority: 1,
     },
     {
-      url: `${baseUrl}/services`,
+      url: `${baseUrl}/portfolio`,
       lastModified,
-      priority: 0.9,
+      changeFrequency: 'monthly',
+      priority: 0.8,
     },
     {
       url: `${baseUrl}/contact`,
       lastModified,
+      changeFrequency: 'yearly',
       priority: 0.7,
     },
   ];
 
-  // Dynamic service pages from servicesConfig
-  const serviceRoutes: MetadataRoute.Sitemap = Object.values(
+  const engagementRoutes: MetadataRoute.Sitemap = Object.values(
     servicesConfig
-  )
-    // only include pages that actually exist
-    .filter(service => service.hasCustomPage)
-    .map(service => ({
-      url: `${baseUrl}/services/${service.slug}`,
-      lastModified,
-      priority: service.tier === 'premium' ? 0.85 : 0.75,
-    }));
+  ).map((service) => ({
+    url: `${baseUrl}/services/${service.slug}`,
+    lastModified,
+    changeFrequency: 'monthly',
+    priority: service.featured ? 0.9 : 0.8,
+  }));
 
-  return [...staticRoutes, ...serviceRoutes];
+  const projectRoutes: MetadataRoute.Sitemap = portfolioProjects.map(
+    (project) => ({
+      url: `${baseUrl}/portfolio/${project.slug}`,
+      lastModified,
+      changeFrequency: 'yearly',
+      priority: 0.6,
+    })
+  );
+
+  return [...staticRoutes, ...engagementRoutes, ...projectRoutes];
 }

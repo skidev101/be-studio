@@ -1,35 +1,52 @@
 import { notFound } from 'next/navigation'
-import { getServiceConfig } from '@/lib/services-config'
-import dynamic from 'next/dynamic'
-
-// Use dynamic imports for the page components to improve build/compile times
-// and reduce the initial client bundle for the services route.
-const BrandAnalysisPage = dynamic(() => import('@/components/services/BrandAnalysisPage'))
-const FullBrandBuildPage = dynamic(() => import('@/components/services/FullBrandBuildPage'))
-const ServiceTemplate = dynamic(() => import('@/components/services/ServiceTemplate'))
+import type { Metadata } from 'next'
+import { getServiceConfig, servicesConfig } from '@/lib/services-config'
+import BrandDiscoveryPage from '@/components/services/BrandDiscoveryPage'
+import BrandBuildPage from '@/components/services/BrandBuildPage'
+import ServiceTemplate from '@/components/services/ServiceTemplate'
 
 interface PageProps {
   params: Promise<{ slug: string }>
+}
+
+export function generateStaticParams() {
+  return Object.keys(servicesConfig).map((slug) => ({ slug }))
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params
+  const config = getServiceConfig(slug)
+
+  if (!config) return {}
+
+  return {
+    title: config.title,
+    description: config.description,
+    openGraph: {
+      title: config.title,
+      description: config.description,
+      url: `/services/${config.slug}`,
+    },
+  }
 }
 
 export default async function ServicePage({ params }: PageProps) {
   const { slug } = await params
   const config = getServiceConfig(slug)
 
-  // 404 if service doesn't exist
   if (!config) {
     notFound()
   }
-  
-  // Route to custom pages
-  if (config.slug === 'full-brand-build') {
-    return <FullBrandBuildPage />
+
+  // Engagements with a bespoke page.
+  if (config.slug === 'brand-build') {
+    return <BrandBuildPage />
   }
 
-  if (config.slug === 'brand-analysis') {
-    return <BrandAnalysisPage />
+  if (config.slug === 'brand-discovery') {
+    return <BrandDiscoveryPage />
   }
 
-  // Otherwise use the standard service template
+  // Everything else renders from the config.
   return <ServiceTemplate config={config} />
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
@@ -16,15 +16,7 @@ import {
 import { ArrowRight, Menu, X } from "lucide-react";
 import { BookCallButton } from "./BookCallButton";
 import { useScrollToSection } from "@/hooks/scroll-to-section";
-
-const navLinks = [
-  { name: "Home", path: "/" },
-  { name: "Services", path: "#services" },
-  { name: "Portfolio", path: "/portfolio" },
-  { name: "Approach", path: "#approach" },
-  { name: "Contact", path: "/contact" },
-  { name: "FAQ", path: "#faq" },
-];
+import { navLinks } from "@/lib/nav";
 
 export function Header() {
   const scrollToSection = useScrollToSection();
@@ -34,6 +26,12 @@ export function Header() {
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsScrolled(latest > 8);
   });
+
+  const navItemClass =
+    "relative text-sm font-medium tracking-tight text-slate-700 transition-colors hover:text-brand-ink after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-brand-ink/70 after:transition-all after:duration-300 hover:after:w-full focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring";
+
+  const mobileItemClass =
+    "group flex items-center justify-between text-3xl sm:text-4xl font-medium tracking-tight text-slate-900 transition-colors hover:text-brand-ink focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring";
 
   return (
     <motion.header
@@ -51,18 +49,20 @@ export function Header() {
         <div className="flex h-16 sm:h-20 items-center justify-between">
           {/* Logo + Desktop Nav */}
           <div className="flex items-center gap-6 md:gap-10">
-            <Link href="/" className="flex items-center">
-              <div className="relative w-12 h-12 md:w-14 md:h-14 -ml-4">
+            <Link
+              href="/"
+              className="flex items-center rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
+            >
+              <span className="relative block w-12 h-12 md:w-14 md:h-14 -ml-4">
                 <Image
                   src="/logo_temp.png"
-                  alt="Brand Logo"
-                  sizes="10"
+                  alt="BE Graphic Studio"
+                  sizes="(max-width: 768px) 48px, 56px"
                   fill
                   className="object-contain"
                   priority
                 />
-              </div>
-              {/* <p className="text-blue-accent font-semibold">BE</p> */}
+              </span>
             </Link>
 
             <Separator
@@ -71,73 +71,53 @@ export function Header() {
             />
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-8 lg:gap-10">
+            <nav
+              aria-label="Main"
+              className="hidden md:flex items-center gap-8 lg:gap-10"
+            >
               {navLinks.map((link) => {
-                const isHash = link.path.startsWith("#");
-                const isHome = link.path === "/";
+                const onClick =
+                  link.section || link.path === "/"
+                    ? () => scrollToSection(link.section)
+                    : undefined;
 
-                if (isHash || isHome) {
-                  return (
-                    <button
-                      key={link.path}
-                      onClick={() => scrollToSection(isHash ? link.path.slice(1) : undefined)} // remove #
-                      className={cn(
-                        "relative text-sm font-medium tracking-tight text-slate-700 hover:text-blue-accent hover:cursor-pointer",
-                        "transition-colors after:absolute after:-bottom-1",
-                        "after:left-0 after:h-[2px] after:w-0 after:bg-blue-accent/70",
-                        "after:transition-all after:duration-300 hover:after:w-full"
-                      )}
-                    >
-                      {link.name}
-                    </button>
-                  );
-                } else {
-                  return (
-                    <Link
-                      key={link.path}
-                      href={link.path}
-                      className={cn(
-                        "relative text-sm font-medium tracking-tight text-slate-700 hover:text-blue-accent",
-                        "transition-colors after:absolute after:-bottom-1",
-                        "after:left-0 after:h-[2px] after:w-0 after:bg-blue-accent/70",
-                        "after:transition-all after:duration-300 hover:after:w-full"
-                      )}
-                    >
-                      {link.name}
-                    </Link>
-                  );
-                }
+                return onClick ? (
+                  <button
+                    key={link.path}
+                    type="button"
+                    onClick={onClick}
+                    className={cn(navItemClass, "hover:cursor-pointer")}
+                  >
+                    {link.name}
+                  </button>
+                ) : (
+                  <Link key={link.path} href={link.path} className={navItemClass}>
+                    {link.name}
+                  </Link>
+                );
               })}
             </nav>
           </div>
 
           {/* Desktop CTA + Mobile Trigger */}
           <div className="flex items-center gap-4">
-            <BookCallButton text="Let's Talk" className="hidden md:flex" />
-            {/* <Button
-              onClick={openCalendly}
-              size="sm"
-              className="hidden md:flex bg-[#1F4FD8] text-white rounded-full hover:bg-[#1a42b8] px-4 py-3 hover:px-5 transition-all"
-              asChild
-            >
-              <Link href="#contact">
-                Get in Touch <ArrowRight size={16} className="ml-1.5" />
-              </Link>
-            </Button> */}
+            <BookCallButton text="Let's Talk" className="hidden md:inline-flex" />
 
             {/* Mobile Menu Trigger */}
             <Sheet>
               <SheetTrigger asChild>
                 <button
-                  className="md:hidden p-2 -mr-2 rounded-lg hover:bg-slate-100 transition-colors"
+                  type="button"
+                  className="md:hidden grid place-items-center size-11 -mr-2 rounded-lg text-slate-800 transition-colors hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
                   aria-label="Open navigation menu"
                 >
-                  <Menu className="h-6 w-6 text-slate-800" />
+                  <Menu className="h-6 w-6" />
                 </button>
               </SheetTrigger>
 
               <SheetContent
                 side="right"
+                showCloseButton={false}
                 className={cn(
                   "w-full max-w-md sm:max-w-lg",
                   "bg-linear-to-b from-blue-50/70 to-white shadow-blue-100/70",
@@ -145,7 +125,8 @@ export function Header() {
                 )}
                 aria-describedby={undefined}
               >
-                <SheetTitle className="hidden"></SheetTitle>
+                <SheetTitle className="sr-only">Site navigation</SheetTitle>
+
                 <div className="sticky top-0 z-10 flex items-center justify-between px-6 py-5 bg-white/80 backdrop-blur-md border-b border-slate-100">
                   <span className="text-xs font-medium uppercase tracking-wider text-slate-500">
                     Menu
@@ -153,54 +134,51 @@ export function Header() {
 
                   <SheetClose asChild>
                     <button
+                      type="button"
                       aria-label="Close menu"
-                      className="p-2 -mr-2 rounded-full"
+                      className="grid place-items-center size-11 -mr-2 rounded-full text-slate-700 transition-colors hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
                     >
-                      <X size={20} className="text-slate-700" />
+                      <X size={20} />
                     </button>
                   </SheetClose>
                 </div>
 
-                <div className="h-[calc(100dvh-68px)] overflow-y-auto scrollbar-thin">
+                <div className="h-[calc(100dvh-68px)] overflow-y-auto">
                   <div className="px-6 sm:px-10 pt-12 pb-20">
-                    <nav className="flex flex-col gap-8 mb-16">
+                    <nav aria-label="Mobile" className="flex flex-col gap-8 mb-16">
                       {navLinks.map((link) => {
-                        const isHash = link.path.startsWith("#");
-                        const isHome = link.path === "/";
+                        const onClick =
+                          link.section || link.path === "/"
+                            ? () => scrollToSection(link.section)
+                            : undefined;
 
-                        if (isHash || isHome) {
-                          return (
-                            <SheetClose asChild key={link.path}>
+                        const inner = (
+                          <>
+                            <span>{link.name}</span>
+                            <ArrowRight
+                              size={20}
+                              className="opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0"
+                            />
+                          </>
+                        );
+
+                        return (
+                          <SheetClose asChild key={link.path}>
+                            {onClick ? (
                               <button
-                                onClick={() =>
-                                  scrollToSection(isHash ? link.path.slice(1) : undefined)
-                                }
-                                className="group flex items-center justify-between text-3xl sm:text-4xl font-medium tracking-tight text-slate-900 transition-all duration-300 hover:text-blue-700"
+                                type="button"
+                                onClick={onClick}
+                                className={cn(mobileItemClass, "text-left")}
                               >
-                                <span>{link.name}</span>
-                                <ArrowRight
-                                  size={20}
-                                  className="opacity-0 -translate-x-3 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
-                                />
+                                {inner}
                               </button>
-                            </SheetClose>
-                          );
-                        } else {
-                          return (
-                            <SheetClose asChild key={link.path}>
-                              <Link
-                                href={link.path}
-                                className="group flex items-center justify-between text-3xl sm:text-4xl font-medium tracking-tight text-slate-900 transition-all duration-300 hover:text-blue-700"
-                              >
-                                <span>{link.name}</span>
-                                <ArrowRight
-                                  size={20}
-                                  className="opacity-0 -translate-x-3 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
-                                />
+                            ) : (
+                              <Link href={link.path} className={mobileItemClass}>
+                                {inner}
                               </Link>
-                            </SheetClose>
-                          );
-                        }
+                            )}
+                          </SheetClose>
+                        );
                       })}
                     </nav>
 
@@ -212,8 +190,8 @@ export function Header() {
                           Ready to transform your brand?
                         </p>
 
-                        <SheetClose asChild className="w-full">
-                          <BookCallButton text="Let's Talk" />
+                        <SheetClose asChild>
+                          <BookCallButton text="Let's Talk" className="w-full" />
                         </SheetClose>
                       </div>
                     </div>

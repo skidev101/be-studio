@@ -1,50 +1,72 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, Mic, Plane, Search, Speaker } from "lucide-react";
+import { Layers, MessageSquare, Palette, Search, Target, Users } from "lucide-react";
 import Image from "next/image";
 import { Pill } from "../Pill";
 
+// Source: docs/BE GRAPHIC STUDIO — BRAND RESTRUCTURE FOUNDATION.pdf §15.
+// The six-stage methodology, including the question each stage answers.
+
 const steps = [
   {
-    title: "Discover",
-    icon: <Search className="w-6 h-6" />,
+    title: "Understand",
+    icon: Search,
+    question: "What are we working with?",
     description:
-      "Deep research to understand your brand, market, and audience — uncovering the insights that matter.",
+      "The business, market, audience, competitors, goals and current perception — including the strengths and weaknesses nobody has written down.",
   },
   {
-    title: "Define",
-    icon: <Mic className="w-6 h-6" />,
+    title: "Position",
+    icon: Target,
+    question: "How should this brand be positioned?",
     description:
-      "Translate insights into a clear strategy, messaging, and positioning that sets your brand apart.",
+      "What the brand should stand for, who it is for, why it matters, and where it should sit in the market.",
   },
   {
-    title: "Deliver",
-    icon: <Plane className="w-6 h-6" />,
+    title: "Communicate",
+    icon: MessageSquare,
+    question: "What should the brand say, and how should it say it?",
     description:
-      "Implement designs and campaigns that align with your strategy, ensuring measurable growth and impact.",
+      "Messaging, voice, language and communication principles — the foundation of how the business speaks.",
+  },
+  {
+    title: "Experience",
+    icon: Users,
+    question: "What should it feel like to interact with this brand?",
+    description:
+      "How people encounter the brand across the website, social, packaging, sales process and customer service.",
+  },
+  {
+    title: "Express",
+    icon: Palette,
+    question: "What should this brand look like?",
+    description:
+      "Identity, typography, colour, photography and layout. Visual identity comes after the thinking, never before it.",
+  },
+  {
+    title: "Systemize",
+    icon: Layers,
+    question: "How does this brand keep working as the business grows?",
+    description:
+      "Guidelines, templates, design systems and implementation tools — so the brand holds together without us in the room.",
   },
 ];
 
 export const Approach = () => {
   return (
     <section className="relative bg-white" id="approach">
-      <div className="mx-auto flex flex-col lg:flex-row justify-between gap-12 max-w-7xl px-4 lg:px-6 py-6 lg:py-32">
-        {/* Soft background circle for depth */}
-        {/* <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-[#1F4FD8]/10 blur-3xl pointer-events-none" /> */}
-        {/* <div className="absolute -bottom-32 -right-32 w-96 h-96 rounded-full bg-[#1F4FD8]/10 blur-3xl pointer-events-none" /> */}
-
-        <div className="flex-1">
-          {/* Header */}
-          <div className="max-w-3xl">
+      <div className="mx-auto max-w-7xl px-4 py-20 lg:px-6 lg:py-32">
+        <div className="flex flex-col justify-between gap-12 lg:flex-row">
+          <div className="max-w-3xl flex-1">
             <motion.span
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
+              className="inline-block"
             >
               <Pill text="Our Approach" />
-              
             </motion.span>
 
             <motion.h2
@@ -52,7 +74,7 @@ export const Approach = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="font-heading mt-6 text-3xl md:text-4xl font-semibold tracking-tight text-[#0B1C2D] leading-tight"
+              className="font-display mt-6 text-3xl font-semibold tracking-tight text-ink leading-tight text-balance md:text-4xl"
             >
               Strategy before design. <br /> Clarity before growth.
             </motion.h2>
@@ -62,57 +84,60 @@ export const Approach = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="mt-6 text-base md:text-lg leading-relaxed text-[#4B5C73]"
+              className="mt-6 text-base leading-relaxed text-ink-muted md:text-lg"
             >
-              We work with ambitious brands to uncover insights, define
-              direction, and build foundations that enable long-term growth.
-              Every engagement begins with understanding — not assumptions.
+              Branding is the deliberate combination of strategy, positioning,
+              communication, experience, visuals and systems that shapes how a
+              business is understood and perceived. So we work through six
+              stages, in order, every time.
             </motion.p>
           </div>
 
-          {/* Steps */}
-          <div className="mt-16 flex flex-col gap-4">
-            {steps.map((step, idx) => (
-              <motion.div
-                key={idx}
+          <div className="w-full flex-1 lg:sticky lg:top-24 lg:self-start">
+            <div className="relative aspect-4/3 overflow-hidden rounded-[2rem] border border-ink/10 bg-surface-tint shadow-sm">
+              <Image
+                src="/images/analysis.png"
+                alt="Brand strategy and analysis visual"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
+            </div>
+          </div>
+        </div>
+
+        <ol className="mt-16 grid gap-4 sm:grid-cols-2 lg:mt-20 lg:grid-cols-3">
+          {steps.map((step, idx) => {
+            const Icon = step.icon;
+            return (
+              <motion.li
+                key={step.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 * idx }}
-                whileHover={{ scale: 1.001 }}
-                className="flex flex-col items-center md:items-start gap-4 p-6 rounded-[2rem] transition-transform bg-white border border-gray-100 shadow-sm hover:shadow-md"
+                transition={{ duration: 0.6, delay: 0.1 * idx }}
+                className="flex flex-col gap-4 rounded-[2rem] border border-slate-100 bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
               >
-                {/* Icon */}
-                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-blue-50 text-blue-accent/70">
-                  {step.icon}
+                <div className="flex items-center gap-4">
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-blue-50 text-brand-ink">
+                    <Icon className="h-6 w-6" aria-hidden="true" />
+                  </span>
+                  <span className="font-display text-sm font-bold uppercase tracking-widest text-muted-foreground">
+                    {String(idx + 1).padStart(2, "0")}
+                  </span>
                 </div>
 
-                {/* Step title */}
-                <h3 className="text-lg font-semibold text-[#0B1C2D]">
-                  {step.title}
-                </h3>
+                <h3 className="text-lg font-semibold text-ink">{step.title}</h3>
 
-                {/* Step description */}
-                <p className="text-center md:text-left text-[#4B5C73]">
-                  {step.description}
+                <p className="font-display text-base leading-snug text-brand-ink">
+                  {step.question}
                 </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
 
-        {/*Left column Image container */}
-        <div className="flex-1 lg:sticky top-24 self-start w-full ">
-          <div className="relative aspect-4/3 rounded-[2rem] border border-[#0B1C2D]/10 bg-[#F7F9FC] overflow-hidden shadow-sm">
-            <Image
-              src="/images/analysis.png"
-              alt="Brand strategy and analysis visual"
-              fill
-              className="object-cover"
-              priority
-            />
-          </div>
-        </div>
+                <p className="text-ink-muted">{step.description}</p>
+              </motion.li>
+            );
+          })}
+        </ol>
       </div>
     </section>
   );

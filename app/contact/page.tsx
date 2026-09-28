@@ -4,17 +4,18 @@ import ContactForm from "@/components/contact/ContactForm";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch with our branding experts to discuss your project, request a proposal, or book a discovery call.",
+    "Tell us about your business and what you need. We'll suggest the most useful next step — including if that is nothing yet.",
   openGraph: {
     title: "Contact",
-    description: "Get in touch with our branding experts to discuss your project, request a proposal, or book a discovery call.",
-    url: "https://be-studio.vercel.app/contact",
+    description:
+      "Tell us about your business and what you need. We'll suggest the most useful next step — including if that is nothing yet.",
+    url: "/contact",
   },
 };
 
 const Page = () => {
   return (
-    <div className="flex flex-col min-h-screen justify-center items-center px-4">
+    <div className="flex min-h-screen flex-col items-center justify-center px-4">
       <ContactForm />
     </div>
   );

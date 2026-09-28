@@ -1,53 +1,90 @@
 "use client"
 
-import { useState } from "react"
+import { useMemo, useState } from "react"
 import Image from "next/image"
-import { motion, AnimatePresence } from "framer-motion"
-import { ArrowRight, Search } from "lucide-react"
-import { cn } from "@/lib/utils"
-import { portfolioProjects, Project } from "@/lib/portfolio-config"
-import { Button } from "../ui/button"
-
 import Link from "next/link"
-
-const categories = ["All", ...new Set(portfolioProjects.map(p => p.category))]
+import { motion, AnimatePresence } from "framer-motion"
+import { ArrowRight } from "lucide-react"
+import { cn } from "@/lib/utils"
+import { portfolioProjects } from "@/lib/portfolio-config"
 
 export function PortfolioGrid() {
   const [activeCategory, setActiveCategory] = useState("All")
 
-  const filteredProjects = activeCategory === "All" 
-    ? portfolioProjects 
-    : portfolioProjects.filter(p => p.category === activeCategory)
+  const categories = useMemo(
+    () => ["All", ...new Set(portfolioProjects.map((p) => p.category))],
+    []
+  )
+
+  const filteredProjects =
+    activeCategory === "All"
+      ? portfolioProjects
+      : portfolioProjects.filter((p) => p.category === activeCategory)
+
+  // No published work yet. Say so plainly rather than filling the space.
+  if (portfolioProjects.length === 0) {
+    return (
+      <section className="relative overflow-hidden bg-white py-20 md:py-32">
+        <div className="mx-auto max-w-3xl px-5 text-center sm:px-6 lg:px-8">
+          <h2 className="font-display text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl text-balance">
+            Our first case studies are being published
+          </h2>
+          <p className="mt-6 text-base leading-relaxed text-slate-600 md:text-lg">
+            We would rather show you real work than fill this page with
+            placeholder projects. In the meantime, the most useful thing we can
+            do is talk about what your business actually needs.
+          </p>
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Link
+              href="/contact"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-ink px-8 py-3 font-semibold text-white transition-colors hover:bg-brand-deep focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:w-auto"
+            >
+              Start a conversation
+              <ArrowRight size={18} aria-hidden="true" />
+            </Link>
+            <Link
+              href="/#services"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-slate-200 px-8 py-3 font-semibold text-slate-700 transition-colors hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:w-auto"
+            >
+              See our engagements
+            </Link>
+          </div>
+        </div>
+      </section>
+    )
+  }
 
   return (
-    <section className="relative bg-white py-20 md:py-32 overflow-hidden">
+    <section className="relative overflow-hidden bg-white py-20 md:py-32">
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
-        
-        {/* Category Filter */}
+        {/* Category filter — wraps rather than hiding a scrollbar, so every
+            filter stays visible and reachable. */}
         <div className="relative mb-12 md:mb-20">
-          <div className="flex items-center gap-3 overflow-x-auto pb-4 md:pb-0 no-scrollbar md:flex-wrap md:justify-center">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className={cn(
-                  "whitespace-nowrap px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 hover:cursor-pointer",
-                  activeCategory === category
-                    ? "bg-blue-accent text-white shadow-lg shadow-blue-200"
-                    : "bg-slate-50 text-slate-600 hover:bg-slate-100 hover:text-slate-900"
-                )}
-              >
-                {category}
-              </button>
-            ))}
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            {categories.map((category) => {
+              const isActive = activeCategory === category
+              return (
+                <button
+                  key={category}
+                  type="button"
+                  aria-pressed={isActive}
+                  onClick={() => setActiveCategory(category)}
+                  className={cn(
+                    "whitespace-nowrap rounded-full px-6 py-3 text-sm font-medium transition-colors hover:cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
+                    isActive
+                      ? "bg-brand-ink text-white shadow-lg shadow-brand/20"
+                      : "bg-slate-50 text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+                  )}
+                >
+                  {category}
+                </button>
+              )
+            })}
           </div>
         </div>
 
-        {/* Projects Grid */}
-        <motion.div 
-          layout
-          className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
-        >
+        {/* Projects grid */}
+        <motion.div layout className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project, i) => (
               <motion.div
@@ -60,49 +97,49 @@ export function PortfolioGrid() {
               >
                 <Link
                   href={`/portfolio/${project.slug}`}
-                  className="group relative flex flex-col rounded-[2rem] overflow-hidden border border-slate-100 bg-white shadow-sm hover:shadow-xl hover:border-blue-100 transition-all duration-500 h-full"
+                  className="group relative flex h-full flex-col overflow-hidden rounded-[2rem] border border-slate-100 bg-white shadow-sm transition-all duration-500 hover:border-blue-100 hover:shadow-xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
                 >
-                  {/* Image Container */}
                   <div className="relative aspect-[4/3] overflow-hidden">
                     <Image
                       src={project.image}
                       alt={project.title}
                       fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-linear-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    
-                    {/* Category Badge (Floating) */}
-                    <div className="absolute top-4 left-4">
-                      <span className="px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-[10px] font-bold uppercase tracking-widest text-blue-accent shadow-sm">
+                    <div className="absolute inset-0 bg-linear-to-t from-slate-900/60 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
+                    <div className="absolute left-4 top-4">
+                      <span className="rounded-full bg-white/90 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-brand-ink shadow-sm backdrop-blur-sm">
                         {project.category}
                       </span>
                     </div>
                   </div>
 
-                  {/* Content */}
                   <div className="flex-1 p-7 md:p-8">
-                    <h3 className="text-xl md:text-2xl font-semibold text-slate-900 tracking-tight group-hover:text-blue-accent transition-colors">
+                    <h3 className="text-xl font-semibold tracking-tight text-slate-900 transition-colors group-hover:text-brand-ink md:text-2xl">
                       {project.title}
                     </h3>
-                    
-                    <p className="mt-3 text-sm leading-relaxed text-slate-600 line-clamp-2">
+
+                    <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-slate-600">
                       {project.description}
                     </p>
 
                     <div className="mt-6 flex flex-wrap gap-2">
-                      {project.tags.slice(0, 3).map(tag => (
-                        <span key={tag} className="text-[11px] font-medium text-slate-400 bg-slate-50 px-2 py-0.5 rounded">
+                      {project.tags.slice(0, 3).map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded bg-slate-100 px-2 py-0.5 text-[11px] font-medium text-slate-600"
+                        >
                           #{tag}
                         </span>
                       ))}
                     </div>
                   </div>
 
-                  {/* Hover Action */}
-                  <div className="absolute bottom-6 right-8 opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500">
-                    <div className="w-10 h-10 rounded-full bg-blue-accent text-white flex items-center justify-center shadow-lg">
-                      <ArrowRight size={20} />
+                  <div className="absolute bottom-6 right-8 translate-x-4 opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-100">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-ink text-white shadow-lg">
+                      <ArrowRight size={20} aria-hidden="true" />
                     </div>
                   </div>
                 </Link>
@@ -112,8 +149,10 @@ export function PortfolioGrid() {
         </motion.div>
 
         {filteredProjects.length === 0 && (
-          <div className="text-center py-20">
-            <p className="text-slate-500">No projects found in this category.</p>
+          <div className="py-20 text-center">
+            <p className="text-slate-600">
+              No published work in this category yet.
+            </p>
           </div>
         )}
       </div>

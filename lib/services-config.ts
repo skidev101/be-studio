@@ -1,54 +1,54 @@
 // lib/services-config.ts
-
-export type ServiceTier = 'premium' | 'standard' | 'flexible'
+//
+// Source of truth: docs/BE Graphic Studio service system.pdf and
+// docs/BE GRAPHIC STUDIO — BRAND RESTRUCTURE FOUNDATION.pdf
+//
+// The client-facing structure is the five ENGAGEMENTS from §17, not a list of
+// disciplines. A client arrives with a need ("I need to build my brand
+// properly"), we map that to an engagement, and scope the actual work inside.
+//
+// §01 is explicit that BE does not sell Basic → Standard → Premium, so there
+// is deliberately no tier field here.
+//
+// §20 fixes what may be shown publicly: ₦150k Discovery, ₦500k+ Build, and
+// Custom for Evolution / Implementation / Partnership. Do not publish the
+// internal ladder.
 
 export interface ServiceConfig {
   slug: string
-  tier: ServiceTier
   title: string
+  /** Shorter label for nav and footer columns. Falls back to `title`. */
+  navLabel?: string
+  /** Highlighted on the home-page services grid. */
+  featured?: boolean
   tagline: string
   description: string
   items: string[]
-  
-  // Hero section
   hero: {
     badge: string
     headline: string
     subheadline: string
     ctaPrimary: string
-    ctaSecondary?: string
   }
-  
-  // Custom page flag
-  hasCustomPage: boolean
-  
-  // For template-based pages
   templateContent?: {
     problem: {
       title: string
       description: string
-      painPoints: Array<{ stat: string; desc: string }>
+      /** Short lead-in word, not a statistic — the docs publish no metrics. */
+      points: Array<{ lead: string; desc: string }>
     }
     process: {
       title: string
-      steps: Array<{
-        title: string
-        desc: string
-        timeline?: string
-      }>
+      steps: Array<{ title: string; desc: string; timeline?: string }>
     }
     deliverables: {
       title: string
       items: string[]
     }
-    pricing?: {
+    /** Public investment statement. §20: never expose the full ladder. */
+    investment: {
       startingAt: string
-      packages: Array<{
-        name: string
-        price: string
-        features: string[]
-        recommended?: boolean
-      }>
+      note: string
     }
     cta: {
       title: string
@@ -58,297 +58,287 @@ export interface ServiceConfig {
 }
 
 export const servicesConfig: Record<string, ServiceConfig> = {
-  'full-brand-build': {
-    slug: 'full-brand-build',
-    tier: 'premium',
-    title: 'Full Brand Build',
-    tagline: 'The Flagship Service',
-    description: 'Our most comprehensive service for startups and businesses needing an end-to-end transformation.',
+  'brand-discovery': {
+    slug: 'brand-discovery',
+    title: 'Brand Discovery',
+    navLabel: 'Brand Discovery',
+    tagline: 'Start by understanding',
+    description:
+      'For businesses saying: "Something isn\'t working with our brand, but we don\'t know what."',
     items: [
-      'Analysis + Strategy + Identity',
-      'Brand guidelines & rollout',
-      'Marketing & growth asset suite',
+      'Brand, visual and communication audit',
+      'Market and competitor review',
+      'Recommended next steps',
     ],
     hero: {
-      badge: 'Flagship Service',
-      headline: 'The Ultimate Brand Foundation',
-      subheadline: 'Go from zero to a market-leading brand with our comprehensive end-to-end partnership.',
-      ctaPrimary: 'Launch Your Brand',
+      badge: 'Brand Discovery',
+      headline: 'Something isn\'t working. Let\'s find out what.',
+      subheadline:
+        'A structured audit of how your brand is understood today, where it is losing ground, and what to do next.',
+      ctaPrimary: 'Start with Discovery',
     },
-    hasCustomPage: false,
+  },
+
+  'brand-build': {
+    slug: 'brand-build',
+    title: 'Brand Build',
+    navLabel: 'Brand Build',
+    featured: true,
+    tagline: 'One of BE\'s main engagements',
+    description:
+      'It is not a fixed package. We build the brand the business actually needs.',
+    items: [
+      'Strategy, positioning and messaging',
+      'Visual identity and core applications',
+      'Brand guidelines and systems',
+    ],
+    hero: {
+      badge: 'Brand Build',
+      headline: 'Build the brand your business actually needs.',
+      subheadline:
+        'Strategy, positioning, communication, experience, identity and systems — combined to fit the project rather than sold as a fixed package.',
+      ctaPrimary: 'Start a Brand Build',
+    },
+  },
+
+  'brand-evolution': {
+    slug: 'brand-evolution',
+    title: 'Brand Evolution',
+    navLabel: 'Brand Evolution',
+    tagline: 'For brands that have outgrown their current form',
+    description:
+      'This is our alternative to casually calling everything a rebrand.',
+    items: [
+      'Existing brand audit and what-to-keep assessment',
+      'Strategic and visual refinement',
+      'Updated guidelines and rollout support',
+    ],
+    hero: {
+      badge: 'Brand Evolution',
+      headline: 'Your business has changed. Your brand should follow.',
+      subheadline:
+        'We identify what to keep and what to evolve, then refine the strategy, the communication and the visual system around it.',
+      ctaPrimary: 'Discuss an Evolution',
+    },
     templateContent: {
       problem: {
-        title: 'Don\'t Launch Without a Soul',
-        description: 'A fragmented brand is a weak brand. We build everything you need for a powerful, cohesive, and successful launch.',
-        painPoints: [
-          { stat: '90%', desc: 'of purchasing decisions are made subconsciously based on branding' },
-          { stat: 'All-in', desc: 'approach saves months of back-and-forth between agencies' },
-          { stat: 'Bespoke', desc: 'solutions for high-growth startups and established firms' },
+        title: 'When the brand stops matching the business',
+        description:
+          'Businesses grow faster than their brands do. What worked at the start can start working against you — not because it was wrong, but because it no longer describes who you are.',
+        points: [
+          {
+            lead: 'Drift',
+            desc: 'Your messaging, visuals and touchpoints have each evolved separately.',
+          },
+          {
+            lead: 'Perception',
+            desc: 'The market reads you as smaller, older or less capable than you are.',
+          },
+          {
+            lead: 'Progress',
+            desc: 'You are held back by decisions that made sense two years ago.',
+          },
         ],
       },
       process: {
-        title: 'The Complete Roadmap',
+        title: 'How an Evolution runs',
         steps: [
-          { title: 'Foundation', desc: 'Analysis and Strategy phase to find your "Why".' },
-          { title: 'Creation', desc: 'Visual Identity and Asset phase to build your "How".' },
-          { title: 'Launch', desc: 'Final rollout and implementation support.' },
+          {
+            title: 'Heritage audit',
+            desc: 'We establish what your brand has earned the right to keep, and what is holding it back.',
+          },
+          {
+            title: 'Strategic refinement',
+            desc: 'Positioning and communication are sharpened around where the business is going.',
+          },
+          {
+            title: 'Identity and rollout',
+            desc: 'The visual system is evolved where required, then rolled out with updated guidelines.',
+          },
         ],
       },
       deliverables: {
-        title: 'Full Brand Ecosystem',
+        title: 'What you receive',
         items: [
-          'Comprehensive brand strategy',
-          'Full visual identity system',
-          'Complete marketing asset suite',
-          'Extensive brand guidelines',
-          'Website design assets',
-          '6 months of brand support',
+          'Existing brand audit',
+          'What-to-keep / what-to-change assessment',
+          'Positioning and communication refinement',
+          'Visual evolution, with identity redesign where required',
+          'Updated brand guidelines',
+          'Rollout and implementation support',
         ],
       },
+      investment: {
+        startingAt: 'Custom',
+        note: 'Evolution is scoped around what your brand has already earned and what actually needs to change.',
+      },
       cta: {
-        title: 'Build Your Legacy Today',
-        description: 'Starting at ₦500,000. A complete brand build scoped to your business.',
+        title: 'Evolve without losing what your brand has earned',
+        description:
+          'A short conversation is usually enough for us to tell you whether you need an evolution or something smaller.',
       },
     },
   },
 
-  'brand-analysis': {
-    slug: 'brand-analysis',
-    tier: 'premium',
-    title: 'Brand Analysis',
-    tagline: 'Data-Driven Brand Intelligence',
-    description: 'Evaluate the current state of a brand and identify opportunities for improvement.',
+  'brand-implementation': {
+    slug: 'brand-implementation',
+    title: 'Brand Implementation',
+    navLabel: 'Brand Implementation',
+    tagline: 'For brands that need to reach the market',
+    description:
+      'For brands that already have their strategy and identity but haven\'t successfully put the brand into the marketplace.',
     items: [
-      'Brand audit & market analysis',
-      'Competitor & audience insight',
-      'Strategic recommendations',
+      'Digital, physical and commercial applications',
+      'Templates and internal brand tools',
+      'Rollout and implementation guidance',
     ],
     hero: {
-      badge: 'Brand Analysis',
-      headline: 'Stop Guessing. Start Knowing.',
-      subheadline: 'Data-driven brand analysis that reveals how customers truly perceive you and where the exact positioning gaps are costing you growth.',
-      ctaPrimary: 'Get Brand Assessment',
+      badge: 'Brand Implementation',
+      headline: 'You have the brand. Now put it to work.',
+      subheadline:
+        'We apply your existing strategy and identity across the touchpoints your market actually sees, and give your team the tools to keep it consistent.',
+      ctaPrimary: 'Plan an Implementation',
     },
-    hasCustomPage: true,
-  },
-  
-  'brand-strategy': {
-    slug: 'brand-strategy',
-    tier: 'premium',
-    title: 'Brand Strategy',
-    tagline: 'Define Your Market Position',
-    description: 'Define how the brand should position itself in the market and communicate with its audience.',
-    items: [
-      'Brand positioning & purpose',
-      'Mission, vision & values',
-      'Messaging pillars & tone of voice',
-    ],
-    hero: {
-      badge: 'Brand Strategy',
-      headline: 'A Strategy That Commands Attention',
-      subheadline: 'Align your business goals with a powerful brand narrative that resonates with your ideal audience.',
-      ctaPrimary: 'Start Strategy Session',
-    },
-    hasCustomPage: false,
     templateContent: {
       problem: {
-        title: 'Why Strategy Comes First',
-        description: 'Without a clear strategy, even the best design fails to connect. We define your "Why" before we design your "How".',
-        painPoints: [
-          { stat: '80%', desc: 'of customers buy based on brand values, not just price' },
-          { stat: '2.3x', desc: 'faster growth for companies with documented brand strategies' },
-          { stat: '50%', desc: 'lower marketing costs when messaging is precisely targeted' },
+        title: 'A brand that exists but isn\'t being used',
+        description:
+          'Strategy documents and identity files do not build recognition on their own. Until the brand is applied consistently where your market meets it, the work stays invisible.',
+        points: [
+          {
+            lead: 'Digital',
+            desc: 'Website, social, email and digital advertising tell different stories.',
+          },
+          {
+            lead: 'Physical',
+            desc: 'Stationery, packaging and signage are produced ad hoc.',
+          },
+          {
+            lead: 'Commercial',
+            desc: 'Proposals and sales materials are rebuilt from scratch every time.',
+          },
         ],
       },
       process: {
-        title: 'Our Strategic Framework',
+        title: 'How an Implementation runs',
         steps: [
-          { title: 'Discovery Workshop', desc: 'Deep-dive into your business model, goals, and audience.' },
-          { title: 'Positioning & Voice', desc: 'Crafting your unique space in the market and how you speak.' },
-          { title: 'Strategic Document', desc: 'Final comprehensive brand strategy guide.' },
+          {
+            title: 'Application audit',
+            desc: 'We map the touchpoints that matter most and where the brand currently breaks down.',
+          },
+          {
+            title: 'Build',
+            desc: 'The priority applications are designed, using the identity and strategy you already have.',
+          },
+          {
+            title: 'Handover',
+            desc: 'Templates and internal guidance are set up so the brand holds without us.',
+          },
         ],
       },
       deliverables: {
-        title: 'Strategic Deliverables',
+        title: 'What you receive',
         items: [
-          'Brand positioning statement',
-          'Core values & brand purpose',
-          'Mission & Vision statements',
-          'Target audience personas',
-          'Tone of voice framework',
-          'Key messaging pillars',
+          'Brand rollout across priority touchpoints',
+          'Digital applications and social media system',
+          'Marketing collateral and campaign assets',
+          'Presentation and proposal systems',
+          'Internal brand tools and templates',
+          'Brand implementation guidance',
         ],
+      },
+      investment: {
+        startingAt: 'Custom',
+        note: 'Implementation is scoped to the actual number and complexity of applications, not a fixed package.',
       },
       cta: {
-        title: 'Ready for a Strategic Foundation?',
-        description: 'Starting at ₦250,000. Let\'s define your brand\'s future today.',
-      },
-    },
-  },
-  
-  'brand-identity-system': {
-    slug: 'brand-identity-system',
-    tier: 'premium',
-    title: 'Brand Identity System',
-    tagline: 'Strong Visual Presence',
-    description: 'Translate strategy into a strong visual identity system including logos, typography, and color.',
-    items: [
-      'Primary, secondary & icon logos',
-      'Typography & color palette',
-      'Graphic elements & patterns',
-    ],
-    hero: {
-      badge: 'Identity System',
-      headline: 'Visual Identity That Builds Trust',
-      subheadline: 'Premium visual systems designed to make your brand instantly recognizable across all platforms.',
-      ctaPrimary: 'Design Your Identity',
-    },
-    hasCustomPage: false,
-    templateContent: {
-      problem: {
-        title: 'Consistency is Credibility',
-        description: 'An inconsistent visual identity makes your business look amateur. We build systems that ensure you look professional everywhere.',
-        painPoints: [
-          { stat: '33%', desc: 'increase in revenue with consistent brand presentation' },
-          { stat: '1/10s', desc: 'for a customer to form a first impression of your brand' },
-          { stat: '7x', desc: 'more brand recall with professional visual systems' },
-        ],
-      },
-      process: {
-        title: 'The Design Journey',
-        steps: [
-          { title: 'Concept Development', desc: 'Exploring visual directions that align with your strategy.' },
-          { title: 'Refinement', desc: 'Iterating on selected concepts to reach pixel-perfection.' },
-          { title: 'System Rollout', desc: 'Building out the full toolkit of brand assets.' },
-        ],
-      },
-      deliverables: {
-        title: 'Visual Identity Assets',
-        items: [
-          'Primary & secondary logos',
-          'Brand mark/iconography',
-          'Typography system',
-          'Complete color palette',
-          'Brand patterns & textures',
-          'Usage guidelines (Brand Book)',
-        ],
-      },
-      cta: {
-        title: 'Elevate Your Visual Identity',
-        description: 'Starting at ₦300,000. Build a brand that looks as good as it performs.',
+        title: 'Turn the brand you built into the brand people see',
+        description:
+          'Tell us which touchpoints matter most and we will scope the implementation around them.',
       },
     },
   },
 
-  'brand-repositioning': {
-    slug: 'brand-repositioning',
-    tier: 'premium',
-    title: 'Brand Repositioning / Rebrand',
-    tagline: 'Evolve Your Brand',
-    description: 'Help established brands evolve and reposition in their market to reach new heights.',
+  'brand-partnership': {
+    slug: 'brand-partnership',
+    title: 'Brand Partnership',
+    navLabel: 'Brand Partnership',
+    tagline: 'Ongoing brand support',
+    description:
+      'For businesses that need someone to stay with them and help manage the brand as it grows.',
     items: [
-      'Strategic repositioning audit',
-      'Identity evolution & redesign',
-      'Brand rollout strategy',
+      'Brand guidance and creative review',
+      'Consistency checks and design direction',
+      'Strategic advice as you grow',
     ],
     hero: {
-      badge: 'Repositioning',
-      headline: 'Evolve Without Losing Your Soul',
-      subheadline: 'We help established brands modernize their look and message to stay relevant in a changing market.',
-      ctaPrimary: 'Discuss Rebrand',
+      badge: 'Brand Partnership',
+      headline: 'Someone in your corner, protecting the brand.',
+      subheadline:
+        'Ongoing guidance from a BE Brand Expert so that what you built stays consistent, and keeps evolving with the business.',
+      ctaPrimary: 'Discuss a Partnership',
     },
-    hasCustomPage: false,
     templateContent: {
       problem: {
-        title: 'Is Your Brand Holding You Back?',
-        description: 'As your business grows, your brand needs to keep up. We ensure your identity reflects who you are today, not who you were years ago.',
-        painPoints: [
-          { stat: '5-7yr', desc: 'average lifespan of a brand identity before needing an update' },
-          { stat: '64%', desc: 'of customers feel more connected to brands that evolve with them' },
-          { stat: '25%+', desc: 'average growth post-successful rebranding' },
+        title: 'Brands decay quietly after handover',
+        description:
+          'Without someone protecting it, a brand drifts the moment it meets day-to-day pressure. That is the slow version of the problem, and it is the expensive one.',
+        points: [
+          {
+            lead: 'Drift',
+            desc: 'New material gets produced without reference to the guidelines.',
+          },
+          {
+            lead: 'Judgement',
+            desc: 'There is no senior view on whether a decision strengthens or dilutes the brand.',
+          },
+          {
+            lead: 'Momentum',
+            desc: 'The brand stops evolving at exactly the point the business starts moving.',
+          },
         ],
       },
       process: {
-        title: 'The Evolution Process',
+        title: 'How a Partnership works',
         steps: [
-          { title: 'Heritage Audit', desc: 'Identifying what to keep and what to evolve.' },
-          { title: 'Strategic Pivot', desc: 'Aligning the brand with new goals or audiences.' },
-          { title: 'Identity Refresh', desc: 'Modernizing the visual system for today\'s standards.' },
+          {
+            title: 'Scope',
+            desc: 'We agree response times, meeting frequency and deliverable limits up front.',
+          },
+          {
+            title: 'Ongoing review',
+            desc: 'A BE Brand Expert reviews creative work and keeps the brand consistent.',
+          },
+          {
+            title: 'Guidance',
+            desc: 'Strategic advice and brand evolution guidance as the business changes.',
+          },
         ],
       },
       deliverables: {
-        title: 'Rebrand Deliverables',
+        title: 'What a BE Brand Expert does',
         items: [
-          'Full visual identity refresh',
-          'Updated messaging framework',
-          'Brand rollout plan',
-          'Updated collateral system',
-          'New brand guidelines',
-          'Asset migration support',
+          'Brand guidance',
+          'Creative review',
+          'Brand consistency checks',
+          'Design direction',
+          'Communication guidance',
+          'Content review and strategic advice',
         ],
+      },
+      investment: {
+        startingAt: 'Custom',
+        note: 'Retainers are defined by response times, meeting frequency, deliverable limits and scope — not by unlimited access.',
       },
       cta: {
-        title: 'Ready for Your Brand\'s Next Chapter?',
-        description: 'Starting at ₦450,000. Let\'s evolve your brand together.',
-      },
-    },
-  },
-
-  'brand-growth-assets': {
-    slug: 'brand-growth-assets',
-    tier: 'standard',
-    title: 'Brand Growth Assets',
-    tagline: 'Scale Your Marketing',
-    description: 'Create assets that help businesses consistently apply their brand across marketing channels.',
-    items: [
-      'Social media design systems',
-      'Marketing & campaign templates',
-      'Pitch decks & sales collateral',
-    ],
-    hero: {
-      badge: 'Growth Assets',
-      headline: 'Fuel Your Marketing Engine',
-      subheadline: 'Professional templates and assets that empower your team to create content that converts.',
-      ctaPrimary: 'Get Your Assets',
-    },
-    hasCustomPage: false,
-    templateContent: {
-      problem: {
-        title: 'The Content Creation Struggle',
-        description: 'Stop wasting time designing from scratch. We build systems that allow you to produce high-quality content in minutes.',
-        painPoints: [
-          { stat: '10hr+', desc: 'saved weekly with professional design templates' },
-          { stat: '3.4x', desc: 'higher engagement on professionally designed social posts' },
-          { stat: '100%', desc: 'brand consistency across all marketing channels' },
-        ],
-      },
-      process: {
-        title: 'Asset Development',
-        steps: [
-          { title: 'Needs Audit', desc: 'Identifying the most impactful assets for your marketing.' },
-          { title: 'System Design', desc: 'Creating flexible, easy-to-use templates.' },
-          { title: 'Final Handover', desc: 'Providing source files and training if needed.' },
-        ],
-      },
-      deliverables: {
-        title: 'Marketing Toolkit',
-        items: [
-          'Social media post templates',
-          'Email marketing visuals',
-          'Ad creative templates',
-          'Pitch deck & presentation suite',
-          'Sales sheets & brochures',
-          'Marketing icons & graphics',
-        ],
-      },
-      cta: {
-        title: 'Supercharge Your Marketing',
-        description: 'Starting at ₦150,000. Get the tools you need to grow.',
+        title: 'Keep the brand working as the business grows',
+        description:
+          'Bring the brand you have already built under ongoing care rather than starting over each time.',
       },
     },
   },
 }
 
 export const getServiceConfig = (slug: string): ServiceConfig | null => {
-  return servicesConfig[slug] || null;
+  return servicesConfig[slug] ?? null
 }

@@ -118,7 +118,7 @@ const styles = {
     left: '0',
     right: '0',
     height: '4px',
-    background: 'linear-gradient(90deg, #3b82f6 0%, #8b5cf6 100%)',
+    background: 'linear-gradient(90deg, #0d6d80 0%, #23bbd3 100%)',
   },
   heading: {
     margin: '0 0 8px 0',
@@ -172,14 +172,14 @@ const styles = {
   },
   emailLink: {
     fontSize: '16px',
-    color: '#3b82f6',
+    color: '#0d6d80',
     textDecoration: 'none',
     fontWeight: '500',
     display: 'inline-block' as const,
   },
   websiteLink: {
     fontSize: '16px',
-    color: '#3b82f6',
+    color: '#0d6d80',
     textDecoration: 'none',
     fontWeight: '500',
     display: 'inline-block' as const,
@@ -191,10 +191,9 @@ const styles = {
     margin: '32px 0',
   },
   messageBox: {
-    backgroundColor: '#f8fafc',
+    backgroundColor: '#f1f7f8',
     padding: '20px',
     borderRadius: '8px',
-    borderLeft: '4px solid #3b82f6',
   },
   message: {
     margin: '0',
@@ -211,6 +210,6 @@ const styles = {
   footerText: {
     margin: '0',
     fontSize: '13px',
-    color: '#94a3b8',
+    color: '#5b6b80',
   },
 };
