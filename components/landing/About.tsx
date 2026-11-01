@@ -26,17 +26,13 @@ import { motion } from "framer-motion";
             </div> */}
 
             <h2 className="font-heading mt-6 text-3xl md:text-4xl font-semibold tracking-tight text-slate-900">
-              About Us
+              Branding goes beyond how your business looks.
             </h2>
 
             <p className="mt-6 text-base lg:text-lg leading-relaxed text-slate-600 max-w-3xl mx-auto">
-              BE Graphic Studio is a global design agency specializing in
-              business branding. We help brands create clean intentional and
-              well tailored design assets that position them for growth. <br />
-              Our focus is simple- Helping your business grow, stand out and
-              communicate with clarity. We design for excellence and back with
-              clear strategies that drives real Businesses results and make
-              meaningful impact.
+              At BE Graphic Studio, we believe building a strong brand takes more than good design. It requires a clear understanding of the business, a defined position, purposeful communication, meaningful experiences, and a visual identity that brings everything together.
+
+We work with growing businesses to bring these elements together, making quality branding more accessible and helping them build brands with clarity, intention, and room to grow.
             </p>
           </motion.div>
         </div>
