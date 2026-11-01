@@ -10,19 +10,19 @@ const steps = [
     title: "Discover",
     icon: <Search className="w-6 h-6" />,
     description:
-      "Deep research to understand your brand, market, and audience — uncovering the insights that matter.",
+      "We start by understanding your business, its audience, market, and existing brand. Through research and analysis, we identify the challenges, opportunities, and areas that need attention.",
   },
   {
     title: "Define",
     icon: <Mic className="w-6 h-6" />,
     description:
-      "Translate insights into a clear strategy, messaging, and positioning that sets your brand apart.",
+      "With a clearer understanding of the business, we establish the brand's strategic direction. This includes its positioning, messaging, communication, and the overall direction it should take.",
   },
   {
     title: "Deliver",
     icon: <Plane className="w-6 h-6" />,
     description:
-      "Implement designs and campaigns that align with your strategy, ensuring measurable growth and impact.",
+      "We translate the agreed direction into practical brand solutions, from visual identity and brand applications to experiences and systems that help the brand remain consistent.",
   },
 ];
 
@@ -64,9 +64,7 @@ export const Approach = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="mt-6 text-base md:text-lg leading-relaxed text-[#4B5C73]"
             >
-              We work with ambitious brands to uncover insights, define
-              direction, and build foundations that enable long-term growth.
-              Every engagement begins with understanding — not assumptions.
+              Every strong brand starts with understanding. We take the time to understand your business, identify what it needs, establish the right direction, and bring that direction to life through thoughtful branding.
             </motion.p>
           </div>
 
