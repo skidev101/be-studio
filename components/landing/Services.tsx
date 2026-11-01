@@ -15,15 +15,16 @@ type Service = {
   slug: string
 }
 
+
 const services: Service[] = [
   {
     title: "Full Brand Build",
     description:
-      "Our flagship end-to-end service for startups and companies undergoing complete transformation.",
+      "A comprehensive branding engagement for businesses looking to establish a strong brand foundation or build a more complete brand system.",
     items: [
-      "Includes Analysis, Strategy & Identity",
-      "Full Application & Growth Assets",
-      "Comprehensive Brand Guidelines",
+      "Brand Analysis & Strategic Direction",
+      "Positioning, Communication & Visual Identity",
+      "Brand Applications, Systems & Guidelines",
     ],
     featured: true,
     slug: "full-brand-build",
@@ -31,59 +32,60 @@ const services: Service[] = [
   {
     title: "Brand Analysis",
     description:
-      "Evaluate the current state of your brand and identify opportunities for improvement and growth.",
+      "Understand where your brand currently stands, how it is perceived, and where there are opportunities to improve.",
     items: [
-      "Brand audit & market analysis",
-      "Competitor & audience insight",
-      "Brand strengths & weaknesses report",
+      "Brand Audit & Market Review",
+      "Competitor & Audience Analysis",
+      "Brand Strengths, Gaps & Recommendations",
     ],
     slug: "brand-analysis",
   },
   {
     title: "Brand Strategy",
     description:
-      "Define how your brand should position itself in the market and communicate with its audience.",
+      "Establish a clear direction for your brand, defining what it stands for, who it serves, and how it should communicate its value.",
     items: [
-      "Brand positioning & purpose",
-      "Mission, vision & values",
-      "Messaging pillars & tone of voice",
+      "Brand Purpose, Vision, Mission & Values",
+      "Audience, Value Proposition & Positioning",
+      "Messaging Framework & Brand Voice",
     ],
     slug: "brand-strategy",
   },
   {
     title: "Brand Identity System",
     description:
-      "Translate strategy into a strong visual identity system that builds recognition and trust.",
+      "Translate your brand's strategy and positioning into a distinctive visual identity that communicates its character and creates consistency.",
     items: [
-      "Logo system (Primary, Secondary, Icon)",
-      "Color palette & typography system",
-      "Brand patterns & visual identity assets",
+      "Logo System (Primary, Secondary & Icon)",
+      "Colour Palette & Typography System",
+      "Graphic Language, Brand Assets & Guidelines",
     ],
     slug: "brand-identity-system",
   },
   {
     title: "Brand Repositioning / Rebrand",
     description:
-      "Help established brands evolve and reposition themselves in their market to stay relevant.",
+      "Help established businesses evolve their brands to reflect changes in their direction, offerings, audience, or market position.",
     items: [
-      "Strategic repositioning audit",
-      "Messaging refinement",
-      "Full identity redesign & rollout",
+      "Current Brand & Positioning Review",
+      "Strategic Repositioning & Messaging Refinement",
+      "Visual Identity Evolution & Rollout",
     ],
     slug: "brand-repositioning",
   },
   {
     title: "Brand Growth Assets",
     description:
-      "Create assets that help businesses consistently apply their brand in high-impact marketing.",
+      "Develop practical brand applications and creative systems that help your business communicate and maintain consistency across marketing touchpoints.",
     items: [
-      "Social media design systems",
-      "Marketing & campaign templates",
-      "Pitch decks & presentation templates",
+      "Social Media Design Systems",
+      "Marketing & Campaign Templates",
+      "Pitch Decks & Presentation Templates",
     ],
     slug: "brand-growth-assets",
   },
-]
+];
+
 
 export function Services() {
   return (
