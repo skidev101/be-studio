@@ -140,9 +140,9 @@ const Pricing = () => {
 
             {/* Right: CTA */}
             <div className="rounded-[2rem] bg-linear-to-br from-blue-accent to-cyan-600 p-6 lg:p-8 text-white">
-              <h3 className="text-2xl font-bold">Ready to get started?</h3>
+              <h3 className="text-2xl font-bold">Ready to build a stronger brand?</h3>
               <p className="mt-4 text-blue-100">
-                Schedule a free 30-minute consultation. We'll discuss your specific needs and create a custom proposal.
+                You don't need to have everything figured out before getting started. Tell us about your business, where you are, and what you're looking to achieve. We'll help you understand what your brand needs and determine the right way forward.
               </p>
               
               <div className="flex flex-col mt-6 space-y-2">
