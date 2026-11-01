@@ -35,22 +35,26 @@ export default function Faq() {
           >
             <AccordionItem value="item-1">
               <AccordionTrigger className="hover:text-blue-accent text-lg text-gray-700 font-semibold hover:cursor-pointer">
-                What does BE Graphic Studios specialize in?
+                What does BE Graphic Studio do?
               </AccordionTrigger>
               <AccordionContent className="flex flex-col gap-4 text-sm text-balance">
                 <p>
-                  BE Graphic Studios is a full-service brand agency specializing in brand identity, visual design, and strategic creative direction. We help businesses define who they are, how they look, and how they communicate—building brands that are clear, consistent, and designed to scale.
+                  At BE Graphic Studio, we help growing businesses build, strengthen, and develop their brands through strategic branding.
+
+Our work goes beyond visual design to include brand analysis, strategy, positioning, communication, visual identity, and brand applications. We bring these elements together to help businesses develop brands that clearly communicate who they are, what they stand for, and how they want to be perceived.
                 </p>
                 
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-2">
               <AccordionTrigger className="hover:text-blue-accent text-lg text-gray-700 font-semibold hover:cursor-pointer">
-                Who do you typically work with?
+               What types of businesses do you work with?
               </AccordionTrigger>
               <AccordionContent className="flex flex-col gap-4 text-sm text-balance">
                 <p className="text-gray-800">
-                  We work with startups, growing businesses, and established brands that value thoughtful design and strategic clarity. Whether you're launching something new or repositioning an existing brand, BE Graphic Studios adapts its process to your stage of growth and industry.
+                  We primarily work with growing businesses, startups, and established companies looking to build, improve, or evolve their brands.
+
+Whether you're launching a new business, developing an existing brand, or preparing for a new stage of growth, we work with you to understand your needs and determine the right branding support for your business.
                 </p>
                 
               </AccordionContent>
@@ -79,11 +83,15 @@ export default function Faq() {
             </AccordionItem>
             <AccordionItem value="item-5">
               <AccordionTrigger className="hover:text-blue-accent text-lg text-gray-700 font-semibold hover:cursor-pointer">
-                Why choose BE Graphic Studios over other agencies?
+                How do I get started with BE?
               </AccordionTrigger>
               <AccordionContent className="flex flex-col gap-4 text-sm text-balance">
                 <p className="text-gray-800">
-                  We combine strategic thinking with refined visual execution. BE Graphic Studios is intentionally selective, allowing us to give each client focused attention, senior-level design thinking, and brand systems that are built to last and visually appealing.
+                  Getting started is simple. Book a consultation through our website or reach out to us directly through any of our social media platforms.
+
+We'll have a conversation about your business, understand what you're looking to achieve, and discuss the branding support you may need.
+
+From there, we'll recommend an appropriate scope of work and provide a proposal outlining the next steps.
                 </p>
                
               </AccordionContent>
