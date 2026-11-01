@@ -106,11 +106,11 @@ export function Services() {
             </div>
 
             <h2 className="font-heading mt-6 text-3xl md:text-4xl font-semibold tracking-tight text-slate-900">
-              Strategic Design Services
+              Branding services built around what your business needs.
             </h2>
 
             <p className="mt-6 text-base lg:text-lg leading-relaxed text-slate-600 max-w-2xl mx-auto">
-              We create clarity, alignment and distinctive presence — from deep brand strategy to pixel-perfect execution.
+              From understanding your business to developing its identity and creating systems for consistency, we bring the essential elements of branding together to help you build a stronger brand.
             </p>
           </motion.div>
         </div>
