@@ -30,19 +30,19 @@ export default function Hero() {
               </motion.h1> */}
               <div className="font-heading text-[2.5rem] leading-[1.1] md:text-[2.8rem] xl:text-[3.2rem] font-semibold tracking-tight text-[#0B1C2D]">
                 <BlurText
-                  text="We help results driven businesses build clear, confident"
+                  text="Build a stronger brand with clarity and direction."
                   delay={130}
                   animateBy="words"
                   direction="top"
                   className="text-blue-accent"
                 />
-                <BlurText
+                {/* <BlurText
                   text="Brands that scale"
                   delay={160}
                   animateBy="words"
                   direction="bottom"
                   className="block text-blue-accent hover:text-[#122933] transition-all"
-                />
+                /> */}
               </div>
 
               <motion.p
@@ -51,8 +51,7 @@ export default function Hero() {
                 transition={{ duration: 0.6, delay: 0.5 }}
                 className="max-w-xl text-md leading-relaxed text-slate-700"
               >
-                Strategic brand analysis, positioning, and design systems that
-                aligns your brand with it's business goals for long-term growth.
+                We help growing businesses understand, build, and strengthen their brands through strategy, positioning, communication, identity, experience, and systems.
               </motion.p>
 
               {/* CTA */}
@@ -67,7 +66,7 @@ export default function Hero() {
                   onClick={() => scrollToSection("services")}
                   className="inline-flex items-center justify-center rounded-full bg-blue-accent px-8 py-3 hover:px-9 text-base font-medium text-white transition-all hover:bg-blue-accent/80"
                 >
-                  View our services
+                  Explore our work
                 </button>
 
                 {/* SECONDARY */}
