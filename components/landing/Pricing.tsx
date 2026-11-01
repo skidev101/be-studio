@@ -52,10 +52,10 @@ const Pricing = () => {
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="font-heading text-3xl md:text-5xl font-bold text-[#0B1C2D]">
-            What's Your Goal?
+            Where does your brand need to go?
           </h2>
           <p className="mt-6 text-base md:text-lg text-[#4B5C73]">
-            We'll recommend the right investment based on where you are and where you want to go.
+            Every business is at a different stage. Whether you're starting from scratch, evaluating an existing brand, or looking to evolve, we'll help you identify the right starting point.
           </p>
         </div>
 
